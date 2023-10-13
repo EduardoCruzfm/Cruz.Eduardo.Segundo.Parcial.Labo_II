@@ -11,19 +11,19 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public string tipoDeCombustible;
         protected short cantidadPuertas;
 
-        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color) 
-            : base(cantidadRuedas, cantidadMarchas, color)
+        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis) 
+            : base(cantidadRuedas, cantidadMarchas, color, nChasis)
         {
         }
 
-        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color, string tipoDeCombustible) 
-            : this(cantidadRuedas, cantidadMarchas, color)
+        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis, string tipoDeCombustible) 
+            : this(cantidadRuedas, cantidadMarchas, color, nChasis)
         {
             this.tipoDeCombustible = tipoDeCombustible;
         }
 
-        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color, string tipoDeCombustible, short cantidadPuertas)
-            : this(cantidadRuedas, cantidadMarchas, color, tipoDeCombustible)
+        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis, string tipoDeCombustible, short cantidadPuertas)
+            : this(cantidadRuedas, cantidadMarchas, color, nChasis, tipoDeCombustible)
         {   
             this.cantidadPuertas = cantidadPuertas;
         }

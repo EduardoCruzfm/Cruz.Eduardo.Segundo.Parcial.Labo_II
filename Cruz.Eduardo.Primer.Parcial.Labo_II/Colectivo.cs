@@ -11,19 +11,19 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public bool esAutomatico;
         public int cantidadDePasajeros;
 
-        public Colectivo(short cantidadRuedas, short cantidadMarchas, Colores color) 
-            : base(cantidadRuedas, cantidadMarchas, color)
+        public Colectivo(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis) 
+            : base(cantidadRuedas, cantidadMarchas, color, nChasis)
         {
         }
 
-        public Colectivo(short cantidadRuedas, short cantidadMarchas, Colores color,bool esAutomatico)
-            : base(cantidadRuedas, cantidadMarchas, color)
+        public Colectivo(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis, bool esAutomatico)
+            : this(cantidadRuedas, cantidadMarchas, color, nChasis)
         {
             this.esAutomatico = esAutomatico;
         }
 
-        public Colectivo(short cantidadRuedas, short cantidadMarchas, Colores color, bool esAutomatico, int cantidadDePasajeros)
-           : this(cantidadRuedas, cantidadMarchas, color, esAutomatico)
+        public Colectivo(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis, bool esAutomatico, int cantidadDePasajeros)
+           : this(cantidadRuedas, cantidadMarchas, color, nChasis, esAutomatico)
         {
             this.cantidadDePasajeros = cantidadDePasajeros;
         }
@@ -35,9 +35,6 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
         public override string ToString()
         {
-
-
-
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");

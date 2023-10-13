@@ -12,19 +12,19 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public bool usoUrbano;
 
 
-        public Motocicleta(short cantidadRuedas, short cantidadMarchas, Colores color) 
-            : base(cantidadRuedas, cantidadMarchas, color)
+        public Motocicleta(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis) 
+            : base(cantidadRuedas, cantidadMarchas, color, nChasis)
         {
         }
 
-        public Motocicleta(short cantidadRuedas, short cantidadMarchas, Colores color, short cilindrada) 
-            : this(cantidadRuedas, cantidadMarchas, color)
+        public Motocicleta(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis, short cilindrada) 
+            : this(cantidadRuedas, cantidadMarchas, color, nChasis)
         {
             this.cilindrada = cilindrada;
         }
 
-        public Motocicleta(short cantidadRuedas, short cantidadMarchas, Colores color, short cilindrada, bool usoUrbano)
-           : this(cantidadRuedas,cantidadMarchas,color,cilindrada)
+        public Motocicleta(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis, short cilindrada, bool usoUrbano)
+           : this(cantidadRuedas,cantidadMarchas,color, nChasis, cilindrada)
         {
             
             this.usoUrbano = usoUrbano;
