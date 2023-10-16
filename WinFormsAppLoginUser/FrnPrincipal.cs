@@ -185,7 +185,6 @@ namespace WinFormsAppLoginUser
                     string json_str = sr.ReadToEnd();
 
                     // Deserializar en una lista de objetos anónimos
-                    //var vehiculosAnonimos = JsonSerializer.Deserialize<List<object>>(json_str);
                     var vehiculosAnonimos = JsonSerializer.Deserialize<List<object>>(json_str);
 
                     listaVehiculos = new List<Vehiculo>();
