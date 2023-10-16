@@ -29,7 +29,7 @@ namespace WinFormsAppLoginUser
 
         private List<Usuario> Deserializar()
         {
-            
+
             try
             {
                 using (StreamReader sr = new StreamReader(@"..\..\..\MOCK_DATA.json"))
@@ -46,12 +46,12 @@ namespace WinFormsAppLoginUser
 
                 MessageBox.Show(e.Message);
                 return new List<Usuario>();
-            }    
+            }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            
+
 
             if (Verificar() != null)
             {
@@ -78,11 +78,26 @@ namespace WinFormsAppLoginUser
             return usuario;
         }
 
-        
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+        private void btnAceptar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+        
+        private void FrmLogin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnAceptar_Click(sender, e);
+                e.Handled = true;
+            }
+        }
+        
     }
 }

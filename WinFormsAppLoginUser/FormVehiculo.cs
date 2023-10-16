@@ -48,5 +48,66 @@ namespace WinFormsAppLoginUser
         {
             this.DialogResult = DialogResult.Cancel;
         }
+
+
+        protected void QueSeaNumero(KeyPressEventArgs e)
+        {
+            // Verifica si la tecla presionada es un número o la tecla Backspace (para borrar).
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Si no es un número ni la tecla Backspace, no permitir la entrada.
+                e.Handled = true;
+            }
+        }
+
+        private void txtChasis_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.QueSeaNumero(e);
+        }
+
+        private void txtCantRuedas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.QueSeaNumero(e);
+        }
+
+        private void txtMarchas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.QueSeaNumero(e);
+        }
+
+
+        protected bool QueNoHallaCamposVacios()
+        {
+            bool retorno = true
+                ;
+            // Valida si el campo de marca está vacío
+            if (string.IsNullOrWhiteSpace(this.txtMarca.Text))
+            {
+                retorno = false;
+            }
+
+            // Valida si el campo de cantidad de ruedas es un número válido
+            if (!short.TryParse(this.txtCantRuedas.Text, out short cantRuedas))
+            {
+                retorno = false;
+            }
+
+            // Valida si el campo de cantidad de marchas es un número válido
+            if (!short.TryParse(this.txtMarchas.Text, out short cantMarchas))
+            {
+                retorno = false;
+            }
+
+            // Valida si el campo de chasis es un número válido
+            if (!long.TryParse(this.txtChasis.Text, out long nChasis))
+            {
+                retorno = false;
+            }
+
+            return retorno;
+        }
     }
+
+
+        
 }

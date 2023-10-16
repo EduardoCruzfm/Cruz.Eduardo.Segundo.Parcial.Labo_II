@@ -37,7 +37,7 @@
             // 
             // cmbColor
             // 
-            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
+            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
             // 
             // btnGuardar
             // 
@@ -73,6 +73,7 @@
             txtCantPasajeros.Name = "txtCantPasajeros";
             txtCantPasajeros.Size = new Size(122, 23);
             txtCantPasajeros.TabIndex = 15;
+            txtCantPasajeros.KeyPress += txtCantPasajeros_KeyPress;
             // 
             // cmbTransAutomatica
             // 

@@ -9,11 +9,11 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
     public class Estacionamiento
     {
         public string nombre;
-        public List<Vehiculo> listaVehiculos;
+        public List<Vehiculo> listVehiculos;
 
         public Estacionamiento(string nombre)
         {
-            this.listaVehiculos = new List<Vehiculo>();
+            this.listVehiculos = new List<Vehiculo>();
             this.nombre = nombre;
         }
 
@@ -21,9 +21,9 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public void Ordenar(string atributo)
         {
             Vehiculo intercambio;
-            int rango = listaVehiculos.Count;
-            var prop1 = 0;
-            var prop2 = 0;
+            int rango = listVehiculos.Count;
+            long prop1;
+            long prop2;
 
             for (int i = 0; i < rango - 1; i++) 
             {
@@ -31,20 +31,20 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
                 {
                     if(atributo == "chasis")
                     {
-                        prop1 = listaVehiculos[i].NChasis;
-                        prop2 = listaVehiculos[j].NChasis;
+                        prop1 = listVehiculos[i].NChasis;
+                        prop2 = listVehiculos[j].NChasis;
                     }
                     else
                     {
-                        prop1 = listaVehiculos[i].CantidadRuedas;
-                        prop2 = listaVehiculos[j].CantidadRuedas;
+                        prop1 = listVehiculos[i].CantidadRuedas;
+                        prop2 = listVehiculos[j].CantidadRuedas;
                     }
 
                     if (prop1 > prop2)
                     {
-                        intercambio = listaVehiculos[i];
-                        listaVehiculos[i] = listaVehiculos[j];
-                        listaVehiculos[j] = intercambio;
+                        intercambio = listVehiculos[i];
+                        listVehiculos[i] = listVehiculos[j];
+                        listVehiculos[j] = intercambio;
                     }
                 }                 
             }
@@ -54,7 +54,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
         public static bool operator ==(Estacionamiento e, Vehiculo v)
         {
-            return e.listaVehiculos.Contains(v);
+            return e.listVehiculos.Contains(v);
         }
 
         public static bool operator !=(Estacionamiento e, Vehiculo v)
@@ -69,7 +69,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
             if (e != v)
             {
-                e.listaVehiculos.Add(v);
+                e.listVehiculos.Add(v);
                 retorno = true;
             }
             return retorno;
@@ -81,7 +81,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
             if ( e == v )
             {
-                e.listaVehiculos.Remove(v);
+                e.listVehiculos.Remove(v);
                 retorno = true;
             }
             return retorno;

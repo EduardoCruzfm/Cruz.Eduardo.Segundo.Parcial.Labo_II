@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
@@ -12,6 +13,12 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         protected long nChasis;
         protected bool mantenimiento;
 
+        
+        public Vehiculo()
+        {
+
+        }
+        //[JsonConstructor]
         public Vehiculo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis)
         {
             this.marca = marca;

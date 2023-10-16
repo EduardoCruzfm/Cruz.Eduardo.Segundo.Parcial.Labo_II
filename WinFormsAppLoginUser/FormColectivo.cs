@@ -44,18 +44,36 @@ namespace WinFormsAppLoginUser
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string marca = this.txtMarca.Text;
-            long nChasis = long.Parse(this.txtChasis.Text);
-            short cantRuedas = short.Parse(this.txtCantRuedas.Text);
-            short cantMarchas = short.Parse(this.txtMarchas.Text);
-            Colores color = (Colores)this.cmbColor.SelectedItem;
-            string esAutomatico = this.cmbTransAutomatica.Text;
-            int cantPasajeros = int.Parse(this.txtCantPasajeros.Text);
+            if (this.QueNoHallaCamposVacios() == true) // esran llenos
+            {
+                bool retono = true;
 
-            this.colctivo = new Colectivo(marca, cantRuedas, cantMarchas, color, nChasis, esAutomatico, cantPasajeros);
-            this.DialogResult = DialogResult.OK;
+                if (string.IsNullOrWhiteSpace(this.cmbTransAutomatica.Text)) { retono = false; }
+
+                if (!int.TryParse(this.txtCantPasajeros.Text, out int cntPasajeros)) { retono = false; }
+
+                if (retono)
+                {
+                    string marca = this.txtMarca.Text;
+                    short cantRuedas = short.Parse(this.txtCantRuedas.Text);
+                    short cantMarchas = short.Parse(this.txtMarchas.Text);
+                    Colores color = (Colores)this.cmbColor.SelectedItem;
+                    long nChasis = long.Parse(this.txtChasis.Text);
+
+                    string esAutomatico = this.cmbTransAutomatica.Text;
+                    int cantPasajeros = int.Parse(this.txtCantPasajeros.Text);
+
+                    this.colctivo = new Colectivo(marca, cantRuedas, cantMarchas, color, nChasis, esAutomatico, cantPasajeros);
+                    this.DialogResult = DialogResult.OK;
+                }
+                else { MessageBox.Show("Por favor, verifique los demas datos."); }
+            }
+            else { MessageBox.Show("Por favor, ingresa un los datos."); }       
         }
 
-
+        private void txtCantPasajeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.QueSeaNumero(e);
+        }
     }
 }

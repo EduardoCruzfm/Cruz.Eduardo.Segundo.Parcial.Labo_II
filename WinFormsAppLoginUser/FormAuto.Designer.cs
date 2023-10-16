@@ -37,7 +37,7 @@
             // 
             // cmbColor
             // 
-            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
+            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
             // 
             // btnAceptar
             // 
@@ -80,6 +80,7 @@
             txtCantPuertas.Name = "txtCantPuertas";
             txtCantPuertas.Size = new Size(122, 23);
             txtCantPuertas.TabIndex = 15;
+            txtCantPuertas.KeyPress += txtCantPuertas_KeyPress;
             // 
             // FormAuto
             // 

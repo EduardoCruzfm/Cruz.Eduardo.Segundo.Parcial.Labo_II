@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
@@ -11,9 +13,13 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public string esAutomatico;
         public int cantidadDePasajeros;
 
+        public Colectivo() {  }
+
+
         public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis) 
             : base(marca, cantidadRuedas, cantidadMarchas, color, nChasis)
         {
+
         }
 
         public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, string esAutomatico)
@@ -25,6 +31,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, string esAutomatico, int cantidadDePasajeros)
            : this(marca, cantidadRuedas, cantidadMarchas, color, nChasis, esAutomatico)
         {
+            
             this.cantidadDePasajeros = cantidadDePasajeros;
         }
 
@@ -54,12 +61,12 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         {
 
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
+            sb.AppendLine(base.ToString());
+            //sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
             sb.AppendLine($"Es automatico: {this.esAutomatico}");
             sb.AppendLine($"Cantidad de pasajeros: {this.cantidadDePasajeros}");
-            sb.AppendLine(base.ToString());
 
-            return base.ToString();
+            return sb.ToString();
         }
     }
 }

@@ -11,6 +11,8 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public string tipoDeCombustible;
         protected short cantidadPuertas;
 
+        public Automovil() { }  
+
         public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis) 
             : base(marca,cantidadRuedas, cantidadMarchas, color, nChasis)
         {
@@ -53,12 +55,12 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
+            sb.AppendLine(base.ToString());
+            //sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
             sb.AppendLine($"Cantidad de puertas: {this.cantidadPuertas}");
             sb.AppendLine($"Tipo de combustible: {this.tipoDeCombustible}");
-            sb.AppendLine(base.ToString());
 
-            return base.ToString();
+            return sb.ToString();
         }
 
 

@@ -27,10 +27,10 @@ namespace Program
 
             hs24.Ordenar("chasis");
             //hs24.Ordenar("marca");
-            hs24.listaVehiculos.Reverse();
+            hs24.listVehiculos.Reverse();
 
 
-            foreach (var item in hs24.listaVehiculos)
+            foreach (var item in hs24.listVehiculos)
             {
                 Console.WriteLine(item);
             }
@@ -58,7 +58,7 @@ namespace Program
                 Console.WriteLine("NO BORRADO");
             }
 
-            foreach (var item in hs24.listaVehiculos)
+            foreach (var item in hs24.listVehiculos)
             {
                 Console.WriteLine(item);
             }

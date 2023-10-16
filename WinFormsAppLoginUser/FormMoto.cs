@@ -17,7 +17,7 @@ namespace WinFormsAppLoginUser
 
         public Motocicleta Moto { get { return this.moto; } }
 
-        public FormMoto() :base()
+        public FormMoto() : base()
         {
             InitializeComponent();
             this.cmbUsoUrbano.Items.Add("Si");
@@ -27,38 +27,55 @@ namespace WinFormsAppLoginUser
         public FormMoto(Motocicleta m) : this()
         {
             this.txtMarca.Text = m.Marca;
-            this.txtChasis.Text = m.NChasis.ToString();
             this.txtCantRuedas.Text = m.CantidadRuedas.ToString();
             this.txtMarchas.Text = m.CantidadMarchas.ToString();
             this.cmbColor.Text = m.Color.ToString();
-            
-            this.cmbUsoUrbano.Text = m.Urbano.ToString();
+            this.txtChasis.Text = m.NChasis.ToString();
+
             this.txtCilindrada.Text = m.Cilindrada.ToString();
+            this.cmbUsoUrbano.Text = m.Urbano.ToString();
         }
 
-        private void FormMoto_Load(object sender, EventArgs e) 
+        private void FormMoto_Load(object sender, EventArgs e)
         {
             // Establecer la selección predeterminada
             this.cmbUsoUrbano.SelectedIndex = 0;
-            
+
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            string marca = this.txtMarca.Text;
-            long nChasis = long.Parse(this.txtChasis.Text);
-            short cantRuedas = short.Parse(this.txtCantRuedas.Text);
-            short cantMarchas = short.Parse(this.txtMarchas.Text);
 
-            Colores color = (Colores)Enum.Parse(typeof(Colores), this.cmbColor.Text);
+            if (this.QueNoHallaCamposVacios() == true) // esran llenos
+            {
+                bool retono = true;
 
-            short cilindrada = short.Parse(this.txtCilindrada.Text);
-            string usoUrbano = this.cmbUsoUrbano.Text;
+                if (!short.TryParse(this.txtCilindrada.Text, out short cilindrda)) { retono = false; }
 
+                if (string.IsNullOrWhiteSpace(this.cmbUsoUrbano.Text)) { retono = false; }
 
-            this.moto = new Motocicleta(marca, cantRuedas, cantMarchas, color, nChasis, cilindrada, usoUrbano);
-            this.DialogResult = DialogResult.OK;
+                if (retono)
+                {
+                    string marca = this.txtMarca.Text;
+                    short cantRuedas = short.Parse(this.txtCantRuedas.Text);
+                    short cantMarchas = short.Parse(this.txtMarchas.Text);
+                    Colores color = (Colores)Enum.Parse(typeof(Colores), this.cmbColor.Text);
+                    long nChasis = long.Parse(this.txtChasis.Text);
 
+                    short cilindrada = short.Parse(this.txtCilindrada.Text);
+                    string usoUrbano = this.cmbUsoUrbano.Text;
+
+                    this.moto = new Motocicleta(marca, cantRuedas, cantMarchas, color, nChasis, cilindrada, usoUrbano);
+                    this.DialogResult = DialogResult.OK;
+                }
+                else { MessageBox.Show("Por favor, verifique los demas datos."); }
+            }
+            else { MessageBox.Show("Por favor, ingresa un los datos."); }
+        }
+
+        private void txtCilindrada_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.QueSeaNumero(e);
         }
     }
 }

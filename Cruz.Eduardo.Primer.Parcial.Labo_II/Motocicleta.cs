@@ -12,6 +12,8 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public string usoUrbano;
 
 
+        public Motocicleta () { }
+
         public Motocicleta(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis) 
             : base(marca, cantidadRuedas, cantidadMarchas, color, nChasis)
         {
@@ -56,12 +58,12 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
+            sb.AppendLine(base.ToString());
+            //sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
             sb.AppendLine($"Cilindrada: {this.cilindrada}");
             sb.AppendLine($"De uso urbano: {this.usoUrbano}");
-            sb.AppendLine(base.ToString());
 
-            return base.ToString();
+            return sb.ToString();
         }
     }
 }

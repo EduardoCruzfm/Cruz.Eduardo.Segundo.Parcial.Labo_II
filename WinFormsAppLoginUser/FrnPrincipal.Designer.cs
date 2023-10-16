@@ -34,7 +34,16 @@
             btnEliminar = new Button();
             lblNombreUsuario = new Label();
             cmbTipoVehiculo = new ComboBox();
-            groupBox1 = new GroupBox();
+            gBoxOrdenar = new GroupBox();
+            rdCantRuedas = new RadioButton();
+            rdNChasis = new RadioButton();
+            btnOrdenar = new Button();
+            gBoxDeForma = new GroupBox();
+            rdDesendente = new RadioButton();
+            rdAsendente = new RadioButton();
+            lblFecha = new Label();
+            gBoxOrdenar.SuspendLayout();
+            gBoxDeForma.SuspendLayout();
             SuspendLayout();
             // 
             // lstVisor
@@ -79,7 +88,7 @@
             // lblNombreUsuario
             // 
             lblNombreUsuario.AutoSize = true;
-            lblNombreUsuario.Location = new Point(463, 9);
+            lblNombreUsuario.Location = new Point(359, 18);
             lblNombreUsuario.Name = "lblNombreUsuario";
             lblNombreUsuario.Size = new Size(89, 15);
             lblNombreUsuario.TabIndex = 4;
@@ -93,21 +102,100 @@
             cmbTipoVehiculo.Size = new Size(144, 23);
             cmbTipoVehiculo.TabIndex = 5;
             // 
-            // groupBox1
+            // gBoxOrdenar
             // 
-            groupBox1.Location = new Point(37, 396);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(468, 42);
-            groupBox1.TabIndex = 6;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            gBoxOrdenar.Controls.Add(rdCantRuedas);
+            gBoxOrdenar.Controls.Add(rdNChasis);
+            gBoxOrdenar.Location = new Point(37, 384);
+            gBoxOrdenar.Name = "gBoxOrdenar";
+            gBoxOrdenar.Size = new Size(235, 54);
+            gBoxOrdenar.TabIndex = 6;
+            gBoxOrdenar.TabStop = false;
+            gBoxOrdenar.Text = "Ordenar por :";
+            // 
+            // rdCantRuedas
+            // 
+            rdCantRuedas.AutoSize = true;
+            rdCantRuedas.Location = new Point(122, 22);
+            rdCantRuedas.Name = "rdCantRuedas";
+            rdCantRuedas.Size = new Size(107, 19);
+            rdCantRuedas.TabIndex = 1;
+            rdCantRuedas.TabStop = true;
+            rdCantRuedas.Text = "Cant. de ruedas";
+            rdCantRuedas.UseVisualStyleBackColor = true;
+            // 
+            // rdNChasis
+            // 
+            rdNChasis.AutoSize = true;
+            rdNChasis.Location = new Point(17, 22);
+            rdNChasis.Name = "rdNChasis";
+            rdNChasis.Size = new Size(76, 19);
+            rdNChasis.TabIndex = 0;
+            rdNChasis.TabStop = true;
+            rdNChasis.Text = "N° Chasis";
+            rdNChasis.UseVisualStyleBackColor = true;
+            // 
+            // btnOrdenar
+            // 
+            btnOrdenar.Location = new Point(261, 22);
+            btnOrdenar.Name = "btnOrdenar";
+            btnOrdenar.Size = new Size(75, 23);
+            btnOrdenar.TabIndex = 2;
+            btnOrdenar.Text = "Ordenar";
+            btnOrdenar.UseVisualStyleBackColor = true;
+            btnOrdenar.Click += btnOrdenar_Click;
+            // 
+            // gBoxDeForma
+            // 
+            gBoxDeForma.Controls.Add(rdDesendente);
+            gBoxDeForma.Controls.Add(btnOrdenar);
+            gBoxDeForma.Controls.Add(rdAsendente);
+            gBoxDeForma.Location = new Point(323, 384);
+            gBoxDeForma.Name = "gBoxDeForma";
+            gBoxDeForma.Size = new Size(369, 54);
+            gBoxDeForma.TabIndex = 7;
+            gBoxDeForma.TabStop = false;
+            gBoxDeForma.Text = "De forma :";
+            // 
+            // rdDesendente
+            // 
+            rdDesendente.AutoSize = true;
+            rdDesendente.Location = new Point(135, 22);
+            rdDesendente.Name = "rdDesendente";
+            rdDesendente.Size = new Size(87, 19);
+            rdDesendente.TabIndex = 1;
+            rdDesendente.TabStop = true;
+            rdDesendente.Text = "Desendente";
+            rdDesendente.UseVisualStyleBackColor = true;
+            // 
+            // rdAsendente
+            // 
+            rdAsendente.AutoSize = true;
+            rdAsendente.Location = new Point(16, 22);
+            rdAsendente.Name = "rdAsendente";
+            rdAsendente.Size = new Size(81, 19);
+            rdAsendente.TabIndex = 0;
+            rdAsendente.TabStop = true;
+            rdAsendente.Text = "Asendente";
+            rdAsendente.UseVisualStyleBackColor = true;
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Location = new Point(500, 18);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(38, 15);
+            lblFecha.TabIndex = 8;
+            lblFecha.Text = "Fecha";
             // 
             // FrnPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(groupBox1);
+            Controls.Add(lblFecha);
+            Controls.Add(gBoxDeForma);
+            Controls.Add(gBoxOrdenar);
             Controls.Add(cmbTipoVehiculo);
             Controls.Add(lblNombreUsuario);
             Controls.Add(btnEliminar);
@@ -116,7 +204,12 @@
             Controls.Add(lstVisor);
             Name = "FrnPrincipal";
             Text = "Form1";
+            FormClosing += FrnPrincipal_FormClosing;
             Load += FrnPrincipal_Load;
+            gBoxOrdenar.ResumeLayout(false);
+            gBoxOrdenar.PerformLayout();
+            gBoxDeForma.ResumeLayout(false);
+            gBoxDeForma.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -129,6 +222,13 @@
         private Button btnEliminar;
         private Label lblNombreUsuario;
         private ComboBox cmbTipoVehiculo;
-        private GroupBox groupBox1;
+        private GroupBox gBoxOrdenar;
+        private RadioButton rdCantRuedas;
+        private RadioButton rdNChasis;
+        private Button btnOrdenar;
+        private GroupBox gBoxDeForma;
+        private RadioButton rdDesendente;
+        private RadioButton rdAsendente;
+        private Label lblFecha;
     }
 }

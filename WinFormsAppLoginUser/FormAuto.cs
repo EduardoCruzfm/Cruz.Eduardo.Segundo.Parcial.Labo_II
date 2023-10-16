@@ -36,18 +36,36 @@ namespace WinFormsAppLoginUser
 
         private void btnAcepatar_Click(object sender, EventArgs e)
         {
-            string marca = this.txtMarca.Text;
-            long nChasis = long.Parse(this.txtChasis.Text);
-            short cantRuedas = short.Parse(this.txtCantRuedas.Text);
-            short cantMarchas = short.Parse(this.txtMarchas.Text);
-            Colores color = (Colores)this.cmbColor.SelectedItem;
-            string tipoCombustible = this.txtTipoCombustible.Text;
-            short cantPuertas = short.Parse(this.txtCantPuertas.Text);
+            if (this.QueNoHallaCamposVacios() == true) // esran llenos
+            {
+                bool retono = true;
 
-            this.auto = new Automovil(marca, cantRuedas, cantMarchas, color, nChasis, tipoCombustible, cantPuertas);
+                if (string.IsNullOrWhiteSpace(this.txtTipoCombustible.Text)) { retono = false; }
 
-            this.DialogResult = DialogResult.OK;
+                if (!short.TryParse(this.txtCantPuertas.Text, out short cantPuerta)) { retono = false; }
 
+                if (retono)
+                {
+                    string marca = this.txtMarca.Text;
+                    short cantRuedas = short.Parse(this.txtCantRuedas.Text);
+                    short cantMarchas = short.Parse(this.txtMarchas.Text);
+                    Colores color = (Colores)this.cmbColor.SelectedItem;
+                    long nChasis = long.Parse(this.txtChasis.Text);
+                    string tipoCombustible = this.txtTipoCombustible.Text;
+                    short cantPuertas = short.Parse(this.txtCantPuertas.Text);
+
+                    this.auto = new Automovil(marca, cantRuedas, cantMarchas, color, nChasis, tipoCombustible, cantPuertas);
+
+                    this.DialogResult = DialogResult.OK;
+                }
+                else {  MessageBox.Show("Por favor, verifique los demas datos.");  }
+            }
+            else { MessageBox.Show("Por favor, ingresa un los datos."); }
+        }
+
+        private void txtCantPuertas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.QueSeaNumero(e);
         }
     }
 }

@@ -64,6 +64,7 @@
             txtCantRuedas.Name = "txtCantRuedas";
             txtCantRuedas.Size = new Size(122, 23);
             txtCantRuedas.TabIndex = 2;
+            txtCantRuedas.KeyPress += txtCantRuedas_KeyPress;
             // 
             // txtChasis
             // 
@@ -71,6 +72,7 @@
             txtChasis.Name = "txtChasis";
             txtChasis.Size = new Size(122, 23);
             txtChasis.TabIndex = 3;
+            txtChasis.KeyPress += txtChasis_KeyPress;
             // 
             // cmbColor
             // 
@@ -86,6 +88,7 @@
             txtMarchas.Name = "txtMarchas";
             txtMarchas.Size = new Size(122, 23);
             txtMarchas.TabIndex = 5;
+            txtMarchas.KeyPress += txtMarchas_KeyPress;
             // 
             // lblMarca
             // 

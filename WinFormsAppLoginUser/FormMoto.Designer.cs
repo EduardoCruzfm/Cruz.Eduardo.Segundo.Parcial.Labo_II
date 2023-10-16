@@ -37,7 +37,7 @@
             // 
             // cmbColor
             // 
-            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
+            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
             // 
             // lblCilindrada
             // 
@@ -63,6 +63,7 @@
             txtCilindrada.Name = "txtCilindrada";
             txtCilindrada.Size = new Size(122, 23);
             txtCilindrada.TabIndex = 13;
+            txtCilindrada.KeyPress += txtCilindrada_KeyPress;
             // 
             // btnGuardar
             // 

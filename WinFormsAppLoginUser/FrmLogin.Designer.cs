@@ -45,6 +45,7 @@
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
+            btnAceptar.KeyPress += btnAceptar_KeyPress;
             // 
             // btnCancelar
             // 
@@ -92,6 +93,7 @@
             // 
             // FrmLogin
             // 
+            AcceptButton = btnAceptar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(423, 405);
@@ -103,6 +105,7 @@
             Controls.Add(btnAceptar);
             Name = "FrmLogin";
             Text = "FrmLogin";
+            KeyPress += FrmLogin_KeyPress;
             ResumeLayout(false);
             PerformLayout();
         }

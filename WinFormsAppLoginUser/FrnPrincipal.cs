@@ -1,4 +1,5 @@
 using Cruz.Eduardo.Primer.Parcial.Labo_II;
+using System.Text.Json;
 using System.Windows.Forms;
 
 namespace WinFormsAppLoginUser
@@ -7,6 +8,7 @@ namespace WinFormsAppLoginUser
     {
         protected Usuario usuario;
         protected List<Vehiculo> listaVehiculos;
+        protected DateTime fechaHora;
 
         public FrnPrincipal()
         {
@@ -24,8 +26,9 @@ namespace WinFormsAppLoginUser
 
         private void FrnPrincipal_Load(object sender, EventArgs e)
         {
-            this.lblNombreUsuario.Text = $"Usuario: {usuario.nombre} Fecha: {DateTime.Now}";
-
+            fechaHora = DateTime.Now;
+            this.lblNombreUsuario.Text = $"Usuario: {usuario.nombre}";
+            this.lblFecha.Text = $"Fecha: {fechaHora.ToString("dd/mm/yyyy")}";
             // Agregar elementos al ComboBox
             this.cmbTipoVehiculo.Items.Add("Auto");
             this.cmbTipoVehiculo.Items.Add("Colectivo");
@@ -33,6 +36,8 @@ namespace WinFormsAppLoginUser
 
             // Establecer la selección predeterminada
             this.cmbTipoVehiculo.SelectedIndex = 0;
+
+            this.Deserializar();
         }
 
         private void ActualizarVisor()
@@ -43,8 +48,6 @@ namespace WinFormsAppLoginUser
                 this.lstVisor.Items.Add(item.ToString());
             }
         }
-
-
 
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -107,6 +110,7 @@ namespace WinFormsAppLoginUser
             if (indice == -1) { return; }
 
             this.Remover(indice);
+            MessageBox.Show("Se elimino");
         }
 
         private void btnModificar_Click(object sender, EventArgs e)
@@ -117,30 +121,31 @@ namespace WinFormsAppLoginUser
 
             Vehiculo v = this.listaVehiculos[indice];
 
-            
 
-            string tipo = cmbTipoVehiculo.SelectedItem.ToString();
 
-            
+            string tipo = v.GetType().Name;
+
+
             switch (tipo)
             {
-                case "Auto":
+                case nameof(Automovil):
                     FormAuto fromA = new FormAuto((Automovil)v);
                     fromA.ShowDialog();
 
-                    if (fromA.DialogResult == DialogResult.OK) {
+                    if (fromA.DialogResult == DialogResult.OK)
+                    {
 
                         this.listaVehiculos[indice] = fromA.Auto;
                         this.ActualizarVisor();
                     }
 
                     break;
-                case "Moto":
+                case nameof(Motocicleta):
 
                     FormMoto fromM = new FormMoto((Motocicleta)v);
                     fromM.ShowDialog();
 
-                    if (fromM.DialogResult == DialogResult.OK) 
+                    if (fromM.DialogResult == DialogResult.OK)
                     {
                         this.listaVehiculos[indice] = fromM.Moto;
                         this.ActualizarVisor();
@@ -148,18 +153,215 @@ namespace WinFormsAppLoginUser
 
                     break;
 
-                case "Colectivo":
+                case nameof(Colectivo):
 
                     FormColectivo fromC = new FormColectivo((Colectivo)v);
                     fromC.ShowDialog();
 
-                    if (fromC.DialogResult == DialogResult.OK) 
+                    if (fromC.DialogResult == DialogResult.OK)
                     {
                         this.listaVehiculos[indice] = fromC.Colctivo;
                         this.ActualizarVisor();
                     }
 
                     break;
+            }
+        }
+
+
+        private void Deserializar()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += @"\List_vehiculos.json";
+
+            List<Vehiculo> listaDatoJson;
+
+            if (File.Exists(path))
+            {
+
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    JsonSerializerOptions opciones = new JsonSerializerOptions();
+                    string json_str = sr.ReadToEnd();
+
+                    // Deserializar en una lista de objetos anónimos
+                    //var vehiculosAnonimos = JsonSerializer.Deserialize<List<object>>(json_str);
+                    var vehiculosAnonimos = JsonSerializer.Deserialize<List<object>>(json_str);
+
+                    listaVehiculos = new List<Vehiculo>();
+
+                    foreach (var vehiculoAnonimo in vehiculosAnonimos)
+                    {
+                        if (vehiculoAnonimo is JsonElement elemento)
+                        {
+                            // Determina el tipo de vehículo y deserializa según ese tipo.
+                            if (elemento.TryGetProperty("Cilindrada", out _))
+                            {
+                                Motocicleta moto = JsonSerializer.Deserialize<Motocicleta>(elemento.GetRawText());
+                                this.listaVehiculos.Add(moto);
+                            }
+
+                            if (elemento.TryGetProperty("TipoDeCombustible", out _))
+                            {
+                                Automovil auto = JsonSerializer.Deserialize<Automovil>(elemento.GetRawText());
+                                this.listaVehiculos.Add(auto);
+                            }
+
+                            if (elemento.TryGetProperty("EsAutomatico", out _))
+                            {
+                                Colectivo colec = JsonSerializer.Deserialize<Colectivo>(elemento.GetRawText());
+                                this.listaVehiculos.Add(colec);
+                            }
+
+                        }
+                    }
+                }
+                this.ActualizarVisor();
+                
+            }
+        }
+
+        private void FrnPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Serealizar();
+            this.SerealizarUsuario();
+
+        }
+
+        private void SerealizarUsuario()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += @"\Usuario.log";
+
+
+            using (StreamWriter sw = File.AppendText(path))
+            {
+                string usuarioLog = $"Fecha: {this.fechaHora} \n " +
+                    $"Usuario: {usuario.nombre} \n " +
+                    $"Apellido: {usuario.apellido} \n " +
+                    $"Correo: {usuario.correo} \n " +
+                    $"Legajo: {usuario.legajo} \n" +
+                    $"Perfil: {usuario.perfil} \n";
+
+                sw.Write(usuarioLog);
+            }
+        }
+
+        private void Serealizar()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += @"\List_vehiculos.json";
+
+            string objJson;
+
+            List<string> objetosSerializados = new List<string>();
+
+            JsonSerializerOptions opciones = new JsonSerializerOptions();
+            opciones.WriteIndented = true;
+
+            
+            foreach (var item in this.listaVehiculos)
+            {
+                var tipo = item.GetType();
+
+                switch (tipo.Name) 
+                {
+                    case nameof(Motocicleta):
+
+                        objJson = JsonSerializer.Serialize((Motocicleta)item, opciones);
+                        objetosSerializados.Add(objJson);
+
+                        break;
+
+                    case nameof(Automovil):
+
+                        objJson = JsonSerializer.Serialize((Automovil)item, opciones);
+                        objetosSerializados.Add(objJson);
+                        break;
+
+                    case nameof(Colectivo):
+
+                        objJson = JsonSerializer.Serialize((Colectivo)item, opciones);
+                        objetosSerializados.Add(objJson);
+                        break;
+                }
+            }
+
+            string jsonArray = "[" + string.Join(",", objetosSerializados) + "]";
+
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                sw.WriteLine(jsonArray);
+            }
+
+
+            //string objJson = JsonSerializer.Serialize(this.listaVehiculos, opciones);
+            /*
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                foreach (var objetoSerializado in objetosSerializados)
+                {
+                    sw.WriteLine(objetoSerializado);
+                }
+            }*/
+        }
+
+        private Estacionamiento NuevaLista()
+        {
+            Estacionamiento es = new Estacionamiento("ES_ORDENADO");
+
+            foreach (var v in this.listaVehiculos)
+            {
+                _ = es + v;
+            }
+            return es;
+        }
+
+        private void AgregarNuevaLista(Estacionamiento est)
+        {
+            this.listaVehiculos.Clear();
+
+            foreach (var item in est.listVehiculos)
+            {
+                this.listaVehiculos.Add(item);
+            }
+            this.ActualizarVisor();
+        }
+
+
+        private void btnOrdenar_Click(object sender, EventArgs e)
+        {
+            if (rdNChasis.Checked)
+            {
+                Estacionamiento estC = NuevaLista();
+
+                if (rdAsendente.Checked)
+                {
+                    estC.Ordenar("chasis");
+                }
+                else if (rdDesendente.Checked)
+                {
+                    estC.Ordenar("chasis");
+                    estC.listVehiculos.Reverse();
+                }
+                this.AgregarNuevaLista(estC);
+
+            }
+            else if (rdCantRuedas.Checked)
+            {
+                Estacionamiento estR = NuevaLista();
+
+                if (rdAsendente.Checked)
+                {
+                    estR.Ordenar("ruedas");
+                }
+                else if (rdDesendente.Checked)
+                {
+                    estR.Ordenar("ruedas");
+                    estR.listVehiculos.Reverse();
+                }
+
+                this.AgregarNuevaLista(estR);
             }
         }
     }
