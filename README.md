@@ -3,7 +3,7 @@
 # Carga de vehiculos para un estacionamiento de un taller
 
 # Presentacion
-  Me llamo Eduardo Cruz cursante de Loboratirio II
+  Me llamo Eduardo Cruz cursante de Loboratorio II
 
 # Resumen
   La aplicacion contiene botones tanto para agregar, modificar y eliminar. Tiene la opcion de poder elijiendo el 
