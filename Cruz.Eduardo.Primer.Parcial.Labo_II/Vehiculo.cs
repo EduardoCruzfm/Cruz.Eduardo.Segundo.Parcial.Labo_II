@@ -5,61 +5,127 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
     public abstract class Vehiculo
     {   //Commit /tex/sincro/push
+        protected string marca;
         protected short cantidadRuedas;
         protected short cantidadMarchas;
         protected Colores color;
-        protected int nChasis;
+        protected long nChasis;
+        protected bool mantenimiento;
 
-        public Vehiculo(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis)
+        public Vehiculo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis)
         {
+            this.marca = marca;
             this.cantidadRuedas = cantidadRuedas;
             this.cantidadMarchas = cantidadMarchas;
             this.color = color;
             this.nChasis = nChasis;
         }
 
-        public int NChasis
+        public string Marca
         {
-            get { return nChasis; }
+            get { return this.marca; }
+            set { this.marca = value; }
         }
+
+        public long NChasis
+        {
+            get { return this.nChasis; }
+        }
+
+
+        public short CantidadMarchas
+        {
+            get { return this.cantidadMarchas; }
+            set { this.cantidadMarchas = value; }
+        }
+
+        public short CantidadRuedas
+        {
+            get { return this.cantidadRuedas; }
+            set { this.cantidadRuedas = value; }
+        }
+
+        public Colores Color
+        {
+            get { return this.color; }
+            set { this.color = value; }
+        }
+
+
+        #region Vitual & Abstracto
         protected virtual string TipoDeVeihculo()
         {
             return "VEHICULO";
         }
 
-
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Cantidad de ruedas: {this.cantidadRuedas}");
-            sb.AppendLine($"Cantidad de ruedas: {this.cantidadMarchas}");
-            sb.AppendLine($"Color: {this.color}");
-
-            return sb.ToString();
-
-        }
-
         
-        public override bool Equals(object? obj)
+        protected abstract bool VerificarCantRuedas();
+        #endregion
+
+
+
+        #region            Implicito
+        public static implicit operator string(Vehiculo v)
         {
-            //return this.GetType() == obj.GetType();
+            return v.marca;
+        }
+        #endregion
 
-            if ( obj == null || !(obj is Vehiculo) ) return false;
 
+        #region             Metodos
+        public string Mantenimiento(bool service)
+        {
+            this.mantenimiento = service;
 
-            Vehiculo objCasteo = (Vehiculo)obj;
-
-            return this.nChasis == objCasteo.nChasis;
+            return $"{this.marca} Se hizo mantenimiento";
         }
 
-        public static bool operator ==(Vehiculo v1,Vehiculo v2)
+        public string Mantenimiento(bool service, DateTime fecha)
         {
-            return v1.Equals(v2);
+            this.mantenimiento = service;
+
+            return $"{this.marca} Se hizo mantenimiento en la fecha {fecha}";
+        }
+        #endregion
+
+        #region             Operador
+        public static bool operator ==(Vehiculo v1, Vehiculo v2)
+        {
+            //return v1.Equals(v2);
+            return v1.NChasis == v2.NChasis && v1.marca == v2.marca;
         }
 
         public static bool operator !=(Vehiculo v1, Vehiculo v2)
         {
             return !(v1 == v2);
         }
+        #endregion
+
+        #region         ToString & Equals
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Marca: {this.marca}");
+            sb.AppendLine($"Cantidad de ruedas: {this.cantidadRuedas}");
+            sb.AppendLine($"Cantidad de marchas: {this.cantidadMarchas}");
+            sb.AppendLine($"Color: {this.color}");
+            sb.AppendLine($"N° Chasis: {this.NChasis}");
+
+            return sb.ToString();
+        }
+
+
+        public override bool Equals(object? obj)
+        {
+
+            if (obj == null || !(obj is Vehiculo))
+                return false;
+
+            Vehiculo objCasteo = (Vehiculo)obj;
+
+            return this == objCasteo;
+        }
+        #endregion
+
     }
 }

@@ -11,26 +11,43 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public string tipoDeCombustible;
         protected short cantidadPuertas;
 
-        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis) 
-            : base(cantidadRuedas, cantidadMarchas, color, nChasis)
+        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis) 
+            : base(marca,cantidadRuedas, cantidadMarchas, color, nChasis)
         {
         }
 
-        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis, string tipoDeCombustible) 
-            : this(cantidadRuedas, cantidadMarchas, color, nChasis)
+        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, string tipoDeCombustible) 
+            : this(marca,cantidadRuedas, cantidadMarchas, color, nChasis)
         {
             this.tipoDeCombustible = tipoDeCombustible;
         }
 
-        public Automovil(short cantidadRuedas, short cantidadMarchas, Colores color, int nChasis, string tipoDeCombustible, short cantidadPuertas)
-            : this(cantidadRuedas, cantidadMarchas, color, nChasis, tipoDeCombustible)
+        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, string tipoDeCombustible, short cantidadPuertas)
+            : this(marca, cantidadRuedas, cantidadMarchas, color, nChasis, tipoDeCombustible)
         {   
             this.cantidadPuertas = cantidadPuertas;
+        }
+
+        public string TipoDeCombustible
+        {
+            get { return this.tipoDeCombustible; }
+            set { this.tipoDeCombustible = value; }
+        }
+
+        public short CantidadDePuertas
+        {
+            get { return this.cantidadPuertas; }
+            set { this.cantidadPuertas = value; } 
         }
 
         protected override string TipoDeVeihculo()
         {
             return "AUTOMOVIL";
+        }
+
+        protected override bool VerificarCantRuedas()
+        {
+            return this.cantidadRuedas == 4;
         }
 
         public override string ToString()
