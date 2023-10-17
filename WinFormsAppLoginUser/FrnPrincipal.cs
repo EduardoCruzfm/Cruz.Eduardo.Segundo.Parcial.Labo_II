@@ -1,6 +1,9 @@
 using Cruz.Eduardo.Primer.Parcial.Labo_II;
+using Microsoft.Win32;
+using System.Globalization;
 using System.Text.Json;
 using System.Windows.Forms;
+using static System.Windows.Forms.LinkLabel;
 
 namespace WinFormsAppLoginUser
 {
@@ -8,6 +11,7 @@ namespace WinFormsAppLoginUser
     {
         protected Usuario usuario;
         protected List<Vehiculo> listaVehiculos;
+        protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
 
         public FrnPrincipal()
@@ -15,6 +19,7 @@ namespace WinFormsAppLoginUser
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.listaVehiculos = new List<Vehiculo>();
+            this.listaDeLogeo = new List<UsuarioLog>();
 
         }
 
@@ -38,6 +43,7 @@ namespace WinFormsAppLoginUser
             this.cmbTipoVehiculo.SelectedIndex = 0;
 
             this.Deserializar();
+            this.DerealizarUsuarioLog();
         }
 
         private void ActualizarVisor()
@@ -168,7 +174,6 @@ namespace WinFormsAppLoginUser
             }
         }
 
-
         private void Deserializar()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -216,7 +221,7 @@ namespace WinFormsAppLoginUser
                     }
                 }
                 this.ActualizarVisor();
-                
+
             }
         }
 
@@ -246,6 +251,65 @@ namespace WinFormsAppLoginUser
             }
         }
 
+        private void DerealizarUsuarioLog()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            path += @"\Usuario.log";
+
+            // Lista para almacenar los registros
+            List<UsuarioLog> registros = new List<UsuarioLog>();
+
+            using (StreamReader reader = new StreamReader(path))
+            {
+                UsuarioLog usuarioLog = null;
+
+                foreach (string line in reader.ReadToEnd().Split('\n'))
+                {
+                    if (line.StartsWith("Fecha:"))
+                    {
+                        usuarioLog = new UsuarioLog();
+                        registros.Add(usuarioLog);
+
+                        if (DateTime.TryParseExact(line.Substring(7).Trim(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fecha))
+                        {
+                            usuarioLog.Fecha = fecha;
+                        }
+                    }
+                    else if (usuarioLog != null)
+                    {
+                        if (line.StartsWith(" Usuario:"))
+                        {
+                            usuarioLog.nombre = line.Substring(10).Trim();
+                        }
+                        else if (line.StartsWith(" Apellido:"))
+                        {
+                            usuarioLog.apellido = line.Substring(11).Trim();
+                        }
+                        else if (line.StartsWith(" Correo:"))
+                        {
+                            usuarioLog.correo = line.Substring(9).Trim();
+                        }
+                        else if (line.StartsWith(" Legajo:"))
+                        {
+                            if (int.TryParse(line.Substring(8).Trim(), out int legajo))
+                            {
+                                usuarioLog.legajo = legajo;
+                            }
+                        }
+                        else if (line.StartsWith("Perfil:"))
+                        {
+                            usuarioLog.perfil = line.Substring(8).Trim();
+                        }
+                    }
+                }
+            }
+
+            foreach (UsuarioLog u in registros)
+            {
+                this.listaDeLogeo.Add(u);
+            }
+        }
+
         private void Serealizar()
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -258,12 +322,12 @@ namespace WinFormsAppLoginUser
             JsonSerializerOptions opciones = new JsonSerializerOptions();
             opciones.WriteIndented = true;
 
-            
+
             foreach (var item in this.listaVehiculos)
             {
                 var tipo = item.GetType();
 
-                switch (tipo.Name) 
+                switch (tipo.Name)
                 {
                     case nameof(Motocicleta):
 
@@ -292,17 +356,6 @@ namespace WinFormsAppLoginUser
             {
                 sw.WriteLine(jsonArray);
             }
-
-
-            //string objJson = JsonSerializer.Serialize(this.listaVehiculos, opciones);
-            /*
-            using (StreamWriter sw = new StreamWriter(path))
-            {
-                foreach (var objetoSerializado in objetosSerializados)
-                {
-                    sw.WriteLine(objetoSerializado);
-                }
-            }*/
         }
 
         private Estacionamiento NuevaLista()
@@ -362,6 +415,12 @@ namespace WinFormsAppLoginUser
 
                 this.AgregarNuevaLista(estR);
             }
+        }
+
+        private void btnHistorialLog_Click(object sender, EventArgs e)
+        {
+            FormMostrarLogeos uLog = new FormMostrarLogeos(this.listaDeLogeo);
+            uLog.ShowDialog();
         }
     }
 }

@@ -42,6 +42,7 @@
             rdDesendente = new RadioButton();
             rdAsendente = new RadioButton();
             lblFecha = new Label();
+            btnHistorialLog = new Button();
             gBoxOrdenar.SuspendLayout();
             gBoxDeForma.SuspendLayout();
             SuspendLayout();
@@ -52,7 +53,7 @@
             lstVisor.ItemHeight = 15;
             lstVisor.Location = new Point(24, 55);
             lstVisor.Name = "lstVisor";
-            lstVisor.Size = new Size(717, 229);
+            lstVisor.Size = new Size(807, 229);
             lstVisor.TabIndex = 0;
             // 
             // btnAgregar
@@ -77,7 +78,7 @@
             // 
             // btnEliminar
             // 
-            btnEliminar.Location = new Point(666, 344);
+            btnEliminar.Location = new Point(617, 344);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 3;
@@ -188,11 +189,22 @@
             lblFecha.TabIndex = 8;
             lblFecha.Text = "Fecha";
             // 
+            // btnHistorialLog
+            // 
+            btnHistorialLog.Location = new Point(756, 406);
+            btnHistorialLog.Name = "btnHistorialLog";
+            btnHistorialLog.Size = new Size(75, 23);
+            btnHistorialLog.TabIndex = 9;
+            btnHistorialLog.Text = "Logueos";
+            btnHistorialLog.UseVisualStyleBackColor = true;
+            btnHistorialLog.Click += btnHistorialLog_Click;
+            // 
             // FrnPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(865, 450);
+            Controls.Add(btnHistorialLog);
             Controls.Add(lblFecha);
             Controls.Add(gBoxDeForma);
             Controls.Add(gBoxOrdenar);
@@ -230,5 +242,6 @@
         private RadioButton rdDesendente;
         private RadioButton rdAsendente;
         private Label lblFecha;
+        private Button btnHistorialLog;
     }
 }

@@ -30,7 +30,7 @@ namespace WinFormsAppLoginUser
             this.txtCantRuedas.Text = m.CantidadRuedas.ToString();
             this.txtMarchas.Text = m.CantidadMarchas.ToString();
             this.cmbColor.Text = m.Color.ToString();
-            this.txtChasis.Text = m.NChasis.ToString();
+            this.txtChasis.Text = m.NChasis;
 
             this.txtCilindrada.Text = m.Cilindrada.ToString();
             this.cmbUsoUrbano.Text = m.Urbano.ToString();
@@ -60,7 +60,7 @@ namespace WinFormsAppLoginUser
                     short cantRuedas = short.Parse(this.txtCantRuedas.Text);
                     short cantMarchas = short.Parse(this.txtMarchas.Text);
                     Colores color = (Colores)Enum.Parse(typeof(Colores), this.cmbColor.Text);
-                    long nChasis = long.Parse(this.txtChasis.Text);
+                    string nChasis = this.txtChasis.Text;
 
                     short cilindrada = short.Parse(this.txtCilindrada.Text);
                     string usoUrbano = this.cmbUsoUrbano.Text;

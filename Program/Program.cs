@@ -8,12 +8,12 @@ namespace Program
         {
             Console.WriteLine("Hello, World!");
 
-            Motocicleta honda = new Motocicleta("Honda",2,5,Colores.Negro,1000);
-            Motocicleta benelli = new Motocicleta("Benelli",2,5,Colores.Rojo,3000);
-            Motocicleta yamaha = new Motocicleta("Yahama",2,5,Colores.Azul,1500);
-            Automovil renault = new Automovil("Renaul",4,6,Colores.Rojo,400000);
-            Colectivo agrale = new Colectivo("Agrale",6,6,Colores.Blanco,750000);
-            Colectivo mercedes = new Colectivo("Mercedes benz",6,6,Colores.Blanco,980000);
+            Motocicleta honda = new Motocicleta("Honda",2,5,Colores.Negro,"1000");
+            Motocicleta benelli = new Motocicleta("Benelli",2,5,Colores.Rojo,"3000");
+            Motocicleta yamaha = new Motocicleta("Yahama",2,5,Colores.Azul,"1500");
+            Automovil renault = new Automovil("Renaul",4,6,Colores.Rojo,"400000");
+            Colectivo agrale = new Colectivo("Agrale",6,6,Colores.Blanco,"750000");
+            Colectivo mercedes = new Colectivo("Mercedes benz",6,6,Colores.Blanco,"980000");
             Estacionamiento hs24 = new Estacionamiento("24 HORAS");
 
             

@@ -27,7 +27,7 @@ namespace WinFormsAppLoginUser
         public FormColectivo(Colectivo c) : this()
         {
             this.txtMarca.Text = c.Marca;
-            this.txtChasis.Text = c.NChasis.ToString();
+            this.txtChasis.Text = c.NChasis;
             this.txtCantRuedas.Text = c.CantidadRuedas.ToString();
             this.txtMarchas.Text = c.CantidadMarchas.ToString();
             this.cmbColor.Text = c.Color.ToString();
@@ -58,7 +58,7 @@ namespace WinFormsAppLoginUser
                     short cantRuedas = short.Parse(this.txtCantRuedas.Text);
                     short cantMarchas = short.Parse(this.txtMarchas.Text);
                     Colores color = (Colores)this.cmbColor.SelectedItem;
-                    long nChasis = long.Parse(this.txtChasis.Text);
+                    string nChasis = this.txtChasis.Text;
 
                     string esAutomatico = this.cmbTransAutomatica.Text;
                     int cantPasajeros = int.Parse(this.txtCantPasajeros.Text);

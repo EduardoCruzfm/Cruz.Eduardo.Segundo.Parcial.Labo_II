@@ -16,19 +16,19 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public Colectivo() {  }
 
 
-        public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis) 
+        public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis) 
             : base(marca, cantidadRuedas, cantidadMarchas, color, nChasis)
         {
 
         }
 
-        public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, string esAutomatico)
+        public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis, string esAutomatico)
             : this(marca, cantidadRuedas, cantidadMarchas, color, nChasis)
         {
             this.esAutomatico = esAutomatico;
         }
 
-        public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, string esAutomatico, int cantidadDePasajeros)
+        public Colectivo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis, string esAutomatico, int cantidadDePasajeros)
            : this(marca, cantidadRuedas, cantidadMarchas, color, nChasis, esAutomatico)
         {
             

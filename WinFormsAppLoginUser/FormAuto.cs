@@ -25,7 +25,7 @@ namespace WinFormsAppLoginUser
         public FormAuto(Automovil a) : this()
         {
             this.txtMarca.Text = a.Marca;
-            this.txtChasis.Text = a.NChasis.ToString();
+            this.txtChasis.Text = a.NChasis;
             this.txtCantRuedas.Text = a.CantidadRuedas.ToString();
             this.txtMarchas.Text = a.CantidadMarchas.ToString();
             this.cmbColor.Text = a.Color.ToString();
@@ -50,7 +50,7 @@ namespace WinFormsAppLoginUser
                     short cantRuedas = short.Parse(this.txtCantRuedas.Text);
                     short cantMarchas = short.Parse(this.txtMarchas.Text);
                     Colores color = (Colores)this.cmbColor.SelectedItem;
-                    long nChasis = long.Parse(this.txtChasis.Text);
+                    string nChasis = this.txtChasis.Text;
                     string tipoCombustible = this.txtTipoCombustible.Text;
                     short cantPuertas = short.Parse(this.txtCantPuertas.Text);
 

@@ -31,8 +31,8 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
                 {
                     if(atributo == "chasis")
                     {
-                        prop1 = listVehiculos[i].NChasis;
-                        prop2 = listVehiculos[j].NChasis;
+                        prop1 = long.Parse(listVehiculos[i].NChasis);
+                        prop2 = long.Parse(listVehiculos[j].NChasis);
                     }
                     else
                     {

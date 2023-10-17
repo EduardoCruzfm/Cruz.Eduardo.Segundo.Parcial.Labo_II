@@ -13,18 +13,18 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
         public Automovil() { }  
 
-        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis) 
+        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis) 
             : base(marca,cantidadRuedas, cantidadMarchas, color, nChasis)
         {
         }
 
-        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, string tipoDeCombustible) 
+        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis, string tipoDeCombustible) 
             : this(marca,cantidadRuedas, cantidadMarchas, color, nChasis)
         {
             this.tipoDeCombustible = tipoDeCombustible;
         }
 
-        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, string tipoDeCombustible, short cantidadPuertas)
+        public Automovil(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis, string tipoDeCombustible, short cantidadPuertas)
             : this(marca, cantidadRuedas, cantidadMarchas, color, nChasis, tipoDeCombustible)
         {   
             this.cantidadPuertas = cantidadPuertas;
@@ -62,10 +62,5 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
             return sb.ToString();
         }
-
-
-
-
-
     }
 }

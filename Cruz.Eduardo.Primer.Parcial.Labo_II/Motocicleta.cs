@@ -14,18 +14,18 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
         public Motocicleta () { }
 
-        public Motocicleta(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis) 
+        public Motocicleta(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis) 
             : base(marca, cantidadRuedas, cantidadMarchas, color, nChasis)
         {
         }
 
-        public Motocicleta(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, short cilindrada) 
+        public Motocicleta(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis, short cilindrada) 
             : this(marca, cantidadRuedas, cantidadMarchas, color, nChasis)
         {
             this.cilindrada = cilindrada;
         }
 
-        public Motocicleta(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis, short cilindrada, string usoUrbano)
+        public Motocicleta(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis, short cilindrada, string usoUrbano)
            : this(marca, cantidadRuedas,cantidadMarchas,color, nChasis, cilindrada)
         {
             

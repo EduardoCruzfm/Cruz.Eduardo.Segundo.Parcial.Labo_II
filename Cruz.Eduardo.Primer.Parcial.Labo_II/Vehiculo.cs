@@ -10,7 +10,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         protected short cantidadRuedas;
         protected short cantidadMarchas;
         protected Colores color;
-        protected long nChasis;
+        protected string nChasis;
         protected bool mantenimiento;
 
         
@@ -19,7 +19,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
         }
         //[JsonConstructor]
-        public Vehiculo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, long nChasis)
+        public Vehiculo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis)
         {
             this.marca = marca;
             this.cantidadRuedas = cantidadRuedas;
@@ -34,9 +34,10 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             set { this.marca = value; }
         }
 
-        public long NChasis
+        public string NChasis
         {
             get { return this.nChasis; }
+            set { this.nChasis = value; }
         }
 
 

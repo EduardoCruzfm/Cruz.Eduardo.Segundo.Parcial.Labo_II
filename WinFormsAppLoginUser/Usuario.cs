@@ -16,8 +16,7 @@ namespace WinFormsAppLoginUser
         public string perfil { get; set; }
 
 
-
-
+       
         public override string ToString()
         {
             return $"Usuario: {this.nombre} - nombre: {this.correo}";

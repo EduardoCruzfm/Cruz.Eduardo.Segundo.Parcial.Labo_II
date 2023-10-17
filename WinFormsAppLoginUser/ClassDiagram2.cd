@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WinFormsAppLoginUser.FrnPrincipal">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AQSAACCAAOSAAQoQQAGAAAACCCJAAAQAwJAAKABAGAg=</HashCode>
+      <FileName>FrnPrincipal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.FormVehiculo">
+    <Position X="3.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAyAAAIAAAgCAAAACQwRAAAhIQAAAAYAAAAQ=</HashCode>
+      <FileName>FormVehiculo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.FrmLogin">
+    <Position X="6.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAACACAAAYgAhACAAAACAQBAAEAAQAACEAAgAAA=</HashCode>
+      <FileName>FrmLogin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.FormMostrarLogeos">
+    <Position X="9" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAQAAAQKAAAAhAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FormMostrarLogeos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.FormAuto">
+    <Position X="5.75" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAQABACAIAACAIAAAAAAIAiAACACAAA=</HashCode>
+      <FileName>FormAuto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.FormMoto">
+    <Position X="3.25" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACIACAASAAyBAAECAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FormMoto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.FormColectivo">
+    <Position X="8.5" Y="8.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEAQAgAACAACBAAAACAAAECAAAAAAgAAAEAAAABEAA=</HashCode>
+      <FileName>FormColectivo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.Usuario">
+    <Position X="12" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQBAACEAAAAAAAAAAQAAACAAAAQAAAAAAA=</HashCode>
+      <FileName>Usuario.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.UsuarioLog">
+    <Position X="12.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UsuarioLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>
