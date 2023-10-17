@@ -43,6 +43,12 @@
             rdAsendente = new RadioButton();
             lblFecha = new Label();
             btnHistorialLog = new Button();
+            lblDireccion = new Label();
+            txtDirecion = new TextBox();
+            btnAbrir = new Button();
+            openFileDialog1 = new OpenFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
+            btnGuardar = new Button();
             gBoxOrdenar.SuspendLayout();
             gBoxDeForma.SuspendLayout();
             SuspendLayout();
@@ -199,11 +205,55 @@
             btnHistorialLog.UseVisualStyleBackColor = true;
             btnHistorialLog.Click += btnHistorialLog_Click;
             // 
+            // lblDireccion
+            // 
+            lblDireccion.AutoSize = true;
+            lblDireccion.Location = new Point(37, 465);
+            lblDireccion.Name = "lblDireccion";
+            lblDireccion.Size = new Size(63, 15);
+            lblDireccion.TabIndex = 10;
+            lblDireccion.Text = "Direccion :";
+            // 
+            // txtDirecion
+            // 
+            txtDirecion.Location = new Point(106, 462);
+            txtDirecion.Name = "txtDirecion";
+            txtDirecion.Size = new Size(474, 23);
+            txtDirecion.TabIndex = 11;
+            // 
+            // btnAbrir
+            // 
+            btnAbrir.Location = new Point(617, 461);
+            btnAbrir.Name = "btnAbrir";
+            btnAbrir.Size = new Size(75, 23);
+            btnAbrir.TabIndex = 12;
+            btnAbrir.Text = "Abrir";
+            btnAbrir.UseVisualStyleBackColor = true;
+            btnAbrir.Click += btnAbrir_Click;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // btnGuardar
+            // 
+            btnGuardar.Location = new Point(756, 461);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.TabIndex = 13;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
+            // 
             // FrnPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(865, 450);
+            ClientSize = new Size(859, 548);
+            Controls.Add(btnGuardar);
+            Controls.Add(btnAbrir);
+            Controls.Add(txtDirecion);
+            Controls.Add(lblDireccion);
             Controls.Add(btnHistorialLog);
             Controls.Add(lblFecha);
             Controls.Add(gBoxDeForma);
@@ -243,5 +293,11 @@
         private RadioButton rdAsendente;
         private Label lblFecha;
         private Button btnHistorialLog;
+        private Label lblDireccion;
+        private TextBox txtDirecion;
+        private Button btnAbrir;
+        private OpenFileDialog openFileDialog1;
+        private SaveFileDialog saveFileDialog1;
+        private Button btnGuardar;
     }
 }

@@ -42,7 +42,7 @@ namespace WinFormsAppLoginUser
             // Establecer la selección predeterminada
             this.cmbTipoVehiculo.SelectedIndex = 0;
 
-            this.Deserializar();
+            //this.Deserializar();
             this.DerealizarUsuarioLog();
         }
 
@@ -174,10 +174,10 @@ namespace WinFormsAppLoginUser
             }
         }
 
-        private void Deserializar()
+        private void Deserializar(string path)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            path += @"\List_vehiculos.json";
+            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //path += @"\List_vehiculos.json";
 
             List<Vehiculo> listaDatoJson;
 
@@ -227,7 +227,7 @@ namespace WinFormsAppLoginUser
 
         private void FrnPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Serealizar();
+            //this.Serealizar();
             this.SerealizarUsuario();
 
         }
@@ -310,10 +310,10 @@ namespace WinFormsAppLoginUser
             }
         }
 
-        private void Serealizar()
+        private void Serealizar(string path)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            path += @"\List_vehiculos.json";
+            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            //path += @"\List_vehiculos.json";
 
             string objJson;
 
@@ -421,6 +421,46 @@ namespace WinFormsAppLoginUser
         {
             FormMostrarLogeos uLog = new FormMostrarLogeos(this.listaDeLogeo);
             uLog.ShowDialog();
+        }
+
+        private void btnAbrir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.openFileDialog1.Title = "Busca tu archivo";
+                this.openFileDialog1.ShowDialog();
+                string ruta = this.openFileDialog1.FileName;
+
+                this.Deserializar(ruta);
+
+                this.txtDirecion.Text = ruta;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error archivo no compatible");
+            }
+
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string ruta = this.saveFileDialog1.FileName;
+                    this.Serealizar(ruta);
+                    this.txtDirecion.Text = ruta;
+                }
+
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Erro al guardar");
+            }
         }
     }
 }
