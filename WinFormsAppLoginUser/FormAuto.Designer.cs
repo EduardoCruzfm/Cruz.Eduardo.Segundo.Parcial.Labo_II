@@ -37,7 +37,7 @@
             // 
             // cmbColor
             // 
-            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
+            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
             // 
             // btnAceptar
             // 
@@ -84,6 +84,7 @@
             // 
             // FormAuto
             // 
+            AcceptButton = btnAceptar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(420, 576);
@@ -93,7 +94,7 @@
             Controls.Add(lblTIpoCombustible);
             Controls.Add(btnAceptar);
             Name = "FormAuto";
-            Text = "FormAuto";
+            Text = "Automovil";
             Controls.SetChildIndex(txtMarca, 0);
             Controls.SetChildIndex(txtCantRuedas, 0);
             Controls.SetChildIndex(txtChasis, 0);

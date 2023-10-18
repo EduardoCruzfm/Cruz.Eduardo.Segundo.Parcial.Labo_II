@@ -32,7 +32,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             this.usoUrbano = usoUrbano;
         }
 
-
+        #region Pripiedades
         public short Cilindrada
         {
             get { return this.cilindrada; }
@@ -44,6 +44,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             get { return this.usoUrbano; }
             set { this.usoUrbano = value; }
         }
+        #endregion
 
         protected override string TipoDeVeihculo()
         {

@@ -152,7 +152,7 @@
             Controls.Add(txtMarca);
             Controls.Add(btnCancelar);
             Name = "FormVehiculo";
-            Text = "FormVehuiculo";
+            Text = "Vehiculo";
             Load += FormVehuiculo_Load;
             ResumeLayout(false);
             PerformLayout();

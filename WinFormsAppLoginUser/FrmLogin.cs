@@ -25,8 +25,10 @@ namespace WinFormsAppLoginUser
             this.usuarios = this.Deserializar();
         }
 
-
-
+        /// <summary>
+        /// Deserializar() Deserializa el JSON de los usuarios.
+        /// </summary>
+        /// <returns></returns>
         private List<Usuario> Deserializar()
         {
 
@@ -52,16 +54,16 @@ namespace WinFormsAppLoginUser
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
-
             if (Verificar() != null)
             {
                 this.DialogResult = DialogResult.OK;
-                //FrnPrincipal frmAplicacion = new FrnPrincipal(Verificar());
-                //frmAplicacion.ShowDialog();
             }
-
         }
 
+        /// <summary>
+        /// Verificar() Verifica que el correo como la contaseña sean validas.
+        /// </summary>
+        /// <returns>Usuario validado</returns>
         private Usuario Verificar()
         {
             Usuario? usuario = null;
@@ -73,11 +75,9 @@ namespace WinFormsAppLoginUser
                     usuario = item;
                     break;
                 }
-
             }
             return usuario;
         }
-
 
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -89,7 +89,7 @@ namespace WinFormsAppLoginUser
         {
 
         }
-        
+
         private void FrmLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -98,6 +98,6 @@ namespace WinFormsAppLoginUser
                 e.Handled = true;
             }
         }
-        
+
     }
 }

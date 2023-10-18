@@ -29,14 +29,21 @@ namespace WinFormsAppLoginUser
             this.txtCantRuedas.Text = a.CantidadRuedas.ToString();
             this.txtMarchas.Text = a.CantidadMarchas.ToString();
             this.cmbColor.Text = a.Color.ToString();
-            //
+
             this.txtTipoCombustible.Text = a.TipoDeCombustible;
             this.txtCantPuertas.Text = a.CantidadDePuertas.ToString();
         }
 
+        /// <summary>
+        /// btnAcepatar_Click() Verifica que los campos no esten vacios para poder agregar
+        /// un Automovil correctamente, evitando errores.
+        /// es caso contrario mostrara un mensaje de aviso al usuario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAcepatar_Click(object sender, EventArgs e)
         {
-            if (this.QueNoHallaCamposVacios() == true) // esran llenos
+            if (this.QueNoHallaCamposVacios() == true)
             {
                 bool retono = true;
 
@@ -58,7 +65,7 @@ namespace WinFormsAppLoginUser
 
                     this.DialogResult = DialogResult.OK;
                 }
-                else {  MessageBox.Show("Por favor, verifique los demas datos.");  }
+                else { MessageBox.Show("Por favor, verifique los demas datos."); }
             }
             else { MessageBox.Show("Por favor, ingresa un los datos."); }
         }

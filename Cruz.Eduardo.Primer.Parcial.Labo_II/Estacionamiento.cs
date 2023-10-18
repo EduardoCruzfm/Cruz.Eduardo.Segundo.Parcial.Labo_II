@@ -17,7 +17,11 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             this.nombre = nombre;
         }
 
-
+        /// <summary>
+        /// Ordenar() Ordena segun el nombre del atributo recibido, determinado el tipo de
+        /// atributo a ordenar.
+        /// </summary>
+        /// <param name="atributo">Por el cual va ordenar</param>
         public void Ordenar(string atributo)
         {
             Vehiculo intercambio;
@@ -51,18 +55,34 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         }
 
 
-
+        /// <summary>
+        /// "==" Verificar que se encuentre el Vehiculo en la lista.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public static bool operator ==(Estacionamiento e, Vehiculo v)
         {
             return e.listVehiculos.Contains(v);
         }
 
+        /// <summary>
+        /// "!=" Verificar que no se encuentre el Vehiculo en la lista.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public static bool operator !=(Estacionamiento e, Vehiculo v)
         {
             return !(e == v);
         }
 
-
+        /// <summary>
+        /// "+" Agrega un Vehiculo ala lista antes verificando que este no se escuentre.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public static bool operator +(Estacionamiento e, Vehiculo v)
         {
             bool retorno = false;
@@ -75,6 +95,12 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             return retorno;
         }
 
+        /// <summary>
+        /// "-" Elimina el Vehiculo de la lista, antes verificando que este se encuentre.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="v"></param>
+        /// <returns></returns>
         public static bool operator -(Estacionamiento e, Vehiculo v)
         {
             bool retorno = false;
@@ -85,8 +111,6 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
                 retorno = true;
             }
             return retorno;
-        }
-
-        
+        }        
     }
 }

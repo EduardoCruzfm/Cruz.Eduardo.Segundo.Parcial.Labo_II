@@ -37,7 +37,7 @@
             // 
             // cmbColor
             // 
-            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
+            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
             // 
             // lblCilindrada
             // 
@@ -85,6 +85,7 @@
             // 
             // FormMoto
             // 
+            AcceptButton = btnGuardar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(442, 604);
@@ -94,7 +95,7 @@
             Controls.Add(lblUsoUrbano);
             Controls.Add(lblCilindrada);
             Name = "FormMoto";
-            Text = "FormMoto";
+            Text = "Motocicleta";
             Load += FormMoto_Load;
             Controls.SetChildIndex(txtMarca, 0);
             Controls.SetChildIndex(txtCantRuedas, 0);

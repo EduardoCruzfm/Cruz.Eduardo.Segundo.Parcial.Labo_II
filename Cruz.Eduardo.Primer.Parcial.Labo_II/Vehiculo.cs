@@ -18,7 +18,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         {
 
         }
-        //[JsonConstructor]
+
         public Vehiculo(string marca, short cantidadRuedas, short cantidadMarchas, Colores color, string nChasis)
         {
             this.marca = marca;
@@ -27,7 +27,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             this.color = color;
             this.nChasis = nChasis;
         }
-
+        #region   Propiedaes
         public string Marca
         {
             get { return this.marca; }
@@ -58,7 +58,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             get { return this.color; }
             set { this.color = value; }
         }
-
+        #endregion
 
         #region Vitual & Abstracto
         protected virtual string TipoDeVeihculo()
@@ -69,7 +69,6 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         
         protected abstract bool VerificarCantRuedas();
         #endregion
-
 
 
         #region            Implicito
@@ -97,12 +96,19 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         #endregion
 
         #region             Operador
+        /// <summary>
+        /// == Compara dos Vehiculos por sus atributos :  NChasis y marca
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
         public static bool operator ==(Vehiculo v1, Vehiculo v2)
         {
             //return v1.Equals(v2);
             return v1.NChasis == v2.NChasis && v1.marca == v2.marca;
         }
 
+        
         public static bool operator !=(Vehiculo v1, Vehiculo v2)
         {
             return !(v1 == v2);

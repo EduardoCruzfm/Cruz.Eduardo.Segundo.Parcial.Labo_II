@@ -10,7 +10,8 @@ namespace WinFormsAppLoginUser
     public partial class FrnPrincipal : Form
     {
         protected Usuario usuario;
-        protected List<Vehiculo> listaVehiculos;
+        //protected List<Vehiculo> listaVehiculos;
+        protected Estacionamiento estacionamiento;
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
 
@@ -18,7 +19,7 @@ namespace WinFormsAppLoginUser
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.listaVehiculos = new List<Vehiculo>();
+            this.estacionamiento = new Estacionamiento("EST");
             this.listaDeLogeo = new List<UsuarioLog>();
 
         }
@@ -31,7 +32,7 @@ namespace WinFormsAppLoginUser
 
         private void FrnPrincipal_Load(object sender, EventArgs e)
         {
-            fechaHora = DateTime.Now;
+            this.fechaHora = DateTime.Now;
             this.lblNombreUsuario.Text = $"Usuario: {usuario.nombre}";
             this.lblFecha.Text = $"Fecha: {fechaHora.ToString("dd/mm/yyyy")}";
             // Agregar elementos al ComboBox
@@ -41,15 +42,15 @@ namespace WinFormsAppLoginUser
 
             // Establecer la selección predeterminada
             this.cmbTipoVehiculo.SelectedIndex = 0;
-
-            //this.Deserializar();
-            this.DerealizarUsuarioLog();
+            this.DeserializarUsuarioLog();
         }
-
+        /// <summary>
+        /// ActualizarVisor() Limpia la lista y la vuelve a cargar con los datos actualizados.
+        /// </summary>
         private void ActualizarVisor()
         {
             this.lstVisor.Items.Clear();
-            foreach (Vehiculo item in this.listaVehiculos)
+            foreach (Vehiculo item in this.estacionamiento.listVehiculos)
             {
                 this.lstVisor.Items.Add(item.ToString());
             }
@@ -60,7 +61,7 @@ namespace WinFormsAppLoginUser
         {
             if (this.cmbTipoVehiculo.SelectedItem != null)
             {
-                string tipo = cmbTipoVehiculo.SelectedItem.ToString();
+                string? tipo = cmbTipoVehiculo.SelectedItem.ToString();
 
                 switch (tipo)
                 {
@@ -71,7 +72,7 @@ namespace WinFormsAppLoginUser
 
                         if (fromA.DialogResult == DialogResult.OK)
                         {
-                            this.listaVehiculos.Add(fromA.Auto);
+                            _ = this.estacionamiento + fromA.Auto;
                             this.ActualizarVisor();
                         }
                         break;
@@ -82,19 +83,20 @@ namespace WinFormsAppLoginUser
 
                         if (fromM.DialogResult == DialogResult.OK)
                         {
-                            this.listaVehiculos.Add(fromM.Moto);
+                            _ = this.estacionamiento + fromM.Moto;
                             this.ActualizarVisor();
                         }
                         break;
 
                     case "Colectivo":
 
-                        FormColectivo formC = new FormColectivo();
-                        formC.ShowDialog();
+                        FormColectivo fromC = new FormColectivo();
+                        fromC.ShowDialog();
 
-                        if (formC.DialogResult == DialogResult.OK)
+                        if (fromC.DialogResult == DialogResult.OK)
                         {
-                            this.listaVehiculos.Add(formC.Colctivo);
+                            _ = this.estacionamiento + fromC.Colctivo;
+                            //this.estacionamiento.Add(formC.Colctivo);
                             this.ActualizarVisor();
                         }
                         break;
@@ -103,9 +105,13 @@ namespace WinFormsAppLoginUser
             }
         }
 
+        /// <summary>
+        /// Remover() elimina un vehiculo de la lista segun el indice recibido por parametro
+        /// </summary>
+        /// <param name="indice">Indice delVehiculo</param>
         private void Remover(int indice)
         {
-            this.listaVehiculos.RemoveAt(indice);
+            this.estacionamiento.listVehiculos.RemoveAt(indice);
             this.ActualizarVisor();
         }
 
@@ -119,17 +125,18 @@ namespace WinFormsAppLoginUser
             MessageBox.Show("Se elimino");
         }
 
+        /// <summary>
+        /// btnModificar_Click() Permite la modificacion del vehiculo selecionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnModificar_Click(object sender, EventArgs e)
         {
             int indice = this.lstVisor.SelectedIndex;
-
             if (indice == -1) { return; }
 
-            Vehiculo v = this.listaVehiculos[indice];
-
-
-
-            string tipo = v.GetType().Name;
+            Vehiculo? v = this.estacionamiento.listVehiculos[indice];
+            string? tipo = v.GetType().Name;
 
 
             switch (tipo)
@@ -141,7 +148,7 @@ namespace WinFormsAppLoginUser
                     if (fromA.DialogResult == DialogResult.OK)
                     {
 
-                        this.listaVehiculos[indice] = fromA.Auto;
+                        this.estacionamiento.listVehiculos[indice] = fromA.Auto;
                         this.ActualizarVisor();
                     }
 
@@ -153,7 +160,7 @@ namespace WinFormsAppLoginUser
 
                     if (fromM.DialogResult == DialogResult.OK)
                     {
-                        this.listaVehiculos[indice] = fromM.Moto;
+                        this.estacionamiento.listVehiculos[indice] = fromM.Moto;
                         this.ActualizarVisor();
                     }
 
@@ -166,7 +173,7 @@ namespace WinFormsAppLoginUser
 
                     if (fromC.DialogResult == DialogResult.OK)
                     {
-                        this.listaVehiculos[indice] = fromC.Colctivo;
+                        this.estacionamiento.listVehiculos[indice] = fromC.Colctivo;
                         this.ActualizarVisor();
                     }
 
@@ -174,13 +181,12 @@ namespace WinFormsAppLoginUser
             }
         }
 
+        /// <summary>
+        /// Deserializar() Determina el tipo de vehículo y deserializa según ese tipo. 
+        /// </summary>
+        /// <param name="path">Ruta del archivo a deserealizar</param>
         private void Deserializar(string path)
         {
-            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //path += @"\List_vehiculos.json";
-
-            List<Vehiculo> listaDatoJson;
-
             if (File.Exists(path))
             {
 
@@ -189,55 +195,52 @@ namespace WinFormsAppLoginUser
                     JsonSerializerOptions opciones = new JsonSerializerOptions();
                     string json_str = sr.ReadToEnd();
 
-                    // Deserializar en una lista de objetos anónimos
                     var vehiculosAnonimos = JsonSerializer.Deserialize<List<object>>(json_str);
 
-                    listaVehiculos = new List<Vehiculo>();
+                    //this.estacionamiento = new Estacionamiento("E");
 
                     foreach (var vehiculoAnonimo in vehiculosAnonimos)
                     {
                         if (vehiculoAnonimo is JsonElement elemento)
                         {
-                            // Determina el tipo de vehículo y deserializa según ese tipo.
+
                             if (elemento.TryGetProperty("Cilindrada", out _))
                             {
-                                Motocicleta moto = JsonSerializer.Deserialize<Motocicleta>(elemento.GetRawText());
-                                this.listaVehiculos.Add(moto);
+                                Motocicleta? moto = JsonSerializer.Deserialize<Motocicleta>(elemento.GetRawText());
+                                //this.estacionamiento.Add(moto);
+                                _ = this.estacionamiento + moto;
                             }
 
                             if (elemento.TryGetProperty("TipoDeCombustible", out _))
                             {
-                                Automovil auto = JsonSerializer.Deserialize<Automovil>(elemento.GetRawText());
-                                this.listaVehiculos.Add(auto);
+                                Automovil? auto = JsonSerializer.Deserialize<Automovil>(elemento.GetRawText());
+                                _ = this.estacionamiento + auto;
                             }
 
                             if (elemento.TryGetProperty("EsAutomatico", out _))
                             {
-                                Colectivo colec = JsonSerializer.Deserialize<Colectivo>(elemento.GetRawText());
-                                this.listaVehiculos.Add(colec);
+                                Colectivo? colec = JsonSerializer.Deserialize<Colectivo>(elemento.GetRawText());
+                                _ = this.estacionamiento + colec;
                             }
-
                         }
                     }
                 }
-                this.ActualizarVisor();
 
+                this.ActualizarVisor();
             }
         }
 
         private void FrnPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //this.Serealizar();
             this.SerealizarUsuario();
-
         }
 
+        /// <summary>
+        /// SerealizarUsuario() Serealiza los logueos de los usuarios ingresados
+        /// </summary>
         private void SerealizarUsuario()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            path += @"\Usuario.log";
-
-
+            string? path = @"..\..\..\Usuario.log";
             using (StreamWriter sw = File.AppendText(path))
             {
                 string usuarioLog = $"Fecha: {this.fechaHora} \n " +
@@ -251,54 +254,60 @@ namespace WinFormsAppLoginUser
             }
         }
 
-        private void DerealizarUsuarioLog()
+        /// <summary>
+        /// DeserializarUsuarioLog() Deserializa los usuarios de los "Logueos" verificando el formato
+        /// de los campos para concretar la tarea, agregandola a listaDeLogeo.
+        /// </summary>
+        private void DeserializarUsuarioLog()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            path += @"\Usuario.log";
-
+            string? path = @"..\..\..\Usuario.log";
             // Lista para almacenar los registros
             List<UsuarioLog> registros = new List<UsuarioLog>();
 
-            using (StreamReader reader = new StreamReader(path))
+            if (File.Exists(path))
             {
-                UsuarioLog usuarioLog = null;
 
-                foreach (string line in reader.ReadToEnd().Split('\n'))
+                using (StreamReader reader = new StreamReader(path))
                 {
-                    if (line.StartsWith("Fecha:"))
-                    {
-                        usuarioLog = new UsuarioLog();
-                        registros.Add(usuarioLog);
+                    UsuarioLog? usuarioLog = null;
 
-                        if (DateTime.TryParseExact(line.Substring(7).Trim(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fecha))
-                        {
-                            usuarioLog.Fecha = fecha;
-                        }
-                    }
-                    else if (usuarioLog != null)
+                    foreach (string line in reader.ReadToEnd().Split('\n'))
                     {
-                        if (line.StartsWith(" Usuario:"))
+                        if (line.StartsWith("Fecha:"))
                         {
-                            usuarioLog.nombre = line.Substring(10).Trim();
-                        }
-                        else if (line.StartsWith(" Apellido:"))
-                        {
-                            usuarioLog.apellido = line.Substring(11).Trim();
-                        }
-                        else if (line.StartsWith(" Correo:"))
-                        {
-                            usuarioLog.correo = line.Substring(9).Trim();
-                        }
-                        else if (line.StartsWith(" Legajo:"))
-                        {
-                            if (int.TryParse(line.Substring(8).Trim(), out int legajo))
+                            usuarioLog = new UsuarioLog();
+                            registros.Add(usuarioLog);
+
+                            if (DateTime.TryParseExact(line.Substring(7).Trim(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fecha))
                             {
-                                usuarioLog.legajo = legajo;
+                                usuarioLog.Fecha = fecha;
                             }
                         }
-                        else if (line.StartsWith("Perfil:"))
+                        else if (usuarioLog != null)
                         {
-                            usuarioLog.perfil = line.Substring(8).Trim();
+                            if (line.StartsWith(" Usuario:"))
+                            {
+                                usuarioLog.nombre = line.Substring(10).Trim();
+                            }
+                            else if (line.StartsWith(" Apellido:"))
+                            {
+                                usuarioLog.apellido = line.Substring(11).Trim();
+                            }
+                            else if (line.StartsWith(" Correo:"))
+                            {
+                                usuarioLog.correo = line.Substring(9).Trim();
+                            }
+                            else if (line.StartsWith(" Legajo:"))
+                            {
+                                if (int.TryParse(line.Substring(8).Trim(), out int legajo))
+                                {
+                                    usuarioLog.legajo = legajo;
+                                }
+                            }
+                            else if (line.StartsWith("Perfil:"))
+                            {
+                                usuarioLog.perfil = line.Substring(8).Trim();
+                            }
                         }
                     }
                 }
@@ -310,11 +319,13 @@ namespace WinFormsAppLoginUser
             }
         }
 
+        /// <summary>
+        /// Serealizar() Serealiza un archivo en formato JSON, pero antes verifica
+        /// de que tipo clase derivada del padre es.
+        /// </summary>
+        /// <param name="path">Ruta donde se guardara el archivo</param>
         private void Serealizar(string path)
         {
-            //string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            //path += @"\List_vehiculos.json";
-
             string objJson;
 
             List<string> objetosSerializados = new List<string>();
@@ -323,7 +334,7 @@ namespace WinFormsAppLoginUser
             opciones.WriteIndented = true;
 
 
-            foreach (var item in this.listaVehiculos)
+            foreach (var item in this.estacionamiento.listVehiculos)
             {
                 var tipo = item.GetType();
 
@@ -358,34 +369,48 @@ namespace WinFormsAppLoginUser
             }
         }
 
-        private Estacionamiento NuevaLista()
+        /// <summary>
+        /// NuevaListaOrdenada() se usa para guardar un nuevo ordanamiento segun criterio.
+        /// </summary>
+        /// <returns>Un Estacionamiento</returns>
+        private Estacionamiento NuevaListaOrdenada()
         {
             Estacionamiento es = new Estacionamiento("ES_ORDENADO");
 
-            foreach (var v in this.listaVehiculos)
+            foreach (var v in this.estacionamiento.listVehiculos)
             {
                 _ = es + v;
             }
             return es;
         }
 
-        private void AgregarNuevaLista(Estacionamiento est)
+        /// <summary>
+        /// AgregarNuevaListaOrdenada() Limpia la lista actual, cargandola con los elementos ordenados
+        /// segun criterio.
+        /// </summary>
+        /// <param name="est"></param>
+        private void AgregarNuevaListaOrdenada(Estacionamiento est)
         {
-            this.listaVehiculos.Clear();
+            this.estacionamiento.listVehiculos.Clear();
 
             foreach (var item in est.listVehiculos)
             {
-                this.listaVehiculos.Add(item);
+                _ = this.estacionamiento + item;
             }
             this.ActualizarVisor();
         }
 
 
+        /// <summary>
+        /// btnOrdenar_Click() Ordenda la lista por N° Chasis / Cantidad de ruedas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
             if (rdNChasis.Checked)
             {
-                Estacionamiento estC = NuevaLista();
+                Estacionamiento estC = NuevaListaOrdenada();
 
                 if (rdAsendente.Checked)
                 {
@@ -396,12 +421,12 @@ namespace WinFormsAppLoginUser
                     estC.Ordenar("chasis");
                     estC.listVehiculos.Reverse();
                 }
-                this.AgregarNuevaLista(estC);
+                this.AgregarNuevaListaOrdenada(estC);
 
             }
             else if (rdCantRuedas.Checked)
             {
-                Estacionamiento estR = NuevaLista();
+                Estacionamiento estR = NuevaListaOrdenada();
 
                 if (rdAsendente.Checked)
                 {
@@ -413,16 +438,27 @@ namespace WinFormsAppLoginUser
                     estR.listVehiculos.Reverse();
                 }
 
-                this.AgregarNuevaLista(estR);
+                this.AgregarNuevaListaOrdenada(estR);
             }
         }
 
+        /// <summary>
+        /// btnHistorialLog_Click() Muestra el Form de logueos registrados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnHistorialLog_Click(object sender, EventArgs e)
         {
             FormMostrarLogeos uLog = new FormMostrarLogeos(this.listaDeLogeo);
             uLog.ShowDialog();
         }
 
+        /// <summary>
+        /// btnAbrir_Click() Abre la interaccion con openFileDialog para poder 
+        /// elegir que archivo deserializar.
+        /// </summary> 
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAbrir_Click(object sender, EventArgs e)
         {
             try
@@ -443,6 +479,12 @@ namespace WinFormsAppLoginUser
 
         }
 
+        /// <summary>
+        /// btnGuardar_Click() Abre la interaccion con saveFileDialog para poder 
+        /// elegir donde serializar el archivo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -453,7 +495,6 @@ namespace WinFormsAppLoginUser
                     this.Serealizar(ruta);
                     this.txtDirecion.Text = ruta;
                 }
-
 
             }
             catch (Exception)

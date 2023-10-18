@@ -23,7 +23,6 @@ namespace WinFormsAppLoginUser
                 {
                     FrnPrincipal frmAplicacion = new FrnPrincipal(frm.UsuarioDelForm);
 
-                    MessageBox.Show("entro");
                     //INICIO LA APLICACION
                     Application.Run(frmAplicacion);
                 }
@@ -35,14 +34,12 @@ namespace WinFormsAppLoginUser
 
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message, "Error!!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
-                MessageBox.Show("La aplicación terminó.", "FIN DEL EJEMPLO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Gracias por usar el servicio.", "CHAU!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
     }
 }

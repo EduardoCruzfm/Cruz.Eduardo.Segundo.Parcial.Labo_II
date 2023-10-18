@@ -35,6 +35,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             this.cantidadDePasajeros = cantidadDePasajeros;
         }
 
+        #region  Propiedades
         public string EsAutomatico
         {
             get { return this.esAutomatico; }
@@ -46,6 +47,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             get { return this.cantidadDePasajeros; }
             set { this.cantidadDePasajeros = value; }
         }
+        #endregion
 
         protected override string TipoDeVeihculo()
         {

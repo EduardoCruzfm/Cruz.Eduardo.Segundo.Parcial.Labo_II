@@ -35,12 +35,13 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             get { return this.tipoDeCombustible; }
             set { this.tipoDeCombustible = value; }
         }
-
+        #region Propiedades
         public short CantidadDePuertas
         {
             get { return this.cantidadPuertas; }
             set { this.cantidadPuertas = value; } 
         }
+        #endregion
 
         protected override string TipoDeVeihculo()
         {

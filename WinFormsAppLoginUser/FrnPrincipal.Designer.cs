@@ -249,7 +249,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(859, 548);
+            ClientSize = new Size(859, 522);
             Controls.Add(btnGuardar);
             Controls.Add(btnAbrir);
             Controls.Add(txtDirecion);
@@ -265,7 +265,7 @@
             Controls.Add(btnAgregar);
             Controls.Add(lstVisor);
             Name = "FrnPrincipal";
-            Text = "Form1";
+            Text = "Estacionamiento";
             FormClosing += FrnPrincipal_FormClosing;
             Load += FrnPrincipal_Load;
             gBoxOrdenar.ResumeLayout(false);

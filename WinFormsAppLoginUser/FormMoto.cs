@@ -43,6 +43,13 @@ namespace WinFormsAppLoginUser
 
         }
 
+        /// <summary>
+        /// btnGuardar_Click() Verifica que los campos no esten vacios para poder agregar
+        /// una Motocicleta correctamente, evitando errores.
+        /// es caso contrario mostrara un mensaje de aviso al usuario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 

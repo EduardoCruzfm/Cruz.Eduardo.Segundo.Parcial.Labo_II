@@ -37,7 +37,7 @@
             // 
             // cmbColor
             // 
-            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
+            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
             // 
             // btnGuardar
             // 
@@ -85,6 +85,7 @@
             // 
             // FormColectivo
             // 
+            AcceptButton = btnGuardar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(430, 570);
@@ -94,7 +95,7 @@
             Controls.Add(label1);
             Controls.Add(btnGuardar);
             Name = "FormColectivo";
-            Text = "FormColectivo";
+            Text = "Colectivo";
             Load += FormColectivo_Load;
             Controls.SetChildIndex(txtMarca, 0);
             Controls.SetChildIndex(txtCantRuedas, 0);

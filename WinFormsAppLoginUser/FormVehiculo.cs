@@ -14,7 +14,6 @@ namespace WinFormsAppLoginUser
     public partial class FormVehiculo : Form
     {
 
-
         public FormVehiculo(Vehiculo vehiculo)
         {
             this.txtMarca.Text = vehiculo.Marca;
@@ -31,7 +30,6 @@ namespace WinFormsAppLoginUser
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-
         }
 
         private void FormVehuiculo_Load(object sender, EventArgs e)
@@ -49,13 +47,15 @@ namespace WinFormsAppLoginUser
             this.DialogResult = DialogResult.Cancel;
         }
 
-
+        /// <summary>
+        /// QueSeaNumero() Verifica si la tecla presionada es un número o la tecla Backspace (para borrar)
+        /// Si no es un número ni la tecla Backspace, no permitir la entrada.
+        /// </summary>
+        /// <param name="e">Evento de KeyPressEventArgs</param>
         protected void QueSeaNumero(KeyPressEventArgs e)
         {
-            // Verifica si la tecla presionada es un número o la tecla Backspace (para borrar).
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                // Si no es un número ni la tecla Backspace, no permitir la entrada.
                 e.Handled = true;
             }
         }
@@ -75,11 +75,15 @@ namespace WinFormsAppLoginUser
             this.QueSeaNumero(e);
         }
 
-
+        /// <summary>
+        /// QueNoHallaCamposVacios() Valida que si alguno de los campos es falso retorna false, 
+        /// en caso contrario true
+        /// </summary>
+        /// <returns>bool</returns>
         protected bool QueNoHallaCamposVacios()
         {
-            bool retorno = true
-                ;
+            bool retorno = true;
+
             // Valida si el campo de marca está vacío
             if (string.IsNullOrWhiteSpace(this.txtMarca.Text))
             {
@@ -107,7 +111,4 @@ namespace WinFormsAppLoginUser
             return retorno;
         }
     }
-
-
-        
 }

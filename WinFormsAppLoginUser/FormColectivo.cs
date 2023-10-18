@@ -41,7 +41,13 @@ namespace WinFormsAppLoginUser
 
         }
 
-
+        /// <summary>
+        /// btnGuardar_Click() Verifica que los campos no esten vacios para poder agregar
+        /// un Colectivo correctamente, evitando errores.
+        /// es caso contrario mostrara un mensaje de aviso al usuario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (this.QueNoHallaCamposVacios() == true) // esran llenos
@@ -68,7 +74,7 @@ namespace WinFormsAppLoginUser
                 }
                 else { MessageBox.Show("Por favor, verifique los demas datos."); }
             }
-            else { MessageBox.Show("Por favor, ingresa un los datos."); }       
+            else { MessageBox.Show("Por favor, ingresa un los datos."); }
         }
 
         private void txtCantPasajeros_KeyPress(object sender, KeyPressEventArgs e)

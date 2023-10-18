@@ -36,14 +36,15 @@
             // 
             lstLog.FormattingEnabled = true;
             lstLog.ItemHeight = 15;
-            lstLog.Location = new Point(12, 22);
+            lstLog.Location = new Point(56, 40);
             lstLog.Name = "lstLog";
-            lstLog.Size = new Size(776, 379);
+            lstLog.Size = new Size(734, 379);
             lstLog.TabIndex = 0;
+            lstLog.SelectedIndexChanged += lstLog_SelectedIndexChanged;
             // 
             // btnCerrar
             // 
-            btnCerrar.Location = new Point(349, 415);
+            btnCerrar.Location = new Point(382, 451);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(75, 23);
             btnCerrar.TabIndex = 1;
@@ -53,12 +54,16 @@
             // 
             // FormMostrarLogeos
             // 
+            AcceptButton = btnCerrar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.ButtonHighlight;
+            ClientSize = new Size(864, 577);
             Controls.Add(btnCerrar);
             Controls.Add(lstLog);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FormMostrarLogeos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Historial Logeos";
             Load += FormMostrarLogeos_Load;
             ResumeLayout(false);

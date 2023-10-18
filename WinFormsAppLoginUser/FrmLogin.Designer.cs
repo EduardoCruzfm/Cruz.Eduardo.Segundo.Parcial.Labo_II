@@ -77,18 +77,19 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(232, 222);
+            txtContraseña.Location = new Point(215, 222);
             txtContraseña.Name = "txtContraseña";
+            txtContraseña.PasswordChar = '*';
             txtContraseña.PlaceholderText = "Ingrese contraseña";
-            txtContraseña.Size = new Size(123, 23);
+            txtContraseña.Size = new Size(170, 23);
             txtContraseña.TabIndex = 4;
             // 
             // txtUsuario
             // 
-            txtUsuario.Location = new Point(232, 99);
+            txtUsuario.Location = new Point(215, 99);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Ingrese usuario";
-            txtUsuario.Size = new Size(123, 23);
+            txtUsuario.Size = new Size(170, 23);
             txtUsuario.TabIndex = 5;
             // 
             // FrmLogin
@@ -104,7 +105,7 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             Name = "FrmLogin";
-            Text = "FrmLogin";
+            Text = "Ingrese sus datos";
             KeyPress += FrmLogin_KeyPress;
             ResumeLayout(false);
             PerformLayout();

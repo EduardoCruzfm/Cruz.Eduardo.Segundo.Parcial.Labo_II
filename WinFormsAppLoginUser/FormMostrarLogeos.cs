@@ -30,6 +30,10 @@ namespace WinFormsAppLoginUser
         {
             this.ActualizarVisor();
         }
+
+        /// <summary>
+        /// ActualizarVisor() Actualiza la lista de logueos.
+        /// </summary>
         private void ActualizarVisor()
         {
             this.lstLog.Items.Clear();
@@ -42,6 +46,11 @@ namespace WinFormsAppLoginUser
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void lstLog_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
