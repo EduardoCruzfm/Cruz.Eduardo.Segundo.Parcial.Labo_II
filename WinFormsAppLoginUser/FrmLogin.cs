@@ -11,12 +11,22 @@ using System.Windows.Forms;
 
 namespace WinFormsAppLoginUser
 {
+    /// <summary>
+    /// Formulario de inicio de sesión que permite a los usuarios ingresar al sistema.
+    /// </summary>
     public partial class FrmLogin : Form
     {
         private List<Usuario> usuarios;
 
+        /// <summary>
+        /// Obtiene el usuario validado por el formulario de inicio de sesión.
+        /// </summary>
         public Usuario UsuarioDelForm { get { return this.Verificar(); } }
 
+        /// <summary>
+        /// Constructor de la clase FrmLogin. 
+        /// Inicializa el formulario y carga la lista de usuarios desde un archivo JSON.
+        /// </summary>
         public FrmLogin()
         {
             InitializeComponent();
@@ -26,9 +36,9 @@ namespace WinFormsAppLoginUser
         }
 
         /// <summary>
-        /// Deserializar() Deserializa el JSON de los usuarios.
+        /// Deserializar() Deserializa los datos de usuarios desde un archivo JSON.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Una lista de usuarios deserializados.</returns>
         private List<Usuario> Deserializar()
         {
 
@@ -51,6 +61,13 @@ namespace WinFormsAppLoginUser
             }
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el botón "Aceptar". Verifica las credenciales ingresadas por el usuario.
+        /// Si las credenciales son válidas, establece el resultado del diálogo como "Aceptar".
+        /// En caso contrario, muestra un mensaje de error.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento (el botón "Aceptar").</param>
+        /// <param name="e">El evento EventArgs.</param>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
 
@@ -60,14 +77,14 @@ namespace WinFormsAppLoginUser
             }
             else
             {
-                MessageBox.Show("Usuario no encontrado verifique sus datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Usuario no encontrado verifique sus datos", "Datos invalidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         /// <summary>
-        /// Verificar() Verifica que el correo como la contaseña sean validas.
+        /// Verificar() si el correo y la contraseña ingresados son válidos comparándolos con la lista de usuarios.
         /// </summary>
-        /// <returns>Usuario validado</returns>
+        /// <returns>El usuario validado o null si las credenciales son inválidas.</returns>
         private Usuario Verificar()
         {
             Usuario? usuario = null;
@@ -83,17 +100,35 @@ namespace WinFormsAppLoginUser
             return usuario;
         }
 
+        /// <summary>
+        /// Maneja el evento de clic en el botón "Cancelar".
+        /// Establece el resultado del diálogo como "Cancelar".
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento (el botón "Cancelar").</param>
+        /// <param name="e">Argumentos del evento.</param>
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+
+            if (MessageBox.Show("¿Está seguro de que deseas cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
             this.DialogResult = DialogResult.Cancel;
+                
+            }
         }
+
 
         private void btnAceptar_KeyPress(object sender, KeyPressEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Maneja el evento de presionar una tecla en el formulario principal. 
+        /// Permite que se haga clic en "Aceptar" al presionar la tecla Enter.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento (el formulario principal).</param>
+        /// <param name="e">El evento KeyPressEventArgs.</param>
         private void FrmLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)

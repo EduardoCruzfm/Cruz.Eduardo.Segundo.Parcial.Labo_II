@@ -19,7 +19,7 @@ namespace WinFormsAppLoginUser
         protected Automovil auto;
 
         /// <summary>
-        /// Obtiene el objeto de tipo Automovil que contiene los datos del automóvil.
+        /// Retorna el atributo de tipo Automovil auto.
         /// </summary>
         public Automovil Auto { get { return this.auto; } }
 
@@ -35,7 +35,7 @@ namespace WinFormsAppLoginUser
         /// Inicializa una nueva instancia de la clase FormAuto y llena los campos del formulario
         /// con los datos de un objeto de tipo Automovil.
         /// </summary>
-        /// <param name="a">El objeto de tipo Automovil que contiene los datos del automóvil.</param>
+        /// <param name="a">El objeto de tipo Automovil que contiene los datos del automovil.</param>
         public FormAuto(Automovil a) : this()
         {
             this.txtMarca.Text = a.Marca;

@@ -11,12 +11,22 @@ using System.Windows.Forms;
 
 namespace WinFormsAppLoginUser
 {
+    /// <summary>
+    /// Representa un formulario para la creacion y edición de datos de una Motocicleta.
+    /// </summary>
     public partial class FormMoto : FormVehiculo
     {
         protected Motocicleta moto;
 
+        /// <summary>
+        /// Retorna el atributo de tipo Motocicleta moto.
+        /// </summary>
         public Motocicleta Moto { get { return this.moto; } }
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase FormMoto.
+        /// Agrega dos items al comboBox.
+        /// </summary>
         public FormMoto() : base()
         {
             InitializeComponent();
@@ -24,6 +34,11 @@ namespace WinFormsAppLoginUser
             this.cmbUsoUrbano.Items.Add("No");
         }
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase FormMoto y llena los campos del formulario
+        /// con los datos de un objeto de tipo Motocicleta.
+        /// </summary>
+        /// <param name="m">El objeto de tipo Motocicleta que contiene los datos de la motocicleta.</param>
         public FormMoto(Motocicleta m) : this()
         {
             this.txtMarca.Text = m.Marca;
@@ -44,16 +59,16 @@ namespace WinFormsAppLoginUser
         }
 
         /// <summary>
-        /// btnGuardar_Click() Verifica que los campos no esten vacios para poder agregar
-        /// una Motocicleta correctamente, evitando errores.
-        /// es caso contrario mostrara un mensaje de aviso al usuario.
+        /// btnGuardar_Click() Verifica que los campos no esten vacios antes de agregar
+        /// una Motocicleta.
+        /// Muestra un mensaje de aviso si hay campos vacíos o datos incorrectos.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">El objeto que desencadenó el evento.</param>
+        /// <param name="e">El evento</param>
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            if (this.QueNoHallaCamposVacios() == true) // esran llenos
+            if (this.QueNoHallaCamposVacios() == true) 
             {
                 bool retono = true;
 
@@ -77,9 +92,15 @@ namespace WinFormsAppLoginUser
                 }
                 else { MessageBox.Show("Por favor, verifique los demas datos."); }
             }
-            else { MessageBox.Show("Por favor, ingresa un los datos."); }
+            else { MessageBox.Show("Por favor, ingrese los datos."); }
         }
 
+        /// <summary>
+        /// Controla el evento KeyPress para el campo de txtCilindrada.
+        /// Verifica que el valor ingresado sea un número.
+        /// </summary>
+        /// <param name="sender">El objeto que desencadenó el evento.</param>
+        /// <param name="e">El evento</param>
         private void txtCilindrada_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.QueSeaNumero(e);

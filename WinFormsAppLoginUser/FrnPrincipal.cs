@@ -7,14 +7,19 @@ using static System.Windows.Forms.LinkLabel;
 
 namespace WinFormsAppLoginUser
 {
+    /// <summary>
+    /// Representa la ventana principal de la aplicación.
+    /// </summary>
     public partial class FrnPrincipal : Form
     {
         protected Usuario usuario;
-        //protected List<Vehiculo> listaVehiculos;
         protected Estacionamiento estacionamiento;
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
 
+        /// <summary>
+        /// Constructor predeterminado de la clase FrnPrincipal.
+        /// </summary>
         public FrnPrincipal()
         {
             InitializeComponent();
@@ -24,12 +29,23 @@ namespace WinFormsAppLoginUser
 
         }
 
+        /// <summary>
+        /// Constructor de la clase FrnPrincipal que permite inicializar un usuario.
+        /// </summary>
+        /// <param name="usuario">El objeto de tipo Usuario que representa al usuario actual.</param>
         public FrnPrincipal(Usuario usuario) : this()
         {
             this.usuario = usuario;
             MessageBox.Show($"Bienvenido {usuario.nombre}");
         }
 
+        /// <summary>
+        /// FrnPrincipal_Load() Maneja el evento Load de la ventana principal.
+        /// Inicializando fechaHora, lblNombreUsuario y lblFecha.
+        /// Agrega items al cmbTipoVehiculo.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">EL evento EventArgs.</param>
         private void FrnPrincipal_Load(object sender, EventArgs e)
         {
             this.fechaHora = DateTime.Now;
@@ -59,6 +75,12 @@ namespace WinFormsAppLoginUser
         }
 
 
+        /// <summary>
+        /// btnAgregar_Click() Agrega un nuevo Form ala lista.
+        /// Segun el tipo seleccionado gerena el objeto a agregar.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">EL evento EventArgs.</param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (this.cmbTipoVehiculo.SelectedItem != null)
@@ -98,7 +120,6 @@ namespace WinFormsAppLoginUser
                         if (fromC.DialogResult == DialogResult.OK)
                         {
                             _ = this.estacionamiento + fromC.Colctivo;
-                            //this.estacionamiento.Add(formC.Colctivo);
                             this.ActualizarVisor();
                         }
                         break;
@@ -117,6 +138,12 @@ namespace WinFormsAppLoginUser
             this.ActualizarVisor();
         }
 
+
+        /// <summary>
+        /// btnEliminar_Click() Maneja el evento de clic en el botón "Eliminar".
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">El evento EventArgs.</param>
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("¿Está seguro de que deseas eliminarlo?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -127,15 +154,13 @@ namespace WinFormsAppLoginUser
 
                 this.Remover(indice);
             }
-
-
         }
 
         /// <summary>
         /// btnModificar_Click() Permite la modificacion del vehiculo selecionado
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">El evento EventArgs.</param>
         private void btnModificar_Click(object sender, EventArgs e)
         {
             int indice = this.lstVisor.SelectedIndex;
@@ -216,7 +241,6 @@ namespace WinFormsAppLoginUser
 
                     var vehiculosAnonimos = JsonSerializer.Deserialize<List<object>>(json_str);
 
-                    //this.estacionamiento = new Estacionamiento("E");
 
                     foreach (var vehiculoAnonimo in vehiculosAnonimos)
                     {
@@ -226,7 +250,6 @@ namespace WinFormsAppLoginUser
                             if (elemento.TryGetProperty("Cilindrada", out _))
                             {
                                 Motocicleta? moto = JsonSerializer.Deserialize<Motocicleta>(elemento.GetRawText());
-                                //this.estacionamiento.Add(moto);
                                 _ = this.estacionamiento + moto;
                             }
 
@@ -249,6 +272,11 @@ namespace WinFormsAppLoginUser
             }
         }
 
+        /// <summary>
+        /// Maneja el evento de cierre del formulario principal.
+        /// </summary>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">Argumentos del evento de cierre del formulario.</param>
         private void FrnPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("¿Está seguro de que desea salir de la aplicación?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -394,7 +422,7 @@ namespace WinFormsAppLoginUser
         /// <summary>
         /// NuevaListaOrdenada() se usa para guardar un nuevo ordanamiento segun criterio.
         /// </summary>
-        /// <returns>Un Estacionamiento</returns>
+        /// <returns>Un objeto de tipo Estacionamiento</returns>
         private Estacionamiento NuevaListaOrdenada()
         {
             Estacionamiento es = new Estacionamiento("ES_ORDENADO");
