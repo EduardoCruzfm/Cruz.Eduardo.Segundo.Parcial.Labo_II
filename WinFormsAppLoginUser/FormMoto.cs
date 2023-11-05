@@ -39,7 +39,7 @@ namespace WinFormsAppLoginUser
         private void FormMoto_Load(object sender, EventArgs e)
         {
             // Establecer la selección predeterminada
-            this.cmbUsoUrbano.SelectedIndex = 0;
+            //this.cmbUsoUrbano.SelectedIndex = 0;
 
         }
 

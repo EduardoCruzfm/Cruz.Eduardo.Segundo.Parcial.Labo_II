@@ -13,6 +13,10 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public string esAutomatico;
         public int cantidadDePasajeros;
 
+        /// <summary>
+        /// Constructor predeterminado de la clase Colectivo.
+        /// Inicializa una nueva instancia de Colectivo sin valores iniciales.
+        /// </summary>
         public Colectivo() {  }
 
 
@@ -65,8 +69,8 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
             //sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
-            sb.AppendLine($"Es automatico: {this.esAutomatico}");
-            sb.AppendLine($"Cantidad de pasajeros: {this.cantidadDePasajeros}");
+            sb.AppendLine($"Es automatico: {this.esAutomatico} -");
+            sb.AppendLine($"Cantidad de pasajeros: {this.cantidadDePasajeros} -");
 
             return sb.ToString();
         }

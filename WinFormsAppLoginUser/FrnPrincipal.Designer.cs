@@ -55,6 +55,8 @@
             // 
             // lstVisor
             // 
+            lstVisor.BackColor = Color.Gainsboro;
+            lstVisor.Cursor = Cursors.Hand;
             lstVisor.FormattingEnabled = true;
             lstVisor.ItemHeight = 15;
             lstVisor.Location = new Point(24, 55);
@@ -64,37 +66,53 @@
             // 
             // btnAgregar
             // 
+            btnAgregar.BackColor = Color.FromArgb(64, 64, 64);
+            btnAgregar.FlatAppearance.BorderColor = Color.Gray;
+            btnAgregar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnAgregar.FlatStyle = FlatStyle.Flat;
+            btnAgregar.ForeColor = Color.White;
             btnAgregar.Location = new Point(246, 344);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 1;
             btnAgregar.Text = "Agregar";
-            btnAgregar.UseVisualStyleBackColor = true;
+            btnAgregar.UseVisualStyleBackColor = false;
             btnAgregar.Click += btnAgregar_Click;
             // 
             // btnModificar
             // 
+            btnModificar.BackColor = Color.FromArgb(64, 64, 64);
+            btnModificar.FlatAppearance.BorderColor = Color.Gray;
+            btnModificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnModificar.FlatStyle = FlatStyle.Flat;
+            btnModificar.ForeColor = Color.White;
             btnModificar.Location = new Point(463, 344);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 2;
             btnModificar.Text = "Modificar";
-            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.UseVisualStyleBackColor = false;
             btnModificar.Click += btnModificar_Click;
             // 
             // btnEliminar
             // 
+            btnEliminar.BackColor = Color.FromArgb(64, 64, 64);
+            btnEliminar.FlatAppearance.BorderColor = Color.Gray;
+            btnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnEliminar.FlatStyle = FlatStyle.Flat;
+            btnEliminar.ForeColor = Color.White;
             btnEliminar.Location = new Point(617, 344);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 3;
             btnEliminar.Text = "Eliminar";
-            btnEliminar.UseVisualStyleBackColor = true;
+            btnEliminar.UseVisualStyleBackColor = false;
             btnEliminar.Click += btnEliminar_Click;
             // 
             // lblNombreUsuario
             // 
             lblNombreUsuario.AutoSize = true;
+            lblNombreUsuario.ForeColor = Color.White;
             lblNombreUsuario.Location = new Point(359, 18);
             lblNombreUsuario.Name = "lblNombreUsuario";
             lblNombreUsuario.Size = new Size(89, 15);
@@ -103,6 +121,9 @@
             // 
             // cmbTipoVehiculo
             // 
+            cmbTipoVehiculo.BackColor = Color.Gainsboro;
+            cmbTipoVehiculo.Cursor = Cursors.Hand;
+            cmbTipoVehiculo.FlatStyle = FlatStyle.Flat;
             cmbTipoVehiculo.FormattingEnabled = true;
             cmbTipoVehiculo.Location = new Point(37, 344);
             cmbTipoVehiculo.Name = "cmbTipoVehiculo";
@@ -113,6 +134,7 @@
             // 
             gBoxOrdenar.Controls.Add(rdCantRuedas);
             gBoxOrdenar.Controls.Add(rdNChasis);
+            gBoxOrdenar.ForeColor = Color.FromArgb(128, 128, 255);
             gBoxOrdenar.Location = new Point(37, 384);
             gBoxOrdenar.Name = "gBoxOrdenar";
             gBoxOrdenar.Size = new Size(235, 54);
@@ -123,6 +145,7 @@
             // rdCantRuedas
             // 
             rdCantRuedas.AutoSize = true;
+            rdCantRuedas.ForeColor = Color.White;
             rdCantRuedas.Location = new Point(122, 22);
             rdCantRuedas.Name = "rdCantRuedas";
             rdCantRuedas.Size = new Size(107, 19);
@@ -134,6 +157,7 @@
             // rdNChasis
             // 
             rdNChasis.AutoSize = true;
+            rdNChasis.ForeColor = Color.White;
             rdNChasis.Location = new Point(17, 22);
             rdNChasis.Name = "rdNChasis";
             rdNChasis.Size = new Size(76, 19);
@@ -144,12 +168,17 @@
             // 
             // btnOrdenar
             // 
+            btnOrdenar.BackColor = Color.FromArgb(64, 64, 64);
+            btnOrdenar.FlatAppearance.BorderColor = Color.Gray;
+            btnOrdenar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnOrdenar.FlatStyle = FlatStyle.Flat;
+            btnOrdenar.ForeColor = Color.White;
             btnOrdenar.Location = new Point(261, 22);
             btnOrdenar.Name = "btnOrdenar";
             btnOrdenar.Size = new Size(75, 23);
             btnOrdenar.TabIndex = 2;
             btnOrdenar.Text = "Ordenar";
-            btnOrdenar.UseVisualStyleBackColor = true;
+            btnOrdenar.UseVisualStyleBackColor = false;
             btnOrdenar.Click += btnOrdenar_Click;
             // 
             // gBoxDeForma
@@ -157,6 +186,7 @@
             gBoxDeForma.Controls.Add(rdDesendente);
             gBoxDeForma.Controls.Add(btnOrdenar);
             gBoxDeForma.Controls.Add(rdAsendente);
+            gBoxDeForma.ForeColor = Color.FromArgb(128, 128, 255);
             gBoxDeForma.Location = new Point(323, 384);
             gBoxDeForma.Name = "gBoxDeForma";
             gBoxDeForma.Size = new Size(369, 54);
@@ -167,6 +197,7 @@
             // rdDesendente
             // 
             rdDesendente.AutoSize = true;
+            rdDesendente.ForeColor = Color.White;
             rdDesendente.Location = new Point(135, 22);
             rdDesendente.Name = "rdDesendente";
             rdDesendente.Size = new Size(87, 19);
@@ -178,6 +209,7 @@
             // rdAsendente
             // 
             rdAsendente.AutoSize = true;
+            rdAsendente.ForeColor = Color.White;
             rdAsendente.Location = new Point(16, 22);
             rdAsendente.Name = "rdAsendente";
             rdAsendente.Size = new Size(81, 19);
@@ -189,6 +221,7 @@
             // lblFecha
             // 
             lblFecha.AutoSize = true;
+            lblFecha.ForeColor = Color.White;
             lblFecha.Location = new Point(500, 18);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(38, 15);
@@ -197,17 +230,23 @@
             // 
             // btnHistorialLog
             // 
+            btnHistorialLog.BackColor = Color.FromArgb(64, 64, 64);
+            btnHistorialLog.FlatAppearance.BorderColor = Color.Gray;
+            btnHistorialLog.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnHistorialLog.FlatStyle = FlatStyle.Flat;
+            btnHistorialLog.ForeColor = Color.White;
             btnHistorialLog.Location = new Point(756, 406);
             btnHistorialLog.Name = "btnHistorialLog";
             btnHistorialLog.Size = new Size(75, 23);
             btnHistorialLog.TabIndex = 9;
             btnHistorialLog.Text = "Logueos";
-            btnHistorialLog.UseVisualStyleBackColor = true;
+            btnHistorialLog.UseVisualStyleBackColor = false;
             btnHistorialLog.Click += btnHistorialLog_Click;
             // 
             // lblDireccion
             // 
             lblDireccion.AutoSize = true;
+            lblDireccion.ForeColor = Color.White;
             lblDireccion.Location = new Point(37, 465);
             lblDireccion.Name = "lblDireccion";
             lblDireccion.Size = new Size(63, 15);
@@ -216,6 +255,7 @@
             // 
             // txtDirecion
             // 
+            txtDirecion.BackColor = Color.Gainsboro;
             txtDirecion.Location = new Point(106, 462);
             txtDirecion.Name = "txtDirecion";
             txtDirecion.Size = new Size(474, 23);
@@ -223,12 +263,17 @@
             // 
             // btnAbrir
             // 
+            btnAbrir.BackColor = Color.FromArgb(64, 64, 64);
+            btnAbrir.FlatAppearance.BorderColor = Color.Gray;
+            btnAbrir.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnAbrir.FlatStyle = FlatStyle.Flat;
+            btnAbrir.ForeColor = Color.White;
             btnAbrir.Location = new Point(617, 461);
             btnAbrir.Name = "btnAbrir";
             btnAbrir.Size = new Size(75, 23);
             btnAbrir.TabIndex = 12;
             btnAbrir.Text = "Abrir";
-            btnAbrir.UseVisualStyleBackColor = true;
+            btnAbrir.UseVisualStyleBackColor = false;
             btnAbrir.Click += btnAbrir_Click;
             // 
             // openFileDialog1
@@ -237,6 +282,10 @@
             // 
             // btnGuardar
             // 
+            btnGuardar.FlatAppearance.BorderColor = Color.Gray;
+            btnGuardar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.ForeColor = Color.White;
             btnGuardar.Location = new Point(756, 461);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
@@ -249,6 +298,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(859, 522);
             Controls.Add(btnGuardar);
             Controls.Add(btnAbrir);
@@ -264,6 +314,8 @@
             Controls.Add(btnModificar);
             Controls.Add(btnAgregar);
             Controls.Add(lstVisor);
+            FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            ImeMode = ImeMode.Off;
             Name = "FrnPrincipal";
             Text = "Estacionamiento";
             FormClosing += FrnPrincipal_FormClosing;

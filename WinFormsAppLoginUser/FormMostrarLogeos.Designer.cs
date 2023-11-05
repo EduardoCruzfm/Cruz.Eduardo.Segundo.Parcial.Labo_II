@@ -34,6 +34,7 @@
             // 
             // lstLog
             // 
+            lstLog.BackColor = Color.Gainsboro;
             lstLog.FormattingEnabled = true;
             lstLog.ItemHeight = 15;
             lstLog.Location = new Point(56, 40);
@@ -44,6 +45,10 @@
             // 
             // btnCerrar
             // 
+            btnCerrar.FlatAppearance.BorderColor = Color.Gray;
+            btnCerrar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnCerrar.FlatStyle = FlatStyle.Flat;
+            btnCerrar.ForeColor = Color.White;
             btnCerrar.Location = new Point(382, 451);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(75, 23);
@@ -57,7 +62,7 @@
             AcceptButton = btnCerrar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ButtonHighlight;
+            BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(864, 577);
             Controls.Add(btnCerrar);
             Controls.Add(lstLog);

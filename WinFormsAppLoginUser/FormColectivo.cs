@@ -37,7 +37,7 @@ namespace WinFormsAppLoginUser
 
         private void FormColectivo_Load(object sender, EventArgs e)
         {
-            this.cmbTransAutomatica.SelectedIndex = 0;
+            //this.cmbTransAutomatica.SelectedIndex = 0;
 
         }
 

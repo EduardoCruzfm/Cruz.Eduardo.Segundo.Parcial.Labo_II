@@ -35,15 +35,47 @@
             cmbTransAutomatica = new ComboBox();
             SuspendLayout();
             // 
+            // txtMarca
+            // 
+            txtMarca.Location = new Point(239, 112);
+            // 
+            // txtCantRuedas
+            // 
+            txtCantRuedas.Location = new Point(238, 324);
+            // 
+            // txtChasis
+            // 
+            txtChasis.Location = new Point(238, 246);
+            // 
             // cmbColor
             // 
-            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
+            cmbColor.Items.AddRange(new object[] { Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro, Colores.Rojo, Colores.Blanco, Colores.Azul, Colores.Gris, Colores.Negro });
+            cmbColor.Location = new Point(239, 171);
+            cmbColor.Size = new Size(122, 25);
+            // 
+            // txtMarchas
+            // 
+            txtMarchas.Location = new Point(238, 384);
+            // 
+            // lblMarca
+            // 
+            lblMarca.Location = new Point(73, 118);
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.FlatAppearance.BorderColor = Color.Gray;
+            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnCancelar.Location = new Point(261, 632);
+            btnCancelar.Size = new Size(75, 29);
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(93, 505);
+            btnGuardar.FlatAppearance.BorderColor = Color.Gray;
+            btnGuardar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnGuardar.FlatStyle = FlatStyle.Flat;
+            btnGuardar.Location = new Point(94, 632);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 23);
+            btnGuardar.Size = new Size(75, 26);
             btnGuardar.TabIndex = 11;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -52,43 +84,43 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(77, 399);
+            label1.Location = new Point(72, 461);
             label1.Name = "label1";
-            label1.Size = new Size(140, 15);
+            label1.Size = new Size(160, 19);
             label1.TabIndex = 12;
             label1.Text = "Transmicion automatica :";
             // 
             // lblCantPasajeros
             // 
             lblCantPasajeros.AutoSize = true;
-            lblCantPasajeros.Location = new Point(77, 453);
+            lblCantPasajeros.Location = new Point(72, 518);
             lblCantPasajeros.Name = "lblCantPasajeros";
-            lblCantPasajeros.Size = new Size(113, 15);
+            lblCantPasajeros.Size = new Size(132, 19);
             lblCantPasajeros.TabIndex = 13;
             lblCantPasajeros.Text = "Cantidad Pasajeros :";
             // 
             // txtCantPasajeros
             // 
-            txtCantPasajeros.Location = new Point(235, 445);
+            txtCantPasajeros.Location = new Point(238, 515);
             txtCantPasajeros.Name = "txtCantPasajeros";
-            txtCantPasajeros.Size = new Size(122, 23);
+            txtCantPasajeros.Size = new Size(122, 25);
             txtCantPasajeros.TabIndex = 15;
             txtCantPasajeros.KeyPress += txtCantPasajeros_KeyPress;
             // 
             // cmbTransAutomatica
             // 
             cmbTransAutomatica.FormattingEnabled = true;
-            cmbTransAutomatica.Location = new Point(236, 391);
+            cmbTransAutomatica.Location = new Point(238, 455);
             cmbTransAutomatica.Name = "cmbTransAutomatica";
-            cmbTransAutomatica.Size = new Size(121, 23);
+            cmbTransAutomatica.Size = new Size(121, 25);
             cmbTransAutomatica.TabIndex = 16;
             // 
             // FormColectivo
             // 
             AcceptButton = btnGuardar;
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(430, 570);
+            ClientSize = new Size(442, 700);
             Controls.Add(cmbTransAutomatica);
             Controls.Add(txtCantPasajeros);
             Controls.Add(lblCantPasajeros);
@@ -97,6 +129,7 @@
             Name = "FormColectivo";
             Text = "Colectivo";
             Load += FormColectivo_Load;
+            Controls.SetChildIndex(btnCancelar, 0);
             Controls.SetChildIndex(txtMarca, 0);
             Controls.SetChildIndex(txtCantRuedas, 0);
             Controls.SetChildIndex(txtChasis, 0);

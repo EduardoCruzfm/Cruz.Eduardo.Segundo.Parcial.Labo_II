@@ -63,7 +63,19 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// <returns></returns>
         public static bool operator ==(Estacionamiento e, Vehiculo v)
         {
-            return e.listVehiculos.Contains(v);
+            bool retorno = false;
+
+            foreach (Vehiculo item in e.listVehiculos)
+            {
+                if( item == v)
+                {
+                    retorno = true;
+                    break;
+                }
+            }
+
+            return retorno;
+            //return e.listVehiculos.Contains(v);
         }
 
         /// <summary>

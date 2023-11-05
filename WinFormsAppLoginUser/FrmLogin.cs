@@ -58,6 +58,10 @@ namespace WinFormsAppLoginUser
             {
                 this.DialogResult = DialogResult.OK;
             }
+            else
+            {
+                MessageBox.Show("Usuario no encontrado verifique sus datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>

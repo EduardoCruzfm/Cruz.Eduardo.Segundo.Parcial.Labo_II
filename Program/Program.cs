@@ -9,6 +9,7 @@ namespace Program
             Console.WriteLine("Hello, World!");
 
             Motocicleta honda = new Motocicleta("Honda",2,5,Colores.Negro,"1000");
+            Motocicleta honda2 = new Motocicleta("Honda",2,5,Colores.Negro,"1000");
             Motocicleta benelli = new Motocicleta("Benelli",2,5,Colores.Rojo,"3000");
             Motocicleta yamaha = new Motocicleta("Yahama",2,5,Colores.Azul,"1500");
             Automovil renault = new Automovil("Renaul",4,6,Colores.Rojo,"400000");
@@ -24,31 +25,32 @@ namespace Program
             _ = hs24 + renault;
             _ = hs24 + agrale;
 
+            
 
             hs24.Ordenar("chasis");
             //hs24.Ordenar("marca");
             hs24.listVehiculos.Reverse();
 
 
-            foreach (var item in hs24.listVehiculos)
-            {
-                Console.WriteLine(item);
-            }
-            /*
-            if (benelli.Equals(benelli))
+            //foreach (var item in hs24.listVehiculos)
+            //{
+            //    Console.WriteLine(item); 
+            //}
+            
+            if (benelli == benelli)
             {
                 Console.WriteLine("Igual");
             }
             else
             {
                 Console.WriteLine("NO");
-            }*/
+            }
 
             _ = hs24 - benelli;
             _ = hs24 - yamaha;
             _ = hs24 - renault;
             _ = hs24 + agrale;
-
+/*
             if (hs24 - mercedes)
             {
                 Console.WriteLine("BORRADO");
@@ -61,7 +63,7 @@ namespace Program
             foreach (var item in hs24.listVehiculos)
             {
                 Console.WriteLine(item);
-            }
+            }*/
         }
     }
 }

@@ -34,16 +34,18 @@ namespace WinFormsAppLoginUser
         {
             this.fechaHora = DateTime.Now;
             this.lblNombreUsuario.Text = $"Usuario: {usuario.nombre}";
-            this.lblFecha.Text = $"Fecha: {fechaHora.ToString("dd/mm/yyyy")}";
+            this.lblFecha.Text = $"Fecha: {this.fechaHora.ToString("dd/MM/yyyy")}";
             // Agregar elementos al ComboBox
             this.cmbTipoVehiculo.Items.Add("Auto");
             this.cmbTipoVehiculo.Items.Add("Colectivo");
             this.cmbTipoVehiculo.Items.Add("Moto");
 
-            // Establecer la selección predeterminada
+            // Establecer la selección predeterminada - Hide()
+            this.SerealizarUsuario();
             this.cmbTipoVehiculo.SelectedIndex = 0;
             this.DeserializarUsuarioLog();
         }
+
         /// <summary>
         /// ActualizarVisor() Limpia la lista y la vuelve a cargar con los datos actualizados.
         /// </summary>
@@ -117,12 +119,16 @@ namespace WinFormsAppLoginUser
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int indice = this.lstVisor.SelectedIndex;
+            if (MessageBox.Show("¿Está seguro de que deseas eliminarlo?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int indice = this.lstVisor.SelectedIndex;
 
-            if (indice == -1) { return; }
+                if (indice == -1) { return; }
 
-            this.Remover(indice);
-            MessageBox.Show("Se elimino");
+                this.Remover(indice);
+            }
+
+
         }
 
         /// <summary>
@@ -147,8 +153,21 @@ namespace WinFormsAppLoginUser
 
                     if (fromA.DialogResult == DialogResult.OK)
                     {
+                        if (this.estacionamiento == fromA.Auto)
+                        {
+                            MessageBox.Show("Ya existen esos datos");
+                            
+                            //this.estacionamiento.listVehiculos[indice] = fromA.Auto;
+                            //this.estacionamiento.listVehiculos[indice] = fromA.Auto;
 
-                        this.estacionamiento.listVehiculos[indice] = fromA.Auto;
+                        }
+                        else if (this.estacionamiento != fromA.Auto)
+                        {
+                            this.Remover(indice);
+                            _= this.estacionamiento + fromA.Auto;
+                        }
+
+
                         this.ActualizarVisor();
                     }
 
@@ -232,7 +251,10 @@ namespace WinFormsAppLoginUser
 
         private void FrnPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.SerealizarUsuario();
+            if (MessageBox.Show("¿Está seguro de que desea salir de la aplicación?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
 
         /// <summary>
@@ -243,7 +265,7 @@ namespace WinFormsAppLoginUser
             string? path = @"..\..\..\Usuario.log";
             using (StreamWriter sw = File.AppendText(path))
             {
-                string usuarioLog = $"Fecha: {this.fechaHora} \n " +
+                string usuarioLog = $"Fecha: {this.fechaHora.ToString("dd/MM/yyyy HH:mm:ss")} \n " +
                     $"Usuario: {usuario.nombre} \n " +
                     $"Apellido: {usuario.apellido} \n " +
                     $"Correo: {usuario.correo} \n " +
@@ -449,6 +471,7 @@ namespace WinFormsAppLoginUser
         /// <param name="e"></param>
         private void btnHistorialLog_Click(object sender, EventArgs e)
         {
+            //this.DeserializarUsuarioLog();
             FormMostrarLogeos uLog = new FormMostrarLogeos(this.listaDeLogeo);
             uLog.ShowDialog();
         }

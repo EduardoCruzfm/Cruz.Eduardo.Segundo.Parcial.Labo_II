@@ -38,6 +38,10 @@
             // 
             // btnAceptar
             // 
+            btnAceptar.FlatAppearance.BorderColor = Color.Gray;
+            btnAceptar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnAceptar.FlatStyle = FlatStyle.Flat;
+            btnAceptar.ForeColor = Color.White;
             btnAceptar.Location = new Point(85, 320);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 23);
@@ -49,6 +53,10 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.FlatAppearance.BorderColor = Color.Gray;
+            btnCancelar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
+            btnCancelar.FlatStyle = FlatStyle.Flat;
+            btnCancelar.ForeColor = Color.White;
             btnCancelar.Location = new Point(246, 320);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 23);
@@ -60,23 +68,28 @@
             // lblContraseña
             // 
             lblContraseña.AutoSize = true;
+            lblContraseña.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblContraseña.ForeColor = Color.White;
             lblContraseña.Location = new Point(85, 230);
             lblContraseña.Name = "lblContraseña";
-            lblContraseña.Size = new Size(67, 15);
+            lblContraseña.Size = new Size(79, 19);
             lblContraseña.TabIndex = 2;
             lblContraseña.Text = "Contraseña";
             // 
             // lblUsuario
             // 
             lblUsuario.AutoSize = true;
+            lblUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblUsuario.ForeColor = Color.White;
             lblUsuario.Location = new Point(85, 99);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(47, 15);
+            lblUsuario.Size = new Size(56, 19);
             lblUsuario.TabIndex = 3;
             lblUsuario.Text = "Usuario";
             // 
             // txtContraseña
             // 
+            txtContraseña.BackColor = Color.Gainsboro;
             txtContraseña.Location = new Point(215, 222);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
@@ -86,6 +99,7 @@
             // 
             // txtUsuario
             // 
+            txtUsuario.BackColor = Color.Gainsboro;
             txtUsuario.Location = new Point(215, 99);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Ingrese usuario";
@@ -97,6 +111,7 @@
             AcceptButton = btnAceptar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(423, 405);
             Controls.Add(txtUsuario);
             Controls.Add(txtContraseña);
@@ -104,6 +119,8 @@
             Controls.Add(lblContraseña);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
+            Cursor = Cursors.Hand;
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmLogin";
             Text = "Ingrese sus datos";
             KeyPress += FrmLogin_KeyPress;
