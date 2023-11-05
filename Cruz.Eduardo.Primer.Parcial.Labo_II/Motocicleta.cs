@@ -95,6 +95,10 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             return this.cantidadRuedas == 2;
         }
 
+        /// <summary>
+        /// ToString() Devuelve los datos de los atributos del objeto.
+        /// </summary>
+        /// <returns>Retorna una string con los datos del Objeto.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

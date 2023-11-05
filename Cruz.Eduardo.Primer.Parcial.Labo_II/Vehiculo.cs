@@ -4,6 +4,9 @@ using System.Text.Json.Serialization;
 
 namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
+    /// <summary>
+    /// Clase abstracta que representa un vehículo genérico.
+    /// </summary>
     public abstract class Vehiculo
     {   //Commit /tex/sincro/push
         protected string marca;
@@ -22,7 +25,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         }
 
         /// <summary>
-        /// Constructor de la clase Vehiculo.
+        /// Constructor de la clase Vehiculo que permite inicializar los atributos básicos del vehículo.
         /// </summary>
         /// <param name="marca">La marca del vehículo.</param>
         /// <param name="cantidadRuedas">La cantidad de ruedas del vehículo.</param>
@@ -205,10 +208,9 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// </summary>
         /// <param name="v1">Almacena un Vehiculo para la igualacion.</param>
         /// <param name="v2">Almacena otro Vehiculo para la igualacion.</param>
-        /// <returns>Retorna un bool segun el resultado de la igualacion.</returns>
+        /// <returns>Retorna true cuando son igualaes segun los atributos de comparacion, de lo contrario false.</returns>
         public static bool operator ==(Vehiculo v1, Vehiculo v2)
         {
-            //return v1.Equals(v2);
             return v1.NChasis == v2.NChasis && v1.marca == v2.marca;
         }
 

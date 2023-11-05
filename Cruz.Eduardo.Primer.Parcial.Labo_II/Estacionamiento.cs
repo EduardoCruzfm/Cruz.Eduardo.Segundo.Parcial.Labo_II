@@ -11,6 +11,10 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         public string nombre;
         public List<Vehiculo> listVehiculos;
 
+        /// <summary>
+        /// Constructor de la clase Estacionamiento.
+        /// </summary>
+        /// <param name="nombre">Nombre del estacionamiento.</param>
         public Estacionamiento(string nombre)
         {
             this.listVehiculos = new List<Vehiculo>();
@@ -21,7 +25,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// Ordenar() Ordena segun el nombre del atributo recibido, determinado el tipo de
         /// atributo a ordenar.
         /// </summary>
-        /// <param name="atributo">Por el cual va ordenar</param>
+        /// <param name="atributo">Atributo por el cual va realizar el orden</param>
         public void Ordenar(string atributo)
         {
             Vehiculo intercambio;
@@ -56,11 +60,12 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
 
         /// <summary>
-        /// "==" Verificar que se encuentre el Vehiculo en la lista.
+        /// "==" Verificar que se encuentre el Vehiculo en la lista, 
+        /// reutilizando el == sobrecargado de la clase Vehiculo.
         /// </summary>
-        /// <param name="e"></param>
-        /// <param name="v"></param>
-        /// <returns></returns>
+        /// <param name="e">Almacena un Estacionamiento para buscar si se encuentra o no el Vehiculo.</param>
+        /// <param name="v">Almacena un Vehiculo para la comparacion.</param>
+        /// <returns>Retorna un true si se encuentra el objeto, de lo contrario false.</returns>
         public static bool operator ==(Estacionamiento e, Vehiculo v)
         {
             bool retorno = false;
@@ -75,15 +80,14 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             }
 
             return retorno;
-            //return e.listVehiculos.Contains(v);
         }
 
         /// <summary>
         /// "!=" Verificar que no se encuentre el Vehiculo en la lista.
         /// </summary>
-        /// <param name="e"></param>
-        /// <param name="v"></param>
-        /// <returns></returns>
+        /// <param name="e">Almacena un Estacionamiento para buscar si se encuentra o no el Vehiculo.</param>
+        /// <param name="v">Almacena un Vehiculo para la comparacion.</param>
+        /// <returns>Retorna true si nose encuentra Vehiculo, de lo contrario false.</returns>
         public static bool operator !=(Estacionamiento e, Vehiculo v)
         {
             return !(e == v);
@@ -92,9 +96,9 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// <summary>
         /// "+" Agrega un Vehiculo ala lista antes verificando que este no se escuentre.
         /// </summary>
-        /// <param name="e"></param>
-        /// <param name="v"></param>
-        /// <returns></returns>
+        /// <param name="e">Almacena un Estacionamiento para buscar si se encuentra o no el Vehiculo.</param>
+        /// <param name="v">Almacena un Vehiculo para la comparacion.</param>
+        /// <returns>Retorna true si agrega el Vehiculo ala lista, de lo contrario false</returns>
         public static bool operator +(Estacionamiento e, Vehiculo v)
         {
             bool retorno = false;

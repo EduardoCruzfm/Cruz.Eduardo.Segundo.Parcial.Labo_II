@@ -1,4 +1,7 @@
-﻿public enum Colores
+﻿/// <summary>
+/// Enumeración que representa diferentes colores.
+/// </summary>
+public enum Colores
 {
     Rojo,
     Blanco,

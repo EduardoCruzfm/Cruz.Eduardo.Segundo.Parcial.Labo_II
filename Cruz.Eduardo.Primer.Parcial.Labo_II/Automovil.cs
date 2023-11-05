@@ -64,12 +64,20 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             this.cantidadPuertas = cantidadPuertas;
         }
 
+
+        #region Propiedades
+        /// <summary>
+        /// Representa el tipo de combustible del automovil.
+        /// </summary>
         public string TipoDeCombustible
         {
             get { return this.tipoDeCombustible; }
             set { this.tipoDeCombustible = value; }
         }
-        #region Propiedades
+
+        /// <summary>
+        /// Representa la cantidad de puertas del automovil.
+        /// </summary>
         public short CantidadDePuertas
         {
             get { return this.cantidadPuertas; }
@@ -87,6 +95,10 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             return this.cantidadRuedas == 4;
         }
 
+        /// <summary>
+        /// ToString() Devuelve los datos de los atributos del objeto.
+        /// </summary>
+        /// <returns>Retorna una string con los datos del Objeto.</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

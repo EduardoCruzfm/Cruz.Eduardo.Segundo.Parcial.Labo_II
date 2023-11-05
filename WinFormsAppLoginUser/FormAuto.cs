@@ -11,17 +11,31 @@ using System.Windows.Forms;
 
 namespace WinFormsAppLoginUser
 {
+    /// <summary>
+    /// Representa un formulario para la creacion y edición de datos de un Automóvil.
+    /// </summary>
     public partial class FormAuto : FormVehiculo
     {
         protected Automovil auto;
 
+        /// <summary>
+        /// Obtiene el objeto de tipo Automovil que contiene los datos del automóvil.
+        /// </summary>
         public Automovil Auto { get { return this.auto; } }
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase FormAuto.
+        /// </summary>
         public FormAuto()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase FormAuto y llena los campos del formulario
+        /// con los datos de un objeto de tipo Automovil.
+        /// </summary>
+        /// <param name="a">El objeto de tipo Automovil que contiene los datos del automóvil.</param>
         public FormAuto(Automovil a) : this()
         {
             this.txtMarca.Text = a.Marca;
@@ -35,12 +49,12 @@ namespace WinFormsAppLoginUser
         }
 
         /// <summary>
-        /// btnAcepatar_Click() Verifica que los campos no esten vacios para poder agregar
-        /// un Automovil correctamente, evitando errores.
-        /// es caso contrario mostrara un mensaje de aviso al usuario.
+        /// btnAcepatar_Click() Verifica que los campos no esten vacios antes de agregar
+        /// un Automovil.
+        /// Muestra un mensaje de aviso si hay campos vacíos o datos incorrectos.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">El objeto que desencadenó el evento.</param>
+        /// <param name="e">El evento.</param>
         private void btnAcepatar_Click(object sender, EventArgs e)
         {
             if (this.QueNoHallaCamposVacios() == true)
@@ -67,9 +81,15 @@ namespace WinFormsAppLoginUser
                 }
                 else { MessageBox.Show("Por favor, verifique los demas datos."); }
             }
-            else { MessageBox.Show("Por favor, ingresa un los datos."); }
+            else { MessageBox.Show("Por favor, ingrese los datos."); }
         }
 
+        /// <summary>
+        /// Controla el evento KeyPress para el campo de txtCantPuertas.
+        /// Verifica que el valor ingresado sea un número.
+        /// </summary>
+        /// <param name="sender">El objeto que desencadenó el evento.</param>
+        /// <param name="e">El evento</param>
         private void txtCantPuertas_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.QueSeaNumero(e);
