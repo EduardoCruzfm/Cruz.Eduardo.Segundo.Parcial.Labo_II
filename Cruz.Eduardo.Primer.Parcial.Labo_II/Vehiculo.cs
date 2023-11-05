@@ -137,7 +137,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
             Vehiculo objCasteo = (Vehiculo)obj;
 
-            return this == objCasteo;
+            return this.NChasis == objCasteo.NChasis && this.marca == objCasteo.marca;
         }
         #endregion
 
