@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
+    /// <summary>
+    /// Clase que representa un estacionamiento que contiene una lista de vehículos.
+    /// </summary>
     public class Estacionamiento
     {
         public string nombre;
@@ -73,6 +76,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             foreach (Vehiculo item in e.listVehiculos)
             {
                 if( item == v)
+                //if(item.Equals(v))
                 {
                     retorno = true;
                     break;
@@ -116,7 +120,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// </summary>
         /// <param name="e"></param>
         /// <param name="v"></param>
-        /// <returns></returns>
+        /// <returns>Retorna true si se elimina el Vehiculo de la lista, de lo contrario false</returns>
         public static bool operator -(Estacionamiento e, Vehiculo v)
         {
             bool retorno = false;

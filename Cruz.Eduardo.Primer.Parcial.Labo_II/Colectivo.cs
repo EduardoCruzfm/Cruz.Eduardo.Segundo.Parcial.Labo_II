@@ -8,6 +8,9 @@ using System.Text.Json.Serialization;
 
 namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
+    /// <summary>
+    /// Clase que representa un Colectivo, que hereda de la clase Vehiculo.
+    /// </summary>
     public class Colectivo : Vehiculo
     {
         public string esAutomatico;

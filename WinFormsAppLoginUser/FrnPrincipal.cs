@@ -36,7 +36,7 @@ namespace WinFormsAppLoginUser
         public FrnPrincipal(Usuario usuario) : this()
         {
             this.usuario = usuario;
-            MessageBox.Show($"Bienvenido {usuario.nombre}");
+            //MessageBox.Show($"Bienvenido {usuario.nombre}");
         }
 
         /// <summary>
@@ -45,12 +45,13 @@ namespace WinFormsAppLoginUser
         /// Agrega items al cmbTipoVehiculo.
         /// </summary>
         /// <param name="sender">El objeto que generó el evento.</param>
-        /// <param name="e">EL evento EventArgs.</param>
+        /// <param name="e">El evento EventArgs.</param>
         private void FrnPrincipal_Load(object sender, EventArgs e)
         {
             this.fechaHora = DateTime.Now;
             this.lblNombreUsuario.Text = $"Usuario: {usuario.nombre}";
             this.lblFecha.Text = $"Fecha: {this.fechaHora.ToString("dd/MM/yyyy")}";
+
             // Agregar elementos al ComboBox
             this.cmbTipoVehiculo.Items.Add("Auto");
             this.cmbTipoVehiculo.Items.Add("Colectivo");
@@ -80,7 +81,7 @@ namespace WinFormsAppLoginUser
         /// Segun el tipo seleccionado gerena el objeto a agregar.
         /// </summary>
         /// <param name="sender">El objeto que generó el evento.</param>
-        /// <param name="e">EL evento EventArgs.</param>
+        /// <param name="e">El evento EventArgs.</param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (this.cmbTipoVehiculo.SelectedItem != null)
@@ -131,7 +132,7 @@ namespace WinFormsAppLoginUser
         /// <summary>
         /// Remover() elimina un vehiculo de la lista segun el indice recibido por parametro
         /// </summary>
-        /// <param name="indice">Indice delVehiculo</param>
+        /// <param name="indice">Indice del Vehiculo</param>
         private void Remover(int indice)
         {
             this.estacionamiento.listVehiculos.RemoveAt(indice);

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
+    /// <summary>
+    /// Clase que representa una Motocicleta, que hereda de la clase Vehiculo.
+    /// </summary>
     public class Motocicleta : Vehiculo
     {
         public short cilindrada;

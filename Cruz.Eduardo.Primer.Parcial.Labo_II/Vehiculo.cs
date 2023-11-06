@@ -114,7 +114,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// <summary>
         /// Devuelve el tipo de vehiculo.
         /// </summary>
-        /// <returns>Retona una string con el tipo de vehiculo</returns>
+        /// <returns>Retorna una string con el tipo de vehiculo</returns>
         protected virtual string TipoDeVeihculo()
         {
             return "VEHICULO";
@@ -124,7 +124,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// Verifica si la cantidad de ruedas del vehículo cumple con ciertos criterios específicos
         /// dependiendo de la subclase que implementa este método.
         /// </summary>
-        /// <returns> Reorna true si la cantidad de ruedas cumple con los criterios específicos; de lo contrario, false.</returns>
+        /// <returns> Retorna true si la cantidad de ruedas cumple con los criterios específicos; de lo contrario, false.</returns>
         protected abstract bool VerificarCantRuedas();
         #endregion
 

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
+    /// <summary>
+    /// Clase que representa un Automovil, que hereda de la clase Vehiculo.
+    /// </summary>
     public class Automovil : Vehiculo
     {
         public string tipoDeCombustible;

@@ -38,7 +38,7 @@ namespace WinFormsAppLoginUser
             }
             finally
             {
-                MessageBox.Show("Gracias por usar el servicio.", "CHAU!!!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Gracias por usar el servicio.", "CHAU!!!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
     }

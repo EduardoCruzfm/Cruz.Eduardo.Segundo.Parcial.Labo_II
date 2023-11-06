@@ -105,15 +105,15 @@ namespace WinFormsAppLoginUser
         /// Establece el resultado del diálogo como "Cancelar".
         /// </summary>
         /// <param name="sender">El objeto que generó el evento (el botón "Cancelar").</param>
-        /// <param name="e">Argumentos del evento.</param>
+        /// <param name="e">El evento.</param>
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
 
             if (MessageBox.Show("¿Está seguro de que deseas cancelar?", "Cancelar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-            this.DialogResult = DialogResult.Cancel;
-                
+                this.DialogResult = DialogResult.Cancel;
+
             }
         }
 
