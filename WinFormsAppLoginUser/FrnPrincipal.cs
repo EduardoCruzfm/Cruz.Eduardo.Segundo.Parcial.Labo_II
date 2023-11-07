@@ -13,7 +13,7 @@ namespace WinFormsAppLoginUser
     public partial class FrnPrincipal : Form
     {
         protected Usuario usuario;
-        protected Estacionamiento estacionamiento;
+        protected Estacionamiento<Vehiculo> estacionamiento;
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
 
@@ -24,7 +24,7 @@ namespace WinFormsAppLoginUser
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.estacionamiento = new Estacionamiento("EST");
+            this.estacionamiento = new Estacionamiento<Vehiculo>("EST");
             this.listaDeLogeo = new List<UsuarioLog>();
 
         }
@@ -424,9 +424,9 @@ namespace WinFormsAppLoginUser
         /// NuevaListaOrdenada() se usa para guardar un nuevo ordanamiento segun criterio.
         /// </summary>
         /// <returns>Un objeto de tipo Estacionamiento</returns>
-        private Estacionamiento NuevaListaOrdenada()
+        private Estacionamiento<Vehiculo> NuevaListaOrdenada()
         {
-            Estacionamiento es = new Estacionamiento("ES_ORDENADO");
+            Estacionamiento<Vehiculo> es = new Estacionamiento<Vehiculo>("ES_ORDENADO");
 
             foreach (var v in this.estacionamiento.listVehiculos)
             {
@@ -440,7 +440,7 @@ namespace WinFormsAppLoginUser
         /// segun criterio.
         /// </summary>
         /// <param name="est"></param>
-        private void AgregarNuevaListaOrdenada(Estacionamiento est)
+        private void AgregarNuevaListaOrdenada(Estacionamiento<Vehiculo> est)
         {
             this.estacionamiento.listVehiculos.Clear();
 
@@ -461,7 +461,7 @@ namespace WinFormsAppLoginUser
         {
             if (rdNChasis.Checked)
             {
-                Estacionamiento estC = NuevaListaOrdenada();
+                Estacionamiento<Vehiculo> estC = NuevaListaOrdenada();
 
                 if (rdAsendente.Checked)
                 {
@@ -477,7 +477,7 @@ namespace WinFormsAppLoginUser
             }
             else if (rdCantRuedas.Checked)
             {
-                Estacionamiento estR = NuevaListaOrdenada();
+                Estacionamiento<Vehiculo> estR = NuevaListaOrdenada();
 
                 if (rdAsendente.Checked)
                 {

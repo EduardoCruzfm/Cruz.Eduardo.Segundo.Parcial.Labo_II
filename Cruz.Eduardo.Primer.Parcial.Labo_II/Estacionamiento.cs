@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 {
-    /// <summary>
-    /// Clase que representa un estacionamiento que contiene una lista de vehículos.
-    /// </summary>
     public class Estacionamiento
     {
         public string nombre;
-        public List<Vehiculo> listVehiculos;
+        public List<T> listVehiculos;
 
         /// <summary>
         /// Constructor de la clase Estacionamiento.
@@ -20,7 +17,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// <param name="nombre">Nombre del estacionamiento.</param>
         public Estacionamiento(string nombre)
         {
-            this.listVehiculos = new List<Vehiculo>();
+            this.listVehiculos = new List<T>();
             this.nombre = nombre;
         }
 
@@ -31,7 +28,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// <param name="atributo">Atributo por el cual va realizar el orden</param>
         public void Ordenar(string atributo)
         {
-            Vehiculo intercambio;
+            T intercambio;
             int rango = listVehiculos.Count;
             long prop1;
             long prop2;
@@ -69,7 +66,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// <param name="e">Almacena un Estacionamiento para buscar si se encuentra o no el Vehiculo.</param>
         /// <param name="v">Almacena un Vehiculo para la comparacion.</param>
         /// <returns>Retorna un true si se encuentra el objeto, de lo contrario false.</returns>
-        public static bool operator ==(Estacionamiento e, Vehiculo v)
+        public static bool operator ==(Estacionamiento<T> e, T v)
         {
             bool retorno = false;
 
@@ -92,7 +89,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// <param name="e">Almacena un Estacionamiento para buscar si se encuentra o no el Vehiculo.</param>
         /// <param name="v">Almacena un Vehiculo para la comparacion.</param>
         /// <returns>Retorna true si nose encuentra Vehiculo, de lo contrario false.</returns>
-        public static bool operator !=(Estacionamiento e, Vehiculo v)
+        public static bool operator !=(Estacionamiento<T> e, T v)
         {
             return !(e == v);
         }
@@ -103,7 +100,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// <param name="e">Almacena un Estacionamiento para buscar si se encuentra o no el Vehiculo.</param>
         /// <param name="v">Almacena un Vehiculo para la comparacion.</param>
         /// <returns>Retorna true si agrega el Vehiculo ala lista, de lo contrario false</returns>
-        public static bool operator +(Estacionamiento e, Vehiculo v)
+        public static bool operator +(Estacionamiento<T> e, T v)
         {
             bool retorno = false;
 
@@ -120,7 +117,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
         /// </summary>
         /// <param name="e"></param>
         /// <param name="v"></param>
-        /// <returns>Retorna true si se elimina el Vehiculo de la lista, de lo contrario false</returns>
+        /// <returns></returns>
         public static bool operator -(Estacionamiento e, Vehiculo v)
         {
             bool retorno = false;
