@@ -112,5 +112,44 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Equals() Determina si el objeto actual es igual a Automovil.
+        /// </summary>
+        /// <param name="obj">El objeto que se va a comparar con el objeto actual.</param>
+        /// <returns>Retorna true si el objeto actual es igual al parámetro obj; de lo contrario, false.</returns>
+        public override bool Equals(object? obj)
+        {
+            bool retorno = false;
+
+            if (obj is Automovil)
+            {
+                retorno = true;
+            }
+
+            return retorno;
+        }
+
+        /// <summary>
+        /// == Compara dos Automoviles si son iguales por sus atributos :  NChasis y marca.
+        /// </summary>
+        /// <param name="v1">Almacena un Automovil para la igualacion.</param>
+        /// <param name="v2">Almacena otro Automovil para la igualacion.</param>
+        /// <returns>Retorna true cuando son igualaes, de lo contrario false.</returns>
+        public static bool operator ==(Automovil a1, Automovil a2)
+        {
+            return ((Vehiculo)a1).Equals(a2);
+        }
+
+        /// <summary>
+        /// != Compara dos Automoviles si son distintos por sus atributos :  NChasis y marca.
+        /// </summary>
+        /// <param name="v1">Almacena un Automovil para la comparacion.</param>
+        /// <param name="v2">Almacena otro Automovil para la comparacion.</param>
+        /// <returns>Retorna true cuando son distintos, de lo contrario false.</returns>
+        public static bool operator !=(Automovil a1, Automovil a2)
+        {
+            return !(a1 == a2);
+        }
     }
 }

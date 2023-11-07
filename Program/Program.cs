@@ -15,7 +15,7 @@ namespace Program
             Automovil renault = new Automovil("Renaul",4,6,Colores.Rojo,"400000");
             Colectivo agrale = new Colectivo("Agrale",6,6,Colores.Blanco,"750000");
             Colectivo mercedes = new Colectivo("Mercedes benz",6,6,Colores.Blanco,"980000");
-            Estacionamiento<Vehiculo> hs24 = new Estacionamiento<Vehiculo>("24 HORAS");
+            Estacionamiento hs24 = new Estacionamiento("24 HORAS");
 
             
 

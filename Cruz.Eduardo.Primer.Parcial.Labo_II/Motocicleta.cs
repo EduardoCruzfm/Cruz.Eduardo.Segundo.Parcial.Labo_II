@@ -112,5 +112,46 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Equals() Determina si el objeto actual es igual a Motocicleta.
+        /// </summary>
+        /// <param name="obj">El objeto que se va a comparar con el objeto actual.</param>
+        /// <returns>Retorna true si el objeto actual es igual al parámetro obj; de lo contrario, false.</returns>
+        public override bool Equals(object? obj)
+        {
+            bool retorno = false;
+
+            if (obj is Motocicleta)
+            {
+                retorno = true;
+            }
+
+            return retorno;
+        }
+
+        /// <summary>
+        /// == Compara dos Motocicletas si son iguales por sus atributos :  NChasis y marca.
+        /// </summary>
+        /// <param name="v1">Almacena un Motocicleta para la igualacion.</param>
+        /// <param name="v2">Almacena otro Motocicleta para la igualacion.</param>
+        /// <returns>Retorna true cuando son igualaes, de lo contrario false.</returns>
+        public static bool operator ==(Motocicleta m1,Motocicleta m2)
+        {
+            return ((Vehiculo)m1).Equals(m2);
+        }
+
+        /// <summary>
+        /// != Compara dos Motocicletas si son distintas por sus atributos :  NChasis y marca.
+        /// </summary>
+        /// <param name="v1">Almacena un Motocicleta para la igualacion.</param>
+        /// <param name="v2">Almacena otro Motocicleta para la igualacion.</param>
+        /// <returns>Retorna true cuando son distintas, de lo contrario false.</returns>
+        public static bool operator !=(Motocicleta m1, Motocicleta m2)
+        {
+            return !(m1 == m2);
+        }
+
+
     }
 }

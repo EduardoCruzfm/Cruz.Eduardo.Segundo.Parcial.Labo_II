@@ -70,7 +70,7 @@
             lblContraseña.AutoSize = true;
             lblContraseña.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblContraseña.ForeColor = Color.White;
-            lblContraseña.Location = new Point(126, 209);
+            lblContraseña.Location = new Point(124, 203);
             lblContraseña.Name = "lblContraseña";
             lblContraseña.Size = new Size(79, 19);
             lblContraseña.TabIndex = 2;
@@ -81,7 +81,7 @@
             lblUsuario.AutoSize = true;
             lblUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblUsuario.ForeColor = Color.White;
-            lblUsuario.Location = new Point(85, 99);
+            lblUsuario.Location = new Point(124, 116);
             lblUsuario.Name = "lblUsuario";
             lblUsuario.Size = new Size(56, 19);
             lblUsuario.TabIndex = 3;
@@ -90,7 +90,7 @@
             // txtContraseña
             // 
             txtContraseña.BackColor = Color.Gainsboro;
-            txtContraseña.Location = new Point(215, 222);
+            txtContraseña.Location = new Point(124, 239);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
             txtContraseña.PlaceholderText = "Ingrese contraseña";
@@ -100,7 +100,7 @@
             // txtUsuario
             // 
             txtUsuario.BackColor = Color.Gainsboro;
-            txtUsuario.Location = new Point(215, 99);
+            txtUsuario.Location = new Point(124, 155);
             txtUsuario.Name = "txtUsuario";
             txtUsuario.PlaceholderText = "Ingrese usuario";
             txtUsuario.Size = new Size(170, 23);

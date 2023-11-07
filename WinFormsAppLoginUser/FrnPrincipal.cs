@@ -13,7 +13,7 @@ namespace WinFormsAppLoginUser
     public partial class FrnPrincipal : Form
     {
         protected Usuario usuario;
-        protected Estacionamiento<Vehiculo> estacionamiento;
+        protected Estacionamiento estacionamiento;
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
 
@@ -24,7 +24,7 @@ namespace WinFormsAppLoginUser
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.estacionamiento = new Estacionamiento<Vehiculo>("EST");
+            this.estacionamiento = new Estacionamiento("EST");
             this.listaDeLogeo = new List<UsuarioLog>();
 
         }
@@ -181,11 +181,7 @@ namespace WinFormsAppLoginUser
                     {
                         if (this.estacionamiento == fromA.Auto)
                         {
-                            MessageBox.Show("Ya existen esos datos");
-                            
-                            //this.estacionamiento.listVehiculos[indice] = fromA.Auto;
-                            //this.estacionamiento.listVehiculos[indice] = fromA.Auto;
-
+                            this.MensajeDeAtencion(v.Marca,v.NChasis);
                         }
                         else if (this.estacionamiento != fromA.Auto)
                         {
@@ -205,7 +201,16 @@ namespace WinFormsAppLoginUser
 
                     if (fromM.DialogResult == DialogResult.OK)
                     {
-                        this.estacionamiento.listVehiculos[indice] = fromM.Moto;
+                        if (this.estacionamiento == fromM.Moto)
+                        {
+                            this.MensajeDeAtencion(v.Marca, v.NChasis);
+                        }
+                        else if (this.estacionamiento != fromM.Moto)
+                        {
+                            this.Remover(indice);
+                            _ = this.estacionamiento + fromM.Moto;
+                        }
+
                         this.ActualizarVisor();
                     }
 
@@ -218,7 +223,16 @@ namespace WinFormsAppLoginUser
 
                     if (fromC.DialogResult == DialogResult.OK)
                     {
-                        this.estacionamiento.listVehiculos[indice] = fromC.Colctivo;
+                        if (this.estacionamiento == fromC.Colctivo)
+                        {
+                            this.MensajeDeAtencion(v.Marca, v.NChasis);
+                        }
+                        else if (this.estacionamiento != fromC.Colctivo)
+                        {
+                            this.Remover(indice);
+                            _ = this.estacionamiento + fromC.Colctivo;
+                        }
+
                         this.ActualizarVisor();
                     }
 
@@ -424,9 +438,9 @@ namespace WinFormsAppLoginUser
         /// NuevaListaOrdenada() se usa para guardar un nuevo ordanamiento segun criterio.
         /// </summary>
         /// <returns>Un objeto de tipo Estacionamiento</returns>
-        private Estacionamiento<Vehiculo> NuevaListaOrdenada()
+        private Estacionamiento NuevaListaOrdenada()
         {
-            Estacionamiento<Vehiculo> es = new Estacionamiento<Vehiculo>("ES_ORDENADO");
+            Estacionamiento es = new Estacionamiento("ES_ORDENADO");
 
             foreach (var v in this.estacionamiento.listVehiculos)
             {
@@ -440,7 +454,7 @@ namespace WinFormsAppLoginUser
         /// segun criterio.
         /// </summary>
         /// <param name="est"></param>
-        private void AgregarNuevaListaOrdenada(Estacionamiento<Vehiculo> est)
+        private void AgregarNuevaListaOrdenada(Estacionamiento est)
         {
             this.estacionamiento.listVehiculos.Clear();
 
@@ -455,13 +469,13 @@ namespace WinFormsAppLoginUser
         /// <summary>
         /// btnOrdenar_Click() Ordenda la lista por N° Chasis / Cantidad de ruedas.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">El evento.</param>
         private void btnOrdenar_Click(object sender, EventArgs e)
         {
             if (rdNChasis.Checked)
             {
-                Estacionamiento<Vehiculo> estC = NuevaListaOrdenada();
+                Estacionamiento estC = NuevaListaOrdenada();
 
                 if (rdAsendente.Checked)
                 {
@@ -477,7 +491,7 @@ namespace WinFormsAppLoginUser
             }
             else if (rdCantRuedas.Checked)
             {
-                Estacionamiento<Vehiculo> estR = NuevaListaOrdenada();
+                Estacionamiento estR = NuevaListaOrdenada();
 
                 if (rdAsendente.Checked)
                 {
@@ -496,8 +510,8 @@ namespace WinFormsAppLoginUser
         /// <summary>
         /// btnHistorialLog_Click() Muestra el Form de logueos registrados
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">El evento.</param>
         private void btnHistorialLog_Click(object sender, EventArgs e)
         {
             //this.DeserializarUsuarioLog();
@@ -509,8 +523,8 @@ namespace WinFormsAppLoginUser
         /// btnAbrir_Click() Abre la interaccion con openFileDialog para poder 
         /// elegir que archivo deserializar.
         /// </summary> 
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">El evento.</param>
         private void btnAbrir_Click(object sender, EventArgs e)
         {
             try
@@ -525,8 +539,8 @@ namespace WinFormsAppLoginUser
             }
             catch (Exception)
             {
+                _ = MessageBox.Show($"Se a producido un error, archivo no compatible", "Error al abrir archivo", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK;
 
-                MessageBox.Show("Error archivo no compatible");
             }
 
         }
@@ -535,8 +549,8 @@ namespace WinFormsAppLoginUser
         /// btnGuardar_Click() Abre la interaccion con saveFileDialog para poder 
         /// elegir donde serializar el archivo.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">El objeto que generó el evento.</param>
+        /// <param name="e">El evento.</param>
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
@@ -551,9 +565,19 @@ namespace WinFormsAppLoginUser
             }
             catch (Exception)
             {
-
-                MessageBox.Show("Erro al guardar");
+                _ = MessageBox.Show($"Se a producido un error al guardar el archivo", "Error al guardar archivo", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK;
             }
+        }
+
+        /// <summary>
+        /// MensajeDeAtencion() Muestra un mensaje de atención indicando que los datos ya existen en el registro.
+        /// </summary>
+        /// <param name="marca">La marca de un vehículo.</param>
+        /// <param name="nChasis">El número de chasis del vehículo.</param>
+        private void MensajeDeAtencion(string marca, string nChasis)
+        {
+            _ = MessageBox.Show($"Los datos Marca: {marca} y de N° de chasis: {nChasis} ya existe en el registro", "Datos existente", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK;
+
         }
     }
 }

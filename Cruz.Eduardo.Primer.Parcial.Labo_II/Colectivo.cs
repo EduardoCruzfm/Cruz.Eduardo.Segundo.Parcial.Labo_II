@@ -115,5 +115,44 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Equals() Determina si el objeto actual es igual a Colectivo.
+        /// </summary>
+        /// <param name="obj">El objeto que se va a comparar con el objeto actual.</param>
+        /// <returns>Retorna true si el objeto actual es igual al parámetro obj; de lo contrario, false.</returns>
+        public override bool Equals(object? obj)
+        {
+            bool retorno = false;
+
+            if (obj is Colectivo)
+            {
+                retorno = true;
+            }
+
+            return retorno;
+        }
+
+        /// <summary>
+        /// == Compara dos Colectivos si son iguales por sus atributos :  NChasis y marca.
+        /// </summary>
+        /// <param name="v1">Almacena un Colectivo para la igualacion.</param>
+        /// <param name="v2">Almacena otro Colectivo para la igualacion.</param>
+        /// <returns>Retorna true cuando son igualaes, de lo contrario false.</returns>
+        public static bool operator ==(Colectivo c1, Colectivo c2)
+        {
+            return ((Vehiculo)c1).Equals(c2);
+        }
+
+        /// <summary>
+        /// != Compara dos Colectivos si son distintos por sus atributos :  NChasis y marca.
+        /// </summary>
+        /// <param name="v1">Almacena un Colectivo para la comparacion.</param>
+        /// <param name="v2">Almacena otro Colectivo para la comparacion.</param>
+        /// <returns>Retorna true cuando son distintos, de lo contrario false.</returns>
+        public static bool operator !=(Colectivo c1, Colectivo c2)
+        {
+            return !(c1 == c2);
+        }
     }
 }

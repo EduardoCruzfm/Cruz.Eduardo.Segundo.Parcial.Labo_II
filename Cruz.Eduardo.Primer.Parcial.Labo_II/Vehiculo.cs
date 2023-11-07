@@ -204,22 +204,22 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
 
         #region             Operador
         /// <summary>
-        /// == Compara dos Vehiculos por sus atributos :  NChasis y marca.
+        /// == Compara dos Vehiculos si son iguales por sus atributos :  NChasis y marca.
         /// </summary>
         /// <param name="v1">Almacena un Vehiculo para la igualacion.</param>
         /// <param name="v2">Almacena otro Vehiculo para la igualacion.</param>
-        /// <returns>Retorna true cuando son igualaes segun los atributos de comparacion, de lo contrario false.</returns>
+        /// <returns>Retorna true cuando son igualaes, de lo contrario false.</returns>
         public static bool operator ==(Vehiculo v1, Vehiculo v2)
         {
             return v1.NChasis == v2.NChasis && v1.marca == v2.marca;
         }
 
         /// <summary>
-        /// != Reutiliza la logica del == negandolo.
+        /// != Compara dos Vehicules si son distintos por sus atributos :  NChasis y marca.
         /// </summary>
         /// <param name="v1">Almacena un Vehiculo para la comparacion.</param>
         /// <param name="v2">Almacena otro Vehiculo para la comparacion.</param>
-        /// <returns></returns>
+        /// <returns>Retorna true cuando son distintos, de lo contrario false.</returns>
         public static bool operator !=(Vehiculo v1, Vehiculo v2)
         {
             return !(v1 == v2);

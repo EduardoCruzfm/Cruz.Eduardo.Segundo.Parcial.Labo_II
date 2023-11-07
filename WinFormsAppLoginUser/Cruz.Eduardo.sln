@@ -1,0 +1,41 @@
+[{
+  "EsAutomatico": "Si",
+  "CantidadDePasajeros": 70,
+  "Marca": "Agrale",
+  "NChasis": "787878",
+  "CantidadMarchas": 6,
+  "CantidadRuedas": 6,
+  "Color": 3
+},{
+  "TipoDeCombustible": "Nafta",
+  "CantidadDePuertas": 2,
+  "Marca": "Bmw",
+  "NChasis": "4545",
+  "CantidadMarchas": 6,
+  "CantidadRuedas": 4,
+  "Color": 1
+},{
+  "EsAutomatico": "Si",
+  "CantidadDePasajeros": 60,
+  "Marca": "Scania",
+  "NChasis": "3000",
+  "CantidadMarchas": 6,
+  "CantidadRuedas": 6,
+  "Color": 3
+},{
+  "Cilindrada": 390,
+  "Urbano": "Si",
+  "Marca": "benelli",
+  "NChasis": "2019",
+  "CantidadMarchas": 6,
+  "CantidadRuedas": 2,
+  "Color": 0
+},{
+  "TipoDeCombustible": "nafta",
+  "CantidadDePuertas": 2,
+  "Marca": "Torino",
+  "NChasis": "1212",
+  "CantidadMarchas": 4,
+  "CantidadRuedas": 4,
+  "Color": 2
+}]
