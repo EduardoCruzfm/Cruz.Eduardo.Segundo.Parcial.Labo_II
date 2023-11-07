@@ -576,7 +576,7 @@ namespace WinFormsAppLoginUser
         /// <param name="nChasis">El número de chasis del vehículo.</param>
         private void MensajeDeAtencion(string marca, string nChasis)
         {
-            _ = MessageBox.Show($"Los datos Marca: {marca} y de N° de chasis: {nChasis} ya existe en el registro", "Datos existente", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK;
+            _ = MessageBox.Show($"Los datos Marca: {marca} y de N° de chasis: {nChasis} ya existe en el registro", "Datos existentes", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK;
 
         }
     }

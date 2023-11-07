@@ -34,6 +34,7 @@
             lblUsuario = new Label();
             txtContraseña = new TextBox();
             txtUsuario = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // btnAceptar
@@ -102,9 +103,20 @@
             txtUsuario.BackColor = Color.Gainsboro;
             txtUsuario.Location = new Point(124, 155);
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.PlaceholderText = "Ingrese usuario";
+            txtUsuario.PlaceholderText = "Ingrese email";
             txtUsuario.Size = new Size(170, 23);
             txtUsuario.TabIndex = 5;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(137, 60);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 28);
+            label1.TabIndex = 6;
+            label1.Text = "Iniciar Sesion";
             // 
             // FrmLogin
             // 
@@ -113,6 +125,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
             ClientSize = new Size(423, 405);
+            Controls.Add(label1);
             Controls.Add(txtUsuario);
             Controls.Add(txtContraseña);
             Controls.Add(lblUsuario);
@@ -136,5 +149,6 @@
         private Label lblUsuario;
         private TextBox txtContraseña;
         private TextBox txtUsuario;
+        private Label label1;
     }
 }
