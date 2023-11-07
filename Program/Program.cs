@@ -48,7 +48,6 @@ namespace Program
 
             _ = hs24 - benelli;
             _ = hs24 - yamaha;
-            _ = hs24 - renault;
 /*
             if (hs24 - mercedes)
             {
