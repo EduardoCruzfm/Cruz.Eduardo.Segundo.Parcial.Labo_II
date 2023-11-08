@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cruz.Eduardo.Primer.Parcial.Labo_II\Cruz.Eduardo.Primer.Parcial.Labo_II.csproj" />
+  </ItemGroup>
+
 </Project>
