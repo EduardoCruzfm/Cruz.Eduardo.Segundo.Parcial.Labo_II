@@ -2,16 +2,17 @@
 
 namespace Biblioteca_de_Interfaces
 {
-    public interface IConexiones
+    public interface IConexiones<T>
+        where T : Vehiculo
     {
 
         bool PruebaConexion();
 
-        List<Vehiculo> ObtenerListaDatos();
+        List<T> ObtenerListaDatos();
 
-        bool AgregarDato(Vehiculo v);
+        bool AgregarDato(T v);
 
-        bool ModificarDato(Vehiculo v);
+        bool ModificarDato(T v);
 
     }
 }

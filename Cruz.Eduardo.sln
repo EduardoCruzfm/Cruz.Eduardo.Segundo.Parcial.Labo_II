@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Program", "Program\Program.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppLoginUser", "WinFormsAppLoginUser\WinFormsAppLoginUser.csproj", "{053E390A-E94A-4E67-A33D-B2D45CF9E7D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUnitarios", "TestUnitarios\TestUnitarios.csproj", "{FC774589-CA99-4810-9B33-AA61042CBF1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUnitarios", "TestUnitarios\TestUnitarios.csproj", "{FC774589-CA99-4810-9B33-AA61042CBF1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca_de_Interfaces", "Biblioteca_de_Interfaces\Biblioteca_de_Interfaces.csproj", "{26ECF6B2-DEBE-4A62-ABD4-A0C696D207C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca_de_Interfaces", "Biblioteca_de_Interfaces\Biblioteca_de_Interfaces.csproj", "{26ECF6B2-DEBE-4A62-ABD4-A0C696D207C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca_de_Accesos", "Biblioteca_de_Accesos\Biblioteca_de_Accesos.csproj", "{EC1739C8-167A-4A93-B858-6513232D70DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{26ECF6B2-DEBE-4A62-ABD4-A0C696D207C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26ECF6B2-DEBE-4A62-ABD4-A0C696D207C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26ECF6B2-DEBE-4A62-ABD4-A0C696D207C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC1739C8-167A-4A93-B858-6513232D70DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC1739C8-167A-4A93-B858-6513232D70DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC1739C8-167A-4A93-B858-6513232D70DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC1739C8-167A-4A93-B858-6513232D70DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
