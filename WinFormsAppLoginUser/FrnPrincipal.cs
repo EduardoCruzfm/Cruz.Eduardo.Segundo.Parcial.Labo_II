@@ -61,6 +61,9 @@ namespace WinFormsAppLoginUser
             this.SerealizarUsuario();
             this.cmbTipoVehiculo.SelectedIndex = 0;
             this.DeserializarUsuarioLog();
+
+            // Verificar permisos
+            this.VerificarPermisosUsuario(this.usuario);
         }
 
         /// <summary>
@@ -147,14 +150,16 @@ namespace WinFormsAppLoginUser
         /// <param name="e">El evento EventArgs.</param>
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            int indice = this.lstVisor.SelectedIndex;
+
+            if (indice == -1) { return; }
+
             if (MessageBox.Show("¿Está seguro de que deseas eliminarlo?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                int indice = this.lstVisor.SelectedIndex;
+                {
+                    this.Remover(indice);
+                }
 
-                if (indice == -1) { return; }
-
-                this.Remover(indice);
-            }
+            
         }
 
         /// <summary>
@@ -246,6 +251,7 @@ namespace WinFormsAppLoginUser
         /// <param name="path">Ruta del archivo a deserealizar</param>
         private void Deserializar(string path)
         {
+
             if (File.Exists(path))
             {
 
@@ -305,6 +311,8 @@ namespace WinFormsAppLoginUser
         /// </summary>
         private void SerealizarUsuario()
         {
+            try
+            {
             string? path = @"..\..\..\Usuario.log";
             using (StreamWriter sw = File.AppendText(path))
             {
@@ -317,6 +325,13 @@ namespace WinFormsAppLoginUser
 
                 sw.Write(usuarioLog);
             }
+
+            }
+            catch (Exception)
+            {
+
+                _ = MessageBox.Show($"No se puede guardar los registros", "Error en logueos", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK;
+            }
         }
 
         /// <summary>
@@ -325,63 +340,73 @@ namespace WinFormsAppLoginUser
         /// </summary>
         private void DeserializarUsuarioLog()
         {
-            string? path = @"..\..\..\Usuario.log";
-            // Lista para almacenar los registros
-            List<UsuarioLog> registros = new List<UsuarioLog>();
-
-            if (File.Exists(path))
+            try
             {
+                string? path = @"..\..\..\Usuario.log";
+                // Lista para almacenar los registros
+                List<UsuarioLog> registros = new List<UsuarioLog>();
 
-                using (StreamReader reader = new StreamReader(path))
+                if (File.Exists(path))
                 {
-                    UsuarioLog? usuarioLog = null;
 
-                    foreach (string line in reader.ReadToEnd().Split('\n'))
+                    using (StreamReader reader = new StreamReader(path))
                     {
-                        if (line.StartsWith("Fecha:"))
-                        {
-                            usuarioLog = new UsuarioLog();
-                            registros.Add(usuarioLog);
+                        UsuarioLog? usuarioLog = null;
 
-                            if (DateTime.TryParseExact(line.Substring(7).Trim(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fecha))
-                            {
-                                usuarioLog.Fecha = fecha;
-                            }
-                        }
-                        else if (usuarioLog != null)
+                        foreach (string line in reader.ReadToEnd().Split('\n'))
                         {
-                            if (line.StartsWith(" Usuario:"))
+                            if (line.StartsWith("Fecha:"))
                             {
-                                usuarioLog.nombre = line.Substring(10).Trim();
-                            }
-                            else if (line.StartsWith(" Apellido:"))
-                            {
-                                usuarioLog.apellido = line.Substring(11).Trim();
-                            }
-                            else if (line.StartsWith(" Correo:"))
-                            {
-                                usuarioLog.correo = line.Substring(9).Trim();
-                            }
-                            else if (line.StartsWith(" Legajo:"))
-                            {
-                                if (int.TryParse(line.Substring(8).Trim(), out int legajo))
+                                usuarioLog = new UsuarioLog();
+                                registros.Add(usuarioLog);
+
+                                if (DateTime.TryParseExact(line.Substring(7).Trim(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime fecha))
                                 {
-                                    usuarioLog.legajo = legajo;
+                                    usuarioLog.Fecha = fecha;
                                 }
                             }
-                            else if (line.StartsWith("Perfil:"))
+                            else if (usuarioLog != null)
                             {
-                                usuarioLog.perfil = line.Substring(8).Trim();
+                                if (line.StartsWith(" Usuario:"))
+                                {
+                                    usuarioLog.nombre = line.Substring(10).Trim();
+                                }
+                                else if (line.StartsWith(" Apellido:"))
+                                {
+                                    usuarioLog.apellido = line.Substring(11).Trim();
+                                }
+                                else if (line.StartsWith(" Correo:"))
+                                {
+                                    usuarioLog.correo = line.Substring(9).Trim();
+                                }
+                                else if (line.StartsWith(" Legajo:"))
+                                {
+                                    if (int.TryParse(line.Substring(8).Trim(), out int legajo))
+                                    {
+                                        usuarioLog.legajo = legajo;
+                                    }
+                                }
+                                else if (line.StartsWith("Perfil:"))
+                                {
+                                    usuarioLog.perfil = line.Substring(8).Trim();
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            foreach (UsuarioLog u in registros)
-            {
-                this.listaDeLogeo.Add(u);
+                foreach (UsuarioLog u in registros)
+                {
+                    this.listaDeLogeo.Add(u);
+                }
             }
+            catch (Exception)
+            {
+
+                _ = MessageBox.Show($"No se encuentra el archivo Usuario.log", "Error en logueos", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK;
+
+            }
+            
         }
 
         /// <summary>
@@ -391,6 +416,7 @@ namespace WinFormsAppLoginUser
         /// <param name="path">Ruta donde se guardara el archivo</param>
         private void Serealizar(string path)
         {
+
             string objJson;
 
             List<string> objetosSerializados = new List<string>();
@@ -432,6 +458,7 @@ namespace WinFormsAppLoginUser
             {
                 sw.WriteLine(jsonArray);
             }
+
         }
 
         /// <summary>
@@ -577,6 +604,32 @@ namespace WinFormsAppLoginUser
         private void MensajeDeAtencion(string marca, string nChasis)
         {
             _ = MessageBox.Show($"Los datos Marca: {marca} y de N° de chasis: {nChasis} ya existe en el registro", "Datos existentes", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK;
+
+        }
+
+        private void VerificarPermisosUsuario(Usuario u)
+        {
+            // Mejorar mesajes
+            switch (u.perfil)
+            {
+                case "administrador":
+                    MessageBox.Show("administrador"); // Usa todos los botones
+                    break;
+
+                case "supervisor":
+                    MessageBox.Show("supervisor"); // Puede usar boton agregar y modificar y no puede usar eliminar
+                    this.btnAgregar.Enabled = false;
+                    this.btnModificar.Enabled = false;
+                    break;
+
+                case "vendedor":
+                    MessageBox.Show("vendedor"); // No puede usar agregar,modificar ni eliminar
+                    this.btnAgregar.Enabled = false;
+                    this.btnGuardar.Enabled = false;
+                    this.btnModificar.Enabled = false;
+                    this.btnEliminar.Enabled = false;
+                    break;
+            }
 
         }
     }
