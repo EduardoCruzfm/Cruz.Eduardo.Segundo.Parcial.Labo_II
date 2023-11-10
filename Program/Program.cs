@@ -13,7 +13,7 @@ namespace Program
             Motocicleta honda2 = new Motocicleta("Honda", 2, 5, Colores.Negro, "1000");
             Motocicleta benelli = new Motocicleta("Benelli", 2, 5, Colores.Rojo, "3000");
             Motocicleta yamaha = new Motocicleta("Yahama", 2, 5, Colores.Azul, "1500");
-            Automovil renault = new Automovil("Renaul", 4, 6, Colores.Rojo, "400000");
+            Automovil renault = new Automovil("Renaul", 4, 6, Colores.Rojo, "400000","Diesel",4);
             Colectivo agrale = new Colectivo("Agrale", 6, 6, Colores.Blanco, "750000");
             Colectivo mercedes = new Colectivo("Mercedes benz", 6, 6, Colores.Blanco, "980000");
             Estacionamiento<Vehiculo> hs24 = new Estacionamiento<Vehiculo>("24 HORAS");
@@ -52,17 +52,18 @@ namespace Program
             }
 
 
-            Automovil automovil = new Automovil("Fiat", 4, 5, Colores.Azul, "12121","Nafta",4);
+            Automovil automovil = new Automovil("Opel", 4, 5, Colores.Negro, "12121","Gas",4);
 
-            if (accesoAutomovil.AgregarDato(automovil))
-            {
-                Console.WriteLine("Se agredo");
-            }
-            else
-            {
-                Console.WriteLine("No se agrego");
+            //if (accesoAutomovil.AgregarDato(automovil))
+                if (accesoAutomovil.EliminarDato(automovil))
+                {
+                    Console.WriteLine("Se agredo");
+                }
+                else
+                {
+                    Console.WriteLine("No se agrego");
 
-            }
+                }
         }
     }
 }

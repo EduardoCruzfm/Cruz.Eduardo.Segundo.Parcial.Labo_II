@@ -107,30 +107,14 @@ namespace Biblioteca_de_Accesos
                 this.Comando.CommandText = "insert into tabla_automoviles (NUMERO_CHASIS,MARCA,CANT_RUEDAS,CANT_MARCHAS,COLOR,CANT_PUERTAS,COMBUSTIBLE) values (@numero_chasis,@marca,@cant_ruedas,@cant_marchas,@color,@cant_puertas,@combustible)";
                 this.Comando.Connection = this.Conexion;
 
-                string marca = (string)a.Marca;
-                short cantRuedas = (short)a.CantidadRuedas;
-                short cantMarchas = (short)a.CantidadMarchas;
-                string color = (string)a.Color.ToString();
-                string nChasis = (string)a.NChasis;
-                short cantPuertas = (short)a.CantidadDePuertas;
-                string combustible = (string)a.TipoDeCombustible;
 
-                //string marca = "Torino";
-                //short cantRuedas = 4;
-                //short cantMarchas = 5;
-                //string color = "Negro";
-                //string nChasis = "232323";
-                //short cantPuertas = 2;
-                //string combustible = "Nafta";
-
-
-                this.Comando.Parameters.AddWithValue(@"marca", marca);
-                this.Comando.Parameters.AddWithValue(@"cant_ruedas", cantRuedas);
-                this.Comando.Parameters.AddWithValue(@"cant_marchas", cantMarchas);
-                this.Comando.Parameters.AddWithValue(@"color", color);
-                this.Comando.Parameters.AddWithValue(@"numero_chasis", nChasis);
-                this.Comando.Parameters.AddWithValue(@"cant_puertas", cantPuertas);
-                this.Comando.Parameters.AddWithValue(@"combustible", combustible) ;
+                this.Comando.Parameters.AddWithValue(@"marca", a.Marca);
+                this.Comando.Parameters.AddWithValue(@"cant_ruedas", a.CantidadRuedas);
+                this.Comando.Parameters.AddWithValue(@"cant_marchas", a.CantidadMarchas);
+                this.Comando.Parameters.AddWithValue(@"color", a.Color.ToString());
+                this.Comando.Parameters.AddWithValue(@"numero_chasis", a.NChasis);
+                this.Comando.Parameters.AddWithValue(@"cant_puertas", a.CantidadDePuertas);
+                this.Comando.Parameters.AddWithValue(@"combustible", a.tipoDeCombustible) ;
 
 
                 this.Conexion.Open();
@@ -169,15 +153,15 @@ namespace Biblioteca_de_Accesos
                 this.Comando = new SqlCommand();
 
                 this.Comando.Parameters.AddWithValue(@"marca", a.Marca);
-                this.Comando.Parameters.AddWithValue(@"cant. ruedas", a.CantidadRuedas);
-                this.Comando.Parameters.AddWithValue(@"cant. marchas", a.CantidadMarchas);
-                this.Comando.Parameters.AddWithValue(@"color", a.Color);
-                this.Comando.Parameters.AddWithValue(@"numero de chasis", a.NChasis);
-                this.Comando.Parameters.AddWithValue(@"cant. puertas", a.CantidadDePuertas);
-                this.Comando.Parameters.AddWithValue(@"combustible", a.TipoDeCombustible);
+                this.Comando.Parameters.AddWithValue(@"cant_ruedas", a.CantidadRuedas);
+                this.Comando.Parameters.AddWithValue(@"cant_marchas", a.CantidadMarchas);
+                this.Comando.Parameters.AddWithValue(@"color", a.Color.ToString());
+                this.Comando.Parameters.AddWithValue(@"numero_chasis", a.NChasis);
+                this.Comando.Parameters.AddWithValue(@"cant_puertas", a.CantidadDePuertas);
+                this.Comando.Parameters.AddWithValue(@"combustible", a.tipoDeCombustible);
 
-                this.Comando.CommandType = System.Data.CommandType.Text; //->Emun, inidca que va ejejcutar en el comand tex
-                this.Comando.CommandText = "update tabla_automoviles set @marca = marca, @cant. ruedas = cant. ruedas, @cant. marchas = cant. marchas, @color = color, @numero de chasis = numero de chasis, @cant. puertas = cant. puertas ,@combustible = combustible where numero de chasis = @numero de chasis";
+                this.Comando.CommandType = System.Data.CommandType.Text;
+                this.Comando.CommandText = "update tabla_automoviles set NUMERO_CHASIS = @numero_chasis , MARCA = @marca , CANT_RUEDAS = @cant_ruedas , CANT_MARCHAS = @cant_marchas , COLOR = @color, CANT_PUERTAS = @cant_puertas , COMBUSTIBLE = @combustible  where NUMERO_CHASIS = @numero_chasis";
                 this.Comando.Connection = this.Conexion;
 
 
@@ -190,9 +174,48 @@ namespace Biblioteca_de_Accesos
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (this.Conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.Conexion.Close();
+                }
+            }
 
+            return retorno;
+        }
+
+
+        public bool EliminarDato(Automovil a)
+        {
+            bool retorno = false;
+
+            try
+            {
+                this.Comando = new SqlCommand();
+
+                this.Comando.Parameters.AddWithValue(@"numero_chasis", a.NChasis);
+
+                this.Comando.CommandType = System.Data.CommandType.Text;
+                this.Comando.CommandText = "delete from tabla_automoviles where NUMERO_CHASIS = @numero_chasis";
+                this.Comando.Connection = this.Conexion;
+
+
+                this.Conexion.Open();
+                int filasAfectadas = this.Comando.ExecuteNonQuery();
+
+                if (filasAfectadas > 0)
+                {
+                    retorno = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             finally
             {

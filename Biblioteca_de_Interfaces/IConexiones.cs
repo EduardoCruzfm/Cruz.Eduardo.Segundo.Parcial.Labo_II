@@ -14,5 +14,7 @@ namespace Biblioteca_de_Interfaces
 
         bool ModificarDato(T v);
 
+        bool EliminarDato(T v);
+
     }
 }
