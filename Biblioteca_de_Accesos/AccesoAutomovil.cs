@@ -11,10 +11,17 @@ using System.Threading.Tasks;
 
 namespace Biblioteca_de_Accesos
 {
+    /// <summary>
+    /// Clase que proporciona métodos para acceder y manipular datos de la tabla de automóviles en la base de datos.
+    /// Implementa la interfaz IConexiones&lt;Automovil&gt;.
+    /// </summary>
     public class AccesoAutomovil : AccesoVehiculos, IConexiones<Automovil>
     {
 
-
+        /// <summary>
+        /// Verifica la conexión con la base de datos.
+        /// </summary>
+        /// <returns>True si la conexión es exitosa, de lo contrario False.</returns>
         public bool PruebaConexion()
         {
             bool retorno = false;
@@ -37,9 +44,10 @@ namespace Biblioteca_de_Accesos
             return retorno;
         }
 
-
-        ///
-
+        /// <summary>
+        /// Obtiene una lista de objetos Automovil desde la base de datos.
+        /// </summary>
+        /// <returns>Lista de objetos Automovil.</returns>
         public List<Automovil> ObtenerListaDatos()
         {
             List<Automovil> lista = new List<Automovil>();
@@ -91,9 +99,11 @@ namespace Biblioteca_de_Accesos
             return lista;
         }
 
-        
-        //-------------------------------------------------------------------------------
-
+        /// <summary>
+        /// Agrega un objeto Automovil a la base de datos.
+        /// </summary>
+        /// <param name="a">Objeto Automovil a agregar.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
         public bool AgregarDato(Automovil a)
         {
             bool retorno = false;
@@ -141,9 +151,12 @@ namespace Biblioteca_de_Accesos
 
             return retorno;
         }
-        //--------------------------------------------------------
 
-
+        /// <summary>
+        /// Modifica un registro de la tabla de automóviles en la base de datos.
+        /// </summary>
+        /// <param name="a">Objeto Automovil con los nuevos datos.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
         public bool ModificarDato(Automovil a)
         {
             bool retorno = false;
@@ -189,7 +202,11 @@ namespace Biblioteca_de_Accesos
             return retorno;
         }
 
-
+        /// <summary>
+        /// Elimina un registro de la tabla de automóviles en la base de datos.
+        /// </summary>
+        /// <param name="a">Objeto Automovil a eliminar.</param>
+        /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
         public bool EliminarDato(Automovil a)
         {
             bool retorno = false;
