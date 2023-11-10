@@ -52,5 +52,31 @@ namespace Biblioteca_de_Accesos
             this.Conexion = new SqlConnection(AccesoVehiculos.Cadena_conexion);
         }
 
+        /// <summary>
+        /// Verifica la conexión con la base de datos.
+        /// Que se implementa en las clases derivadas para la interfas IConexiones.
+        /// </summary>
+        /// <returns>True si la conexión es exitosa, de lo contrario False.</returns>
+        public bool PruebaConexion()
+        {
+            bool retorno = false;
+            try
+            {
+                this.Conexion.Open();
+                retorno = true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                if (this.Conexion.State == System.Data.ConnectionState.Open)
+                {
+                    this.Conexion.Close();
+                }
+            }
+            return retorno;
+        }
     }
 }

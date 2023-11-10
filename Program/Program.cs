@@ -32,9 +32,10 @@ namespace Program
 
 
 
-            AccesoAutomovil accesoAutomovil = new AccesoAutomovil();
+            //AccesoAutomovil accesoAutomovil = new AccesoAutomovil();
+            AccesoColectivo accesoMotocicleta = new AccesoColectivo();
 
-            if (accesoAutomovil.PruebaConexion())
+            if (accesoMotocicleta.PruebaConexion())
             {
                 Console.WriteLine("se conecto");
             }
@@ -43,27 +44,27 @@ namespace Program
                 Console.WriteLine("no se conecto");
             }
 
-            List<Automovil> listaDatos = accesoAutomovil.ObtenerListaDatos();
+            List<Colectivo> listaDatos = accesoMotocicleta.ObtenerListaDatos();
 
 
-            foreach (Automovil item in listaDatos)
+            foreach (Colectivo item in listaDatos)
             {
                 Console.WriteLine(item.ToString());
             }
 
 
-            Automovil automovil = new Automovil("Opel", 4, 5, Colores.Negro, "12121","Gas",4);
+            Colectivo automovil = new Colectivo("Volvo", 6, 6, Colores.Gris, "54545643", "si", 60);
 
             //if (accesoAutomovil.AgregarDato(automovil))
-                if (accesoAutomovil.EliminarDato(automovil))
-                {
-                    Console.WriteLine("Se agredo");
-                }
-                else
-                {
-                    Console.WriteLine("No se agrego");
+            if (accesoMotocicleta.AgregarDato(automovil))
+            {
+                Console.WriteLine("Se agredo");
+            }
+                    else
+            {
+                Console.WriteLine("No se agrego");
 
-                }
+            }
         }
     }
 }

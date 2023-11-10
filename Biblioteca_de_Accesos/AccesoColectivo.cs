@@ -10,45 +10,45 @@ using System.Threading.Tasks;
 namespace Biblioteca_de_Accesos
 {
     /// <summary>
-    /// Clase AccesoMotocicleta() proporciona métodos para acceder y manipular datos de la tabla de motocicletas en la base de datos.
+    /// Clase AccesoColectivo() proporciona métodos para acceder y manipular datos de la tabla de automóviles en la base de datos.
     /// Implementa la interfaz IConexiones.
     /// </summary>
-    public class AccesoMotocicleta : AccesoVehiculos, IConexiones<Motocicleta>
+    public class AccesoColectivo : AccesoVehiculos, IConexiones<Colectivo>
     {
         /// <summary>
         /// Obtiene una lista de objetos Motocicleta desde la base de datos.
         /// </summary>
         /// <returns>Lista de objetos Motocicleta.</returns>
-        public List<Motocicleta> ObtenerListaDatos()
+        public List<Colectivo> ObtenerListaDatos()
         {
-            List<Motocicleta> lista = new List<Motocicleta>();
+            List<Colectivo> lista = new List<Colectivo>();
 
             try
             {
                 this.Comando = new SqlCommand();
 
-                this.Comando.CommandType = System.Data.CommandType.Text; //->Emun, inidca que va ejejcutar en el comand tex
-                this.Comando.CommandText = "select [NUMERO_CHASIS], [MARCA], [CANT_RUEDAS], [CANT_MARCHAS], [COLOR], [CILINDRADA], [USO_URBANO]  from tabla_motocicletas";
+                this.Comando.CommandType = System.Data.CommandType.Text;
+                this.Comando.CommandText = "select [NUMERO_CHASIS], [MARCA], [CANT_RUEDAS], [CANT_MARCHAS], [COLOR], [AUTOMATICO], [CANT_PASAJEROS]  from tabla_colectivos";
                 this.Comando.Connection = this.Conexion;
 
                 this.Conexion.Open();
 
                 this.Lector = this.Comando.ExecuteReader();
 
-                while (this.Lector.Read()) 
+                while (this.Lector.Read())
                 {
-                    Motocicleta m = new Motocicleta();
+                    Colectivo c = new Colectivo();
 
-                    m.Marca = this.Lector["MARCA"].ToString();
-                    m.CantidadRuedas = (short)this.Lector["CANT_RUEDAS"];
-                    m.CantidadMarchas = (short)this.Lector["CANT_MARCHAS"];
-                    m.Color = (Colores)Enum.Parse(typeof(Colores), this.Lector["COLOR"].ToString());
-                    m.NChasis = this.Lector["NUMERO_CHASIS"].ToString();
-                    m.Cilindrada = (short)this.Lector["CILINDRADA"];
-                    m.Urbano = this.Lector["USO_URBANO"].ToString();
+                    c.Marca = this.Lector["MARCA"].ToString();
+                    c.CantidadRuedas = (short)this.Lector["CANT_RUEDAS"];
+                    c.CantidadMarchas = (short)this.Lector["CANT_MARCHAS"];
+                    c.Color = (Colores)Enum.Parse(typeof(Colores), this.Lector["COLOR"].ToString());
+                    c.NChasis = this.Lector["NUMERO_CHASIS"].ToString();
+                    c.EsAutomatico = this.Lector["AUTOMATICO"].ToString();
+                    c.CantidadDePasajeros = (int)this.Lector["CANT_PASAJEROS"];
 
 
-                    lista.Add(m);
+                    lista.Add(c);
                 }
 
                 this.Lector.Close();
@@ -71,11 +71,11 @@ namespace Biblioteca_de_Accesos
         }
 
         /// <summary>
-        /// Agrega un objeto Motocicleta a la base de datos.
+        /// Agrega un objeto Colectivo a la base de datos.
         /// </summary>
-        /// <param name="m">Objeto Motocicleta a agregar.</param>
+        /// <param name="c">Objeto Colectivo a agregar.</param>
         /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
-        public bool AgregarDato(Motocicleta m)
+        public bool AgregarDato(Colectivo c)
         {
             bool retorno = false;
 
@@ -85,17 +85,17 @@ namespace Biblioteca_de_Accesos
 
                 this.Comando.CommandType = System.Data.CommandType.Text;
 
-                this.Comando.CommandText = "insert into tabla_motocicletas (NUMERO_CHASIS,MARCA,CANT_RUEDAS,CANT_MARCHAS,COLOR,CILINDRADA,USO_URBANO) values (@numero_chasis,@marca,@cant_ruedas,@cant_marchas,@color,@cilindrada,@uso_urbano)";
+                this.Comando.CommandText = "insert into tabla_colectivos (NUMERO_CHASIS,MARCA,CANT_RUEDAS,CANT_MARCHAS,COLOR,AUTOMATICO,CANT_PASAJEROS) values (@numero_chasis,@marca,@cant_ruedas,@cant_marchas,@color,@automatico,@cant_pasajeros)";
                 this.Comando.Connection = this.Conexion;
 
 
-                this.Comando.Parameters.AddWithValue(@"marca", m.Marca);
-                this.Comando.Parameters.AddWithValue(@"cant_ruedas", m.CantidadRuedas);
-                this.Comando.Parameters.AddWithValue(@"cant_marchas", m.CantidadMarchas);
-                this.Comando.Parameters.AddWithValue(@"color", m.Color.ToString());
-                this.Comando.Parameters.AddWithValue(@"numero_chasis", m.NChasis);
-                this.Comando.Parameters.AddWithValue(@"cilindrada", m.Cilindrada);
-                this.Comando.Parameters.AddWithValue(@"uso_urbano", m.usoUrbano);
+                this.Comando.Parameters.AddWithValue(@"marca", c.Marca);
+                this.Comando.Parameters.AddWithValue(@"cant_ruedas", c.CantidadRuedas);
+                this.Comando.Parameters.AddWithValue(@"cant_marchas", c.CantidadMarchas);
+                this.Comando.Parameters.AddWithValue(@"color", c.Color.ToString());
+                this.Comando.Parameters.AddWithValue(@"numero_chasis", c.NChasis);
+                this.Comando.Parameters.AddWithValue(@"automatico", c.EsAutomatico);
+                this.Comando.Parameters.AddWithValue(@"cant_pasajeros", c.CantidadDePasajeros);
 
 
                 this.Conexion.Open();
@@ -126,9 +126,9 @@ namespace Biblioteca_de_Accesos
         /// <summary>
         /// Modifica un registro de la tabla de motocicletas en la base de datos.
         /// </summary>
-        /// <param name="m">Objeto Motocicleta con los nuevos datos.</param>
+        /// <param name="c">Objeto Motocicleta con los nuevos datos.</param>
         /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
-        public bool ModificarDato(Motocicleta m)
+        public bool ModificarDato(Colectivo c)
         {
             bool retorno = false;
 
@@ -136,16 +136,16 @@ namespace Biblioteca_de_Accesos
             {
                 this.Comando = new SqlCommand();
 
-                this.Comando.Parameters.AddWithValue(@"marca", m.Marca);
-                this.Comando.Parameters.AddWithValue(@"cant_ruedas", m.CantidadRuedas);
-                this.Comando.Parameters.AddWithValue(@"cant_marchas", m.CantidadMarchas);
-                this.Comando.Parameters.AddWithValue(@"color", m.Color.ToString());
-                this.Comando.Parameters.AddWithValue(@"numero_chasis", m.NChasis);
-                this.Comando.Parameters.AddWithValue(@"cilindrada", m.Cilindrada);
-                this.Comando.Parameters.AddWithValue(@"uso_urbano", m.usoUrbano);
+                this.Comando.Parameters.AddWithValue(@"marca", c.Marca);
+                this.Comando.Parameters.AddWithValue(@"cant_ruedas", c.CantidadRuedas);
+                this.Comando.Parameters.AddWithValue(@"cant_marchas", c.CantidadMarchas);
+                this.Comando.Parameters.AddWithValue(@"color", c.Color.ToString());
+                this.Comando.Parameters.AddWithValue(@"numero_chasis", c.NChasis);
+                this.Comando.Parameters.AddWithValue(@"automatico", c.EsAutomatico);
+                this.Comando.Parameters.AddWithValue(@"cant_pasajeros", c.CantidadDePasajeros);
 
                 this.Comando.CommandType = System.Data.CommandType.Text;
-                this.Comando.CommandText = "update tabla_motocicletas set NUMERO_CHASIS = @numero_chasis , MARCA = @marca , CANT_RUEDAS = @cant_ruedas , CANT_MARCHAS = @cant_marchas , COLOR = @color, CILINDRADA = @cilindrada , USO_URBANO = @uso_urbano  where NUMERO_CHASIS = @numero_chasis";
+                this.Comando.CommandText = "update tabla_colectivos set NUMERO_CHASIS = @numero_chasis , MARCA = @marca , CANT_RUEDAS = @cant_ruedas , CANT_MARCHAS = @cant_marchas , COLOR = @color, AUTOMATICO = @automatico , CANT_PASAJEROS = @cant_pasajeros  where NUMERO_CHASIS = @numero_chasis";
                 this.Comando.Connection = this.Conexion;
 
 
@@ -174,11 +174,11 @@ namespace Biblioteca_de_Accesos
         }
 
         /// <summary>
-        /// Elimina un registro de la tabla de motocicletas en la base de datos.
+        /// Elimina un registro de la tabla de colectivos en la base de datos.
         /// </summary>
-        /// <param name="m">Objeto Motocicleta a eliminar.</param>
+        /// <param name="c">Objeto Colectivo a eliminar.</param>
         /// <returns>True si la operación fue exitosa, de lo contrario False.</returns>
-        public bool EliminarDato(Motocicleta m)
+        public bool EliminarDato(Colectivo c)
         {
             bool retorno = false;
 
@@ -186,7 +186,7 @@ namespace Biblioteca_de_Accesos
             {
                 this.Comando = new SqlCommand();
 
-                this.Comando.Parameters.AddWithValue(@"numero_chasis", m.NChasis);
+                this.Comando.Parameters.AddWithValue(@"numero_chasis", c.NChasis);
 
                 this.Comando.CommandType = System.Data.CommandType.Text;
                 this.Comando.CommandText = "delete from tabla_motocicletas where NUMERO_CHASIS = @numero_chasis";
@@ -215,5 +215,6 @@ namespace Biblioteca_de_Accesos
 
             return retorno;
         }
+
     }
 }

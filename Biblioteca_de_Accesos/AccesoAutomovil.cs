@@ -12,38 +12,11 @@ using System.Threading.Tasks;
 namespace Biblioteca_de_Accesos
 {
     /// <summary>
-    /// Clase que proporciona métodos para acceder y manipular datos de la tabla de automóviles en la base de datos.
-    /// Implementa la interfaz IConexiones&lt;Automovil&gt;.
+    /// Clase AccesoAutomovil() proporciona métodos para acceder y manipular datos de la tabla de automóviles en la base de datos.
+    /// Implementa la interfaz IConexiones.
     /// </summary>
     public class AccesoAutomovil : AccesoVehiculos, IConexiones<Automovil>
     {
-
-        /// <summary>
-        /// Verifica la conexión con la base de datos.
-        /// </summary>
-        /// <returns>True si la conexión es exitosa, de lo contrario False.</returns>
-        public bool PruebaConexion()
-        {
-            bool retorno = false;
-            try
-            {
-                this.Conexion.Open();
-                retorno = true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                if (this.Conexion.State == System.Data.ConnectionState.Open)
-                {
-                    this.Conexion.Close();
-                }
-            }
-            return retorno;
-        }
-
         /// <summary>
         /// Obtiene una lista de objetos Automovil desde la base de datos.
         /// </summary>
