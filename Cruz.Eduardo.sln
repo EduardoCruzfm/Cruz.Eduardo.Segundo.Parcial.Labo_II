@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestUnitarios", "TestUnitar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca_de_Interfaces", "Biblioteca_de_Interfaces\Biblioteca_de_Interfaces.csproj", "{26ECF6B2-DEBE-4A62-ABD4-A0C696D207C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca_de_Accesos", "Biblioteca_de_Accesos\Biblioteca_de_Accesos.csproj", "{EC1739C8-167A-4A93-B858-6513232D70DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca_de_Accesos", "Biblioteca_de_Accesos\Biblioteca_de_Accesos.csproj", "{EC1739C8-167A-4A93-B858-6513232D70DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca_Exepciones", "Biblioteca_Exepciones\Biblioteca_Exepciones.csproj", "{C04AFF95-5249-4C13-9F48-4E861C2DD9CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{EC1739C8-167A-4A93-B858-6513232D70DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC1739C8-167A-4A93-B858-6513232D70DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC1739C8-167A-4A93-B858-6513232D70DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C04AFF95-5249-4C13-9F48-4E861C2DD9CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04AFF95-5249-4C13-9F48-4E861C2DD9CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04AFF95-5249-4C13-9F48-4E861C2DD9CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04AFF95-5249-4C13-9F48-4E861C2DD9CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

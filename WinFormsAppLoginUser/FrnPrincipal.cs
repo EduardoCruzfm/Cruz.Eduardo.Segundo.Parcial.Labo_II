@@ -1,5 +1,8 @@
+using Biblioteca_de_Accesos;
 using Cruz.Eduardo.Primer.Parcial.Labo_II;
 using Microsoft.Win32;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Text.Json;
 using System.Windows.Forms;
@@ -64,6 +67,7 @@ namespace WinFormsAppLoginUser
 
             // Verificar permisos
             this.VerificarPermisosUsuario(this.usuario);
+            this.LeerBaseDeDatos();
         }
 
         /// <summary>
@@ -94,13 +98,19 @@ namespace WinFormsAppLoginUser
                 switch (tipo)
                 {
                     case "Auto":
-
+                        
                         FormAuto fromA = new FormAuto();
                         fromA.ShowDialog();
 
+                        AccesoAutomovil accesoA = new AccesoAutomovil();
+
                         if (fromA.DialogResult == DialogResult.OK)
                         {
-                            _ = this.estacionamiento + fromA.Auto;
+                            if (this.estacionamiento + fromA.Auto)
+                            {
+                                if (accesoA.PruebaConexion()) { accesoA.AgregarDato(fromA.Auto); }
+                            }
+                            
                             this.ActualizarVisor();
                         }
                         break;
@@ -109,9 +119,15 @@ namespace WinFormsAppLoginUser
                         FormMoto fromM = new FormMoto();
                         fromM.ShowDialog();
 
+                        AccesoMotocicleta accesoM =  new AccesoMotocicleta();
+
                         if (fromM.DialogResult == DialogResult.OK)
                         {
-                            _ = this.estacionamiento + fromM.Moto;
+                            if (this.estacionamiento + fromM.Moto)
+                            {
+                                if (accesoM.PruebaConexion()) { accesoM.AgregarDato(fromM.Moto); }
+                            }
+                            //_ = this.estacionamiento + fromM.Moto;
                             this.ActualizarVisor();
                         }
                         break;
@@ -121,9 +137,15 @@ namespace WinFormsAppLoginUser
                         FormColectivo fromC = new FormColectivo();
                         fromC.ShowDialog();
 
+                        AccesoColectivo accesoC = new AccesoColectivo();
+
                         if (fromC.DialogResult == DialogResult.OK)
                         {
-                            _ = this.estacionamiento + fromC.Colctivo;
+                            if(this.estacionamiento + fromC.Colctivo)
+                            {
+                                if (accesoC.PruebaConexion()) { accesoC.AgregarDato(fromC.Colctivo); }
+                            }
+
                             this.ActualizarVisor();
                         }
                         break;
@@ -154,10 +176,41 @@ namespace WinFormsAppLoginUser
 
             if (indice == -1) { return; }
 
+            Vehiculo? v = this.estacionamiento.listVehiculos[indice];
+            string? tipo = v.GetType().Name;
+
             if (MessageBox.Show("¿Está seguro de que deseas eliminarlo?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     this.Remover(indice);
+
+                switch (tipo)
+                {
+                    case nameof(Automovil):
+                        AccesoAutomovil accesoA = new AccesoAutomovil();
+
+                        if (accesoA.PruebaConexion())
+                            accesoA.EliminarDato((Automovil)v);
+                        //Mensaje de error
+                        break;
+
+                    case nameof(Motocicleta):
+
+                        AccesoMotocicleta accesoM = new AccesoMotocicleta();
+
+                        if (accesoM.PruebaConexion())
+                            accesoM.EliminarDato((Motocicleta)v);
+                        break;
+
+                    case nameof(Colectivo):
+
+                        AccesoColectivo accesoC = new AccesoColectivo();
+
+                        if (accesoC.PruebaConexion())
+                            accesoC.EliminarDato((Colectivo)v);
+                        break;
                 }
+
+            }
 
             
         }
@@ -179,8 +232,11 @@ namespace WinFormsAppLoginUser
             switch (tipo)
             {
                 case nameof(Automovil):
+
                     FormAuto fromA = new FormAuto((Automovil)v);
                     fromA.ShowDialog();
+
+                    AccesoAutomovil accesoA = new AccesoAutomovil();
 
                     if (fromA.DialogResult == DialogResult.OK)
                     {
@@ -190,10 +246,12 @@ namespace WinFormsAppLoginUser
                         }
                         else if (this.estacionamiento != fromA.Auto)
                         {
+                            if(this.estacionamiento + fromA.Auto)
+                            {
+                                if (accesoA.PruebaConexion()){ accesoA.ModificarDato((Automovil)v); }
+                            }
                             this.Remover(indice);
-                            _= this.estacionamiento + fromA.Auto;
                         }
-
 
                         this.ActualizarVisor();
                     }
@@ -204,6 +262,8 @@ namespace WinFormsAppLoginUser
                     FormMoto fromM = new FormMoto((Motocicleta)v);
                     fromM.ShowDialog();
 
+                    AccesoMotocicleta accesoM = new AccesoMotocicleta();
+
                     if (fromM.DialogResult == DialogResult.OK)
                     {
                         if (this.estacionamiento == fromM.Moto)
@@ -212,8 +272,11 @@ namespace WinFormsAppLoginUser
                         }
                         else if (this.estacionamiento != fromM.Moto)
                         {
+                            if(this.estacionamiento + fromM.Moto)
+                            {
+                                if (accesoM.PruebaConexion()) { accesoM.ModificarDato((Motocicleta)v); }
+                            }
                             this.Remover(indice);
-                            _ = this.estacionamiento + fromM.Moto;
                         }
 
                         this.ActualizarVisor();
@@ -226,6 +289,8 @@ namespace WinFormsAppLoginUser
                     FormColectivo fromC = new FormColectivo((Colectivo)v);
                     fromC.ShowDialog();
 
+                    AccesoColectivo accesoC = new AccesoColectivo();
+
                     if (fromC.DialogResult == DialogResult.OK)
                     {
                         if (this.estacionamiento == fromC.Colctivo)
@@ -234,8 +299,12 @@ namespace WinFormsAppLoginUser
                         }
                         else if (this.estacionamiento != fromC.Colctivo)
                         {
+                            if(this.estacionamiento + fromC.Colctivo)
+                            {
+                                if (accesoC.PruebaConexion()) { accesoC.ModificarDato((Colectivo)v); }
+                            }
+
                             this.Remover(indice);
-                            _ = this.estacionamiento + fromC.Colctivo;
                         }
 
                         this.ActualizarVisor();
@@ -492,7 +561,6 @@ namespace WinFormsAppLoginUser
             this.ActualizarVisor();
         }
 
-
         /// <summary>
         /// btnOrdenar_Click() Ordenda la lista por N° Chasis / Cantidad de ruedas.
         /// </summary>
@@ -607,6 +675,10 @@ namespace WinFormsAppLoginUser
 
         }
 
+        /// <summary>
+        /// Verifica los permisos del usuario y ajusta la habilitación de los botones según el perfil.
+        /// </summary>
+        /// <param name="u">El objeto Usuario que contiene la información del perfil del usuario actual.</param>
         private void VerificarPermisosUsuario(Usuario u)
         {
             // Mejorar mesajes
@@ -632,5 +704,40 @@ namespace WinFormsAppLoginUser
             }
 
         }
+
+        /// <summary>
+        /// Lee datos de las bases de datos de automóviles, motocicletas y colectivos, y carga las listas respectivas.
+        /// </summary>
+        private void LeerBaseDeDatos()
+        {
+            AccesoAutomovil accesoA = new AccesoAutomovil();
+            List<Automovil> listaAutomovil = accesoA.ObtenerListaDatos();
+
+            AccesoMotocicleta accesoM = new AccesoMotocicleta();
+            List<Motocicleta> listaMotocicleta = accesoM.ObtenerListaDatos();
+
+            AccesoColectivo accesoC = new AccesoColectivo();
+            List<Colectivo> listaColectivo = accesoC.ObtenerListaDatos();
+
+            this.CargarListaPrincipal(listaAutomovil);
+            this.CargarListaPrincipal(listaMotocicleta);
+            this.CargarListaPrincipal(listaColectivo);
+
+            this.ActualizarVisor();
+        }
+
+        /// <summary>
+        /// Carga los elementos de una lista de vehículos en la lista de la clase Estacionamiento.
+        /// </summary>
+        /// <typeparam name="T">Tipo de vehículo o una clase derivada de Vehiculo.</typeparam>
+        /// <param name="lista">Lista de vehículos a cargar.</param>
+        private void CargarListaPrincipal<T>(List<T> lista) where T : Vehiculo
+        {
+            foreach (T item in lista)
+            {
+                _ = this.estacionamiento + item;
+            }
+        }
+
     }
 }

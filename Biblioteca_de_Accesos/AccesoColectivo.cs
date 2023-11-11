@@ -189,7 +189,7 @@ namespace Biblioteca_de_Accesos
                 this.Comando.Parameters.AddWithValue(@"numero_chasis", c.NChasis);
 
                 this.Comando.CommandType = System.Data.CommandType.Text;
-                this.Comando.CommandText = "delete from tabla_motocicletas where NUMERO_CHASIS = @numero_chasis";
+                this.Comando.CommandText = "delete from tabla_colectivos where NUMERO_CHASIS = @numero_chasis";
                 this.Comando.Connection = this.Conexion;
 
 

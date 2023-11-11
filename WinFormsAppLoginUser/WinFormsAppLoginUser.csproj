@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Biblioteca_de_Accesos\Biblioteca_de_Accesos.csproj" />
     <ProjectReference Include="..\Cruz.Eduardo.Primer.Parcial.Labo_II\Cruz.Eduardo.Primer.Parcial.Labo_II.csproj" />
   </ItemGroup>
 
