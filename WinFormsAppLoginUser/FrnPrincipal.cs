@@ -110,6 +110,10 @@ namespace WinFormsAppLoginUser
                             {
                                 if (accesoA.PruebaConexion()) { accesoA.AgregarDato(fromA.Auto); }
                             }
+                            else
+                            {
+                                this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
+                            }
                             
                             this.ActualizarVisor();
                         }
@@ -127,7 +131,10 @@ namespace WinFormsAppLoginUser
                             {
                                 if (accesoM.PruebaConexion()) { accesoM.AgregarDato(fromM.Moto); }
                             }
-                            //_ = this.estacionamiento + fromM.Moto;
+                            else
+                            {
+                                this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
+                            }
                             this.ActualizarVisor();
                         }
                         break;
@@ -144,6 +151,10 @@ namespace WinFormsAppLoginUser
                             if(this.estacionamiento + fromC.Colctivo)
                             {
                                 if (accesoC.PruebaConexion()) { accesoC.AgregarDato(fromC.Colctivo); }
+                            }
+                            else
+                            {
+                                this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                             }
 
                             this.ActualizarVisor();
@@ -240,10 +251,12 @@ namespace WinFormsAppLoginUser
 
                     if (fromA.DialogResult == DialogResult.OK)
                     {
+
                         if (this.estacionamiento == fromA.Auto)
                         {
-                            this.MensajeDeAtencion(v.Marca,v.NChasis);
+                            
                         }
+
                         else if (this.estacionamiento != fromA.Auto)
                         {
                             if(this.estacionamiento + fromA.Auto)

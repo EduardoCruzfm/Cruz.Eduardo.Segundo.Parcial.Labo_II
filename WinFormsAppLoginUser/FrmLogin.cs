@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Biblioteca_Exepciones;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace WinFormsAppLoginUser
     public partial class FrmLogin : Form
     {
         private List<Usuario> usuarios;
+        private int cantidadIntentos = 0;
 
         /// <summary>
         /// Obtiene el usuario validado por el formulario de inicio de sesión.
@@ -70,6 +72,7 @@ namespace WinFormsAppLoginUser
         /// <param name="e">El evento EventArgs.</param>
         private void btnAceptar_Click(object sender, EventArgs e)
         {
+            
 
             if (Verificar() != null)
             {
@@ -77,7 +80,14 @@ namespace WinFormsAppLoginUser
             }
             else
             {
+                this.cantidadIntentos++;
                 MessageBox.Show("Usuario no encontrado verifique sus datos", "Datos invalidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            if (this.cantidadIntentos == 3)
+            {
+                throw new IntereaccionesSuperadasException(this.txtUsuario.Text);
+
             }
         }
 
