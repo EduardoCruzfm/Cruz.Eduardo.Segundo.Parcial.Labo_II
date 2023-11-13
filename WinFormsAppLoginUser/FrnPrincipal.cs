@@ -174,8 +174,7 @@ namespace WinFormsAppLoginUser
             this.estacionamiento.listVehiculos.RemoveAt(indice);
             this.ActualizarVisor();
         }
-
-
+          
         /// <summary>
         /// btnEliminar_Click() Maneja el evento de clic en el botón "Eliminar".
         /// </summary>
@@ -251,19 +250,14 @@ namespace WinFormsAppLoginUser
 
                     if (fromA.DialogResult == DialogResult.OK)
                     {
-
-                        if (this.estacionamiento == fromA.Auto)
+                        if (this.ExisteVehiculoEnOtraPosicion(fromA.Auto,indice) == false)
                         {
-                            
+                            this.estacionamiento.listVehiculos[indice] = fromA.Auto;
+                            if (accesoA.PruebaConexion()) { accesoA.ModificarDato(fromA.Auto); }  
                         }
-
-                        else if (this.estacionamiento != fromA.Auto)
+                        else
                         {
-                            if(this.estacionamiento + fromA.Auto)
-                            {
-                                if (accesoA.PruebaConexion()){ accesoA.ModificarDato((Automovil)v); }
-                            }
-                            this.Remover(indice);
+                            this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                         }
 
                         this.ActualizarVisor();
@@ -279,17 +273,14 @@ namespace WinFormsAppLoginUser
 
                     if (fromM.DialogResult == DialogResult.OK)
                     {
-                        if (this.estacionamiento == fromM.Moto)
+                        if (this.ExisteVehiculoEnOtraPosicion(fromM.Moto, indice) == false)
                         {
-                            this.MensajeDeAtencion(v.Marca, v.NChasis);
+                            this.estacionamiento.listVehiculos[indice] = fromM.Moto;
+                            if (accesoM.PruebaConexion()) { accesoM.ModificarDato(fromM.Moto); }
                         }
-                        else if (this.estacionamiento != fromM.Moto)
+                        else
                         {
-                            if(this.estacionamiento + fromM.Moto)
-                            {
-                                if (accesoM.PruebaConexion()) { accesoM.ModificarDato((Motocicleta)v); }
-                            }
-                            this.Remover(indice);
+                            this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                         }
 
                         this.ActualizarVisor();
@@ -306,18 +297,14 @@ namespace WinFormsAppLoginUser
 
                     if (fromC.DialogResult == DialogResult.OK)
                     {
-                        if (this.estacionamiento == fromC.Colctivo)
+                        if (this.ExisteVehiculoEnOtraPosicion(fromC.Colctivo, indice) == false)
                         {
-                            this.MensajeDeAtencion(v.Marca, v.NChasis);
+                            this.estacionamiento.listVehiculos[indice] = fromC.Colctivo;
+                            if (accesoC.PruebaConexion()) { accesoC.ModificarDato(fromC.Colctivo); }
                         }
-                        else if (this.estacionamiento != fromC.Colctivo)
+                        else
                         {
-                            if(this.estacionamiento + fromC.Colctivo)
-                            {
-                                if (accesoC.PruebaConexion()) { accesoC.ModificarDato((Colectivo)v); }
-                            }
-
-                            this.Remover(indice);
+                            this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                         }
 
                         this.ActualizarVisor();
@@ -326,6 +313,28 @@ namespace WinFormsAppLoginUser
                     break;
             }
         }
+
+        private bool ExisteVehiculoEnOtraPosicion(Vehiculo nuevoVehiculo, int indiceExcluir)
+        {
+            bool retorno = false;
+
+            // Recorro la lista y verifico si el vehículo ya existe
+            for (int i = 0; i < this.estacionamiento.listVehiculos.Count; i++)
+            {
+                // El vehículo ya existe en otra posición
+                //if (i != indiceExcluir && this.estacionamiento.listVehiculos[i].Equals(nuevoVehiculo))
+                //{
+                //    retorno = true; 
+                //}
+
+                if (i != indiceExcluir && this.estacionamiento.listVehiculos[i] == nuevoVehiculo)
+                {
+                    retorno = true;
+                }
+            }
+            return retorno;
+        }
+
 
         /// <summary>
         /// Deserializar() Determina el tipo de vehículo y deserializa según ese tipo. 
