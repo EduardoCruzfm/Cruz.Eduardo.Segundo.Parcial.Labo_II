@@ -53,18 +53,18 @@ namespace Program
             }
 
 
-            Colectivo automovil = new Colectivo("Volvo", 6, 6, Colores.Gris, "54545643", "si", 60);
+            Colectivo automovil = new Colectivo("Volvo", 6, 6, Colores.Rojo, "54545643", "si", 40);
 
             //if (accesoAutomovil.AgregarDato(automovil))
-            if (accesoMotocicleta.AgregarDato(automovil))
-            {
-                Console.WriteLine("Se agredo");
-            }
-                    else
-            {
-                Console.WriteLine("No se agrego");
+                if (accesoMotocicleta.ModificarDato(automovil))
+                {
+                    Console.WriteLine("Se agredo");
+                }
+                else
+                {
+                    Console.WriteLine("No se agrego");
 
-            }
+                }
         }
     }
 }

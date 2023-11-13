@@ -17,4 +17,9 @@
     <PackageReference Include="coverlet.collector" Version="3.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Biblioteca_de_Accesos\Biblioteca_de_Accesos.csproj" />
+    <ProjectReference Include="..\Cruz.Eduardo.Primer.Parcial.Labo_II\Cruz.Eduardo.Primer.Parcial.Labo_II.csproj" />
+  </ItemGroup>
+
 </Project>
