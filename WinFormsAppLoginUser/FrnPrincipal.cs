@@ -314,19 +314,18 @@ namespace WinFormsAppLoginUser
             }
         }
 
+        /// <summary>
+        /// Verifica si un vehículo ya existe en otra posición de la lista, excluyendo un índice específico.
+        /// </summary>
+        /// <param name="nuevoVehiculo">El nuevo vehículo a verificar.</param>
+        /// <param name="indiceExcluir">El índice que se debe excluir durante la verificación.</param>
+        /// <returns> Retorna true si el vehículo ya existe en otra posición de la lista, de lo contrario false. </returns>
         private bool ExisteVehiculoEnOtraPosicion(Vehiculo nuevoVehiculo, int indiceExcluir)
         {
             bool retorno = false;
 
-            // Recorro la lista y verifico si el vehículo ya existe
             for (int i = 0; i < this.estacionamiento.listVehiculos.Count; i++)
             {
-                // El vehículo ya existe en otra posición
-                //if (i != indiceExcluir && this.estacionamiento.listVehiculos[i].Equals(nuevoVehiculo))
-                //{
-                //    retorno = true; 
-                //}
-
                 if (i != indiceExcluir && this.estacionamiento.listVehiculos[i] == nuevoVehiculo)
                 {
                     retorno = true;
