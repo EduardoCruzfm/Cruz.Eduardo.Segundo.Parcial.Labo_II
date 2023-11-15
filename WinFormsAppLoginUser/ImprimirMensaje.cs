@@ -15,7 +15,7 @@ namespace WinFormsAppLoginUser
         public event ImprimirMensajeAtencion MensajeImpreso;
 
 
-        public void ImprimirAtencion(string marca, string nChasis) => MensajeImpreso?.Invoke(marca, nChasis);
+        public void ImprimirMjsAtencion(string marca, string nChasis) => MensajeImpreso?.Invoke(marca, nChasis);
         
 
     }

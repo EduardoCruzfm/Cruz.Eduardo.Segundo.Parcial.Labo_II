@@ -123,7 +123,7 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.impresor.ImprimirAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
+                                this.impresor.ImprimirMjsAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                                 //this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                             }
                             
@@ -145,7 +145,7 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.impresor.ImprimirAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
+                                this.impresor.ImprimirMjsAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                                 //this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                             }
                             this.ActualizarVisor();
@@ -167,7 +167,7 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.impresor.ImprimirAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
+                                this.impresor.ImprimirMjsAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                                 //this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                             }
 
@@ -271,7 +271,8 @@ namespace WinFormsAppLoginUser
                         }
                         else
                         {
-                            this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
+                            this.impresor.ImprimirMjsAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
+                            //this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                         }
 
                         this.ActualizarVisor();
@@ -294,7 +295,8 @@ namespace WinFormsAppLoginUser
                         }
                         else
                         {
-                            this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
+                            this.impresor.ImprimirMjsAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
+                            //this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                         }
 
                         this.ActualizarVisor();
@@ -318,7 +320,8 @@ namespace WinFormsAppLoginUser
                         }
                         else
                         {
-                            this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
+                            this.impresor.ImprimirMjsAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
+                            //this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                         }
 
                         this.ActualizarVisor();
