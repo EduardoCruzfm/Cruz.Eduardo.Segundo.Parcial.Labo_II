@@ -19,6 +19,7 @@ namespace WinFormsAppLoginUser
         protected Estacionamiento<Vehiculo> estacionamiento;
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
+        protected ImprimirMensaje impresor;
 
         /// <summary>
         /// Constructor predeterminado de la clase FrnPrincipal.
@@ -40,6 +41,11 @@ namespace WinFormsAppLoginUser
         {
             this.usuario = usuario;
             //MessageBox.Show($"Bienvenido {usuario.nombre}");
+
+            //Delegado + Evento
+            impresor = new ImprimirMensaje();
+            impresor.MensajeImpreso += MensajeDeAtencion;
+
         }
 
         /// <summary>
@@ -68,6 +74,9 @@ namespace WinFormsAppLoginUser
             // Verificar permisos
             this.VerificarPermisosUsuario(this.usuario);
             this.LeerBaseDeDatos();
+
+            
+
         }
 
         /// <summary>
@@ -82,7 +91,6 @@ namespace WinFormsAppLoginUser
             }
         }
 
-
         /// <summary>
         /// btnAgregar_Click() Agrega un nuevo Form ala lista.
         /// Segun el tipo seleccionado gerena el objeto a agregar.
@@ -91,6 +99,9 @@ namespace WinFormsAppLoginUser
         /// <param name="e">El evento EventArgs.</param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            
+
+
             if (this.cmbTipoVehiculo.SelectedItem != null)
             {
                 string? tipo = cmbTipoVehiculo.SelectedItem.ToString();
@@ -112,7 +123,8 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
+                                this.impresor.ImprimirAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
+                                //this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                             }
                             
                             this.ActualizarVisor();
@@ -133,7 +145,8 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
+                                this.impresor.ImprimirAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
+                                //this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                             }
                             this.ActualizarVisor();
                         }
@@ -154,7 +167,8 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
+                                this.impresor.ImprimirAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
+                                //this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                             }
 
                             this.ActualizarVisor();
@@ -690,7 +704,7 @@ namespace WinFormsAppLoginUser
         /// </summary>
         /// <param name="marca">La marca de un vehículo.</param>
         /// <param name="nChasis">El número de chasis del vehículo.</param>
-        private void MensajeDeAtencion(string marca, string nChasis)
+        public void MensajeDeAtencion(string marca, string nChasis)
         {
             _ = MessageBox.Show($"Los datos Marca: {marca} y de N° de chasis: {nChasis} ya existe en el registro", "Datos existentes", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK;
 
