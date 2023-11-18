@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca_de_Interfaces", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca_de_Accesos", "Biblioteca_de_Accesos\Biblioteca_de_Accesos.csproj", "{EC1739C8-167A-4A93-B858-6513232D70DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca_Exepciones", "Biblioteca_Exepciones\Biblioteca_Exepciones.csproj", "{C04AFF95-5249-4C13-9F48-4E861C2DD9CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca_Exepciones", "Biblioteca_Exepciones\Biblioteca_Exepciones.csproj", "{C04AFF95-5249-4C13-9F48-4E861C2DD9CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

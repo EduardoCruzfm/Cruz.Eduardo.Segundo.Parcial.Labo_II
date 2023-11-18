@@ -19,7 +19,7 @@ namespace WinFormsAppLoginUser
         protected Estacionamiento<Vehiculo> estacionamiento;
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
-        protected ImprimirMensaje impresor;
+        protected DelegadoImprimirMensaje impresor;
 
         /// <summary>
         /// Constructor predeterminado de la clase FrnPrincipal.
@@ -43,7 +43,7 @@ namespace WinFormsAppLoginUser
             //MessageBox.Show($"Bienvenido {usuario.nombre}");
 
             //Delegado + Evento
-            impresor = new ImprimirMensaje();
+            impresor = new DelegadoImprimirMensaje();
             impresor.MensajeImpreso += MensajeDeAtencion;
 
         }
@@ -75,7 +75,10 @@ namespace WinFormsAppLoginUser
             this.VerificarPermisosUsuario(this.usuario);
             this.LeerBaseDeDatos();
 
-            
+            //Tarea
+            Task t = Task.Run(() =>  this.VerificarPermisosUsuario(this.usuario) );
+
+
 
         }
 
@@ -99,7 +102,7 @@ namespace WinFormsAppLoginUser
         /// <param name="e">El evento EventArgs.</param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            
+             
 
 
             if (this.cmbTipoVehiculo.SelectedItem != null)
@@ -714,39 +717,51 @@ namespace WinFormsAppLoginUser
         }
 
         /// <summary>
-        /// Verifica los permisos del usuario y ajusta la habilitación de los botones según el perfil.
+        /// Verifica y configura los permisos del usuario para habilitar o deshabilitar ciertos botones del formulario, según su perfil.
         /// </summary>
-        /// <param name="u">El objeto Usuario que contiene la información del perfil del usuario actual.</param>
+        /// <param name="u">Usuario del cual se verifican los permisos.</param>
         private void VerificarPermisosUsuario(Usuario u)
         {
-            // Mejorar mesajes
-            switch (u.perfil)
+
+            if (this.btnAgregar.InvokeRequired)
             {
-                case "administrador":
-                    MessageBox.Show("administrador"); // Usa todos los botones
-                    break;
+                DelegadoPermisoUsuario permisos = new DelegadoPermisoUsuario(this.VerificarPermisosUsuario);
+                object[] parametros = { u };
 
-                case "supervisor":
-                    MessageBox.Show("supervisor"); // Puede usar boton agregar y modificar y no puede usar eliminar
-                    this.btnAgregar.Enabled = false;
-                    this.btnModificar.Enabled = false;
-                    break;
+                this.btnAgregar.Invoke(permisos,parametros);
+            }
+            else
+            {
 
-                case "vendedor":
-                    MessageBox.Show("vendedor"); // No puede usar agregar,modificar ni eliminar
-                    this.btnAgregar.Enabled = false;
-                    this.btnGuardar.Enabled = false;
-                    this.btnModificar.Enabled = false;
-                    this.btnEliminar.Enabled = false;
-                    break;
+                // Mejorar mesajes
+                switch (u.perfil)
+                {
+                    case "administrador":
+                        MessageBox.Show("administrador"); // Usa todos los botones
+                        break;
+
+                    case "supervisor":
+                        MessageBox.Show("supervisor"); // Puede usar boton agregar y modificar y no puede usar eliminar
+                        this.btnAgregar.Enabled = false;
+                        this.btnModificar.Enabled = false;
+                        break;
+
+                    case "vendedor":
+                        MessageBox.Show("vendedor"); // No puede usar agregar,modificar ni eliminar
+                        this.btnAgregar.Enabled = false;
+                        this.btnGuardar.Enabled = false;
+                        this.btnModificar.Enabled = false;
+                        this.btnEliminar.Enabled = false;
+                        break;
+                }
             }
 
         }
 
-        /// <summary>
-        /// Lee datos de las bases de datos de automóviles, motocicletas y colectivos, y carga las listas respectivas.
-        /// </summary>
-        private void LeerBaseDeDatos()
+            /// <summary>
+            /// Lee datos de las bases de datos de automóviles, motocicletas y colectivos, y carga las listas respectivas.
+            /// </summary>
+            private void LeerBaseDeDatos()
         {
             AccesoAutomovil accesoA = new AccesoAutomovil();
             List<Automovil> listaAutomovil = accesoA.ObtenerListaDatos();

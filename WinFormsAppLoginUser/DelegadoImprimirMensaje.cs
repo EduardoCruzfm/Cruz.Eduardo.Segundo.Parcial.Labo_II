@@ -9,7 +9,7 @@ namespace WinFormsAppLoginUser
 {
     public delegate void ImprimirMensajeAtencion(string mensajeUno,string mensajeDos);
 
-    public class ImprimirMensaje
+    public class DelegadoImprimirMensaje
     {
         // Declaración del evento utilizando el delegado
         public event ImprimirMensajeAtencion MensajeImpreso;
