@@ -20,6 +20,7 @@ namespace WinFormsAppLoginUser
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
         protected DelegadoImprimirMensaje impresor;
+        protected DelegadoCambiaEstadoLbl estadoLbl;
 
         /// <summary>
         /// Constructor predeterminado de la clase FrnPrincipal.
@@ -44,7 +45,10 @@ namespace WinFormsAppLoginUser
 
             //Delegado + Evento
             impresor = new DelegadoImprimirMensaje();
+            estadoLbl = new DelegadoCambiaEstadoLbl();
+
             impresor.MensajeImpreso += MensajeDeAtencion;
+            estadoLbl.MoficarLbl += ModifadorDeLblEstado;
 
         }
 
@@ -72,14 +76,13 @@ namespace WinFormsAppLoginUser
             this.cmbTipoVehiculo.SelectedIndex = 0;
             this.DeserializarUsuarioLog();
 
-            this.ModifadorDeLblEstado("Cargando..", Color.Red);
-
+            // Delegado y evento
+            this.estadoLbl.CambiaTextoYColorLbl("Cargando..", Color.Red);
             // Un delay a la tarea
-            await Task.Delay(1500);
+            await Task.Delay(1200);
 
             // Verificar permisos
             Task permisos = Task.Run(() => this.VerificarPermisosUsuario(this.usuario));
-            //Task baseDeDatos = Task.Run( () => this.LeerBaseDeDatos() );
 
             await this.LeerBaseDeDatos();
         }
@@ -781,7 +784,8 @@ namespace WinFormsAppLoginUser
 
                 this.ActualizarVisor();
 
-                this.ModifadorDeLblEstado("Conectado", Color.Green);
+                this.estadoLbl.CambiaTextoYColorLbl("Conectado", Color.Green);
+                //this.ModifadorDeLblEstado("Conectado", Color.Green);
             });
 
         }

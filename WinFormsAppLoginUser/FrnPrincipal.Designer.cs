@@ -61,9 +61,9 @@
             lstVisor.Cursor = Cursors.Hand;
             lstVisor.FormattingEnabled = true;
             lstVisor.ItemHeight = 15;
-            lstVisor.Location = new Point(24, 55);
+            lstVisor.Location = new Point(23, 56);
             lstVisor.Name = "lstVisor";
-            lstVisor.Size = new Size(851, 229);
+            lstVisor.Size = new Size(769, 229);
             lstVisor.TabIndex = 0;
             // 
             // btnAgregar
@@ -73,7 +73,7 @@
             btnAgregar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(276, 343);
+            btnAgregar.Location = new Point(230, 345);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 1;
@@ -88,7 +88,7 @@
             btnModificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnModificar.FlatStyle = FlatStyle.Flat;
             btnModificar.ForeColor = Color.White;
-            btnModificar.Location = new Point(493, 343);
+            btnModificar.Location = new Point(447, 345);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 2;
@@ -103,7 +103,7 @@
             btnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(647, 343);
+            btnEliminar.Location = new Point(601, 345);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 3;
@@ -128,7 +128,7 @@
             cmbTipoVehiculo.Cursor = Cursors.Hand;
             cmbTipoVehiculo.FlatStyle = FlatStyle.Flat;
             cmbTipoVehiculo.FormattingEnabled = true;
-            cmbTipoVehiculo.Location = new Point(67, 343);
+            cmbTipoVehiculo.Location = new Point(21, 345);
             cmbTipoVehiculo.Name = "cmbTipoVehiculo";
             cmbTipoVehiculo.Size = new Size(144, 23);
             cmbTipoVehiculo.TabIndex = 5;
@@ -138,7 +138,7 @@
             gBoxOrdenar.Controls.Add(rdCantRuedas);
             gBoxOrdenar.Controls.Add(rdNChasis);
             gBoxOrdenar.ForeColor = Color.FromArgb(128, 128, 255);
-            gBoxOrdenar.Location = new Point(67, 383);
+            gBoxOrdenar.Location = new Point(21, 385);
             gBoxOrdenar.Name = "gBoxOrdenar";
             gBoxOrdenar.Size = new Size(235, 54);
             gBoxOrdenar.TabIndex = 6;
@@ -190,7 +190,7 @@
             gBoxDeForma.Controls.Add(btnOrdenar);
             gBoxDeForma.Controls.Add(rdAsendente);
             gBoxDeForma.ForeColor = Color.FromArgb(128, 128, 255);
-            gBoxDeForma.Location = new Point(353, 383);
+            gBoxDeForma.Location = new Point(307, 385);
             gBoxDeForma.Name = "gBoxDeForma";
             gBoxDeForma.Size = new Size(369, 54);
             gBoxDeForma.TabIndex = 7;
@@ -226,7 +226,7 @@
             lblFecha.AutoSize = true;
             lblFecha.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblFecha.ForeColor = Color.White;
-            lblFecha.Location = new Point(678, 20);
+            lblFecha.Location = new Point(670, 19);
             lblFecha.Name = "lblFecha";
             lblFecha.Size = new Size(44, 19);
             lblFecha.TabIndex = 8;
@@ -239,7 +239,7 @@
             btnHistorialLog.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnHistorialLog.FlatStyle = FlatStyle.Flat;
             btnHistorialLog.ForeColor = Color.White;
-            btnHistorialLog.Location = new Point(777, 383);
+            btnHistorialLog.Location = new Point(716, 385);
             btnHistorialLog.Name = "btnHistorialLog";
             btnHistorialLog.Size = new Size(75, 23);
             btnHistorialLog.TabIndex = 9;
@@ -251,7 +251,7 @@
             // 
             lblDireccion.AutoSize = true;
             lblDireccion.ForeColor = Color.White;
-            lblDireccion.Location = new Point(67, 464);
+            lblDireccion.Location = new Point(21, 466);
             lblDireccion.Name = "lblDireccion";
             lblDireccion.Size = new Size(63, 15);
             lblDireccion.TabIndex = 10;
@@ -260,7 +260,7 @@
             // txtDirecion
             // 
             txtDirecion.BackColor = Color.Gainsboro;
-            txtDirecion.Location = new Point(136, 461);
+            txtDirecion.Location = new Point(90, 463);
             txtDirecion.Name = "txtDirecion";
             txtDirecion.Size = new Size(474, 23);
             txtDirecion.TabIndex = 11;
@@ -272,7 +272,7 @@
             btnAbrir.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnAbrir.FlatStyle = FlatStyle.Flat;
             btnAbrir.ForeColor = Color.White;
-            btnAbrir.Location = new Point(647, 460);
+            btnAbrir.Location = new Point(601, 462);
             btnAbrir.Name = "btnAbrir";
             btnAbrir.Size = new Size(75, 23);
             btnAbrir.TabIndex = 12;
@@ -290,7 +290,7 @@
             btnGuardar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(777, 460);
+            btnGuardar.Location = new Point(716, 463);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 13;
@@ -327,7 +327,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            ClientSize = new Size(903, 522);
+            ClientSize = new Size(814, 522);
             Controls.Add(lblPerfil);
             Controls.Add(lblEstado);
             Controls.Add(btnGuardar);

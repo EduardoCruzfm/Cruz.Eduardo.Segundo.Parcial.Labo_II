@@ -11,12 +11,11 @@ namespace WinFormsAppLoginUser
 
     public class DelegadoImprimirMensaje
     {
-        // Declaración del evento utilizando el delegado
+        // Declaración del evento utilizando el delegado 
         public event ImprimirMensajeAtencion MensajeImpreso;
 
-
-        public void ImprimirMjsAtencion(string marca, string nChasis) => MensajeImpreso?.Invoke(marca, nChasis);
-        
-
+        public void ImprimirMjsAtencion(string marca, string nChasis) => 
+            MensajeImpreso?.Invoke(marca, nChasis);
+       
     }
 }
