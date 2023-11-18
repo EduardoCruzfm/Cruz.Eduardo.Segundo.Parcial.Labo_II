@@ -108,7 +108,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             sb.AppendLine(base.ToString());
             //sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
             sb.AppendLine($"Cantidad de puertas: {this.cantidadPuertas} -");
-            sb.AppendLine($"Combustible: {this.tipoDeCombustible} -");
+            sb.AppendLine($"Combustible: {this.tipoDeCombustible}");
 
             return sb.ToString();
         }

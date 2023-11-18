@@ -49,6 +49,8 @@
             openFileDialog1 = new OpenFileDialog();
             saveFileDialog1 = new SaveFileDialog();
             btnGuardar = new Button();
+            lblEstado = new Label();
+            lblPerfil = new Label();
             gBoxOrdenar.SuspendLayout();
             gBoxDeForma.SuspendLayout();
             SuspendLayout();
@@ -61,7 +63,7 @@
             lstVisor.ItemHeight = 15;
             lstVisor.Location = new Point(24, 55);
             lstVisor.Name = "lstVisor";
-            lstVisor.Size = new Size(807, 229);
+            lstVisor.Size = new Size(851, 229);
             lstVisor.TabIndex = 0;
             // 
             // btnAgregar
@@ -71,7 +73,7 @@
             btnAgregar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnAgregar.FlatStyle = FlatStyle.Flat;
             btnAgregar.ForeColor = Color.White;
-            btnAgregar.Location = new Point(246, 344);
+            btnAgregar.Location = new Point(276, 343);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 1;
@@ -86,7 +88,7 @@
             btnModificar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnModificar.FlatStyle = FlatStyle.Flat;
             btnModificar.ForeColor = Color.White;
-            btnModificar.Location = new Point(463, 344);
+            btnModificar.Location = new Point(493, 343);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 2;
@@ -101,7 +103,7 @@
             btnEliminar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnEliminar.FlatStyle = FlatStyle.Flat;
             btnEliminar.ForeColor = Color.White;
-            btnEliminar.Location = new Point(617, 344);
+            btnEliminar.Location = new Point(647, 343);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(75, 23);
             btnEliminar.TabIndex = 3;
@@ -112,10 +114,11 @@
             // lblNombreUsuario
             // 
             lblNombreUsuario.AutoSize = true;
+            lblNombreUsuario.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblNombreUsuario.ForeColor = Color.White;
-            lblNombreUsuario.Location = new Point(359, 18);
+            lblNombreUsuario.Location = new Point(447, 19);
             lblNombreUsuario.Name = "lblNombreUsuario";
-            lblNombreUsuario.Size = new Size(89, 15);
+            lblNombreUsuario.Size = new Size(104, 19);
             lblNombreUsuario.TabIndex = 4;
             lblNombreUsuario.Text = "nombreUsuario";
             // 
@@ -125,7 +128,7 @@
             cmbTipoVehiculo.Cursor = Cursors.Hand;
             cmbTipoVehiculo.FlatStyle = FlatStyle.Flat;
             cmbTipoVehiculo.FormattingEnabled = true;
-            cmbTipoVehiculo.Location = new Point(37, 344);
+            cmbTipoVehiculo.Location = new Point(67, 343);
             cmbTipoVehiculo.Name = "cmbTipoVehiculo";
             cmbTipoVehiculo.Size = new Size(144, 23);
             cmbTipoVehiculo.TabIndex = 5;
@@ -135,7 +138,7 @@
             gBoxOrdenar.Controls.Add(rdCantRuedas);
             gBoxOrdenar.Controls.Add(rdNChasis);
             gBoxOrdenar.ForeColor = Color.FromArgb(128, 128, 255);
-            gBoxOrdenar.Location = new Point(37, 384);
+            gBoxOrdenar.Location = new Point(67, 383);
             gBoxOrdenar.Name = "gBoxOrdenar";
             gBoxOrdenar.Size = new Size(235, 54);
             gBoxOrdenar.TabIndex = 6;
@@ -173,7 +176,7 @@
             btnOrdenar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnOrdenar.FlatStyle = FlatStyle.Flat;
             btnOrdenar.ForeColor = Color.White;
-            btnOrdenar.Location = new Point(261, 22);
+            btnOrdenar.Location = new Point(270, 20);
             btnOrdenar.Name = "btnOrdenar";
             btnOrdenar.Size = new Size(75, 23);
             btnOrdenar.TabIndex = 2;
@@ -187,7 +190,7 @@
             gBoxDeForma.Controls.Add(btnOrdenar);
             gBoxDeForma.Controls.Add(rdAsendente);
             gBoxDeForma.ForeColor = Color.FromArgb(128, 128, 255);
-            gBoxDeForma.Location = new Point(323, 384);
+            gBoxDeForma.Location = new Point(353, 383);
             gBoxDeForma.Name = "gBoxDeForma";
             gBoxDeForma.Size = new Size(369, 54);
             gBoxDeForma.TabIndex = 7;
@@ -221,10 +224,11 @@
             // lblFecha
             // 
             lblFecha.AutoSize = true;
+            lblFecha.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblFecha.ForeColor = Color.White;
-            lblFecha.Location = new Point(500, 18);
+            lblFecha.Location = new Point(678, 20);
             lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(38, 15);
+            lblFecha.Size = new Size(44, 19);
             lblFecha.TabIndex = 8;
             lblFecha.Text = "Fecha";
             // 
@@ -235,7 +239,7 @@
             btnHistorialLog.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnHistorialLog.FlatStyle = FlatStyle.Flat;
             btnHistorialLog.ForeColor = Color.White;
-            btnHistorialLog.Location = new Point(756, 406);
+            btnHistorialLog.Location = new Point(777, 383);
             btnHistorialLog.Name = "btnHistorialLog";
             btnHistorialLog.Size = new Size(75, 23);
             btnHistorialLog.TabIndex = 9;
@@ -247,7 +251,7 @@
             // 
             lblDireccion.AutoSize = true;
             lblDireccion.ForeColor = Color.White;
-            lblDireccion.Location = new Point(37, 465);
+            lblDireccion.Location = new Point(67, 464);
             lblDireccion.Name = "lblDireccion";
             lblDireccion.Size = new Size(63, 15);
             lblDireccion.TabIndex = 10;
@@ -256,7 +260,7 @@
             // txtDirecion
             // 
             txtDirecion.BackColor = Color.Gainsboro;
-            txtDirecion.Location = new Point(106, 462);
+            txtDirecion.Location = new Point(136, 461);
             txtDirecion.Name = "txtDirecion";
             txtDirecion.Size = new Size(474, 23);
             txtDirecion.TabIndex = 11;
@@ -268,7 +272,7 @@
             btnAbrir.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnAbrir.FlatStyle = FlatStyle.Flat;
             btnAbrir.ForeColor = Color.White;
-            btnAbrir.Location = new Point(617, 461);
+            btnAbrir.Location = new Point(647, 460);
             btnAbrir.Name = "btnAbrir";
             btnAbrir.Size = new Size(75, 23);
             btnAbrir.TabIndex = 12;
@@ -286,7 +290,7 @@
             btnGuardar.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 128, 255);
             btnGuardar.FlatStyle = FlatStyle.Flat;
             btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(756, 461);
+            btnGuardar.Location = new Point(777, 460);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 13;
@@ -294,12 +298,38 @@
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
+            // lblEstado
+            // 
+            lblEstado.AutoSize = true;
+            lblEstado.BackColor = Color.Transparent;
+            lblEstado.BorderStyle = BorderStyle.FixedSingle;
+            lblEstado.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEstado.ForeColor = SystemColors.ButtonHighlight;
+            lblEstado.Location = new Point(38, 16);
+            lblEstado.Name = "lblEstado";
+            lblEstado.Size = new Size(127, 23);
+            lblEstado.TabIndex = 14;
+            lblEstado.Text = "Estado Conexion";
+            // 
+            // lblPerfil
+            // 
+            lblPerfil.AutoSize = true;
+            lblPerfil.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPerfil.ForeColor = Color.White;
+            lblPerfil.Location = new Point(276, 20);
+            lblPerfil.Name = "lblPerfil";
+            lblPerfil.Size = new Size(38, 19);
+            lblPerfil.TabIndex = 15;
+            lblPerfil.Text = "Perfil";
+            // 
             // FrnPrincipal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(64, 64, 64);
-            ClientSize = new Size(859, 522);
+            ClientSize = new Size(903, 522);
+            Controls.Add(lblPerfil);
+            Controls.Add(lblEstado);
             Controls.Add(btnGuardar);
             Controls.Add(btnAbrir);
             Controls.Add(txtDirecion);
@@ -351,5 +381,7 @@
         private OpenFileDialog openFileDialog1;
         private SaveFileDialog saveFileDialog1;
         private Button btnGuardar;
+        private Label lblEstado;
+        private Label lblPerfil;
     }
 }

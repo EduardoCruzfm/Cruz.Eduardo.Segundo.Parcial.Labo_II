@@ -55,31 +55,33 @@ namespace WinFormsAppLoginUser
         /// </summary>
         /// <param name="sender">El objeto que generó el evento.</param>
         /// <param name="e">El evento EventArgs.</param>
-        private void FrnPrincipal_Load(object sender, EventArgs e)
+        private async void FrnPrincipal_Load(object sender, EventArgs e)
         {
             this.fechaHora = DateTime.Now;
             this.lblNombreUsuario.Text = $"Usuario: {usuario.nombre}";
             this.lblFecha.Text = $"Fecha: {this.fechaHora.ToString("dd/MM/yyyy")}";
+            this.lblPerfil.Text = $"Perfil: {this.usuario.perfil}";
 
             // Agregar elementos al ComboBox
             this.cmbTipoVehiculo.Items.Add("Auto");
             this.cmbTipoVehiculo.Items.Add("Colectivo");
             this.cmbTipoVehiculo.Items.Add("Moto");
 
-            // Establecer la selección predeterminada - Hide()
+            // Establecer la selección predeterminada 
             this.SerealizarUsuario();
             this.cmbTipoVehiculo.SelectedIndex = 0;
             this.DeserializarUsuarioLog();
 
+            this.ModifadorDeLblEstado("Cargando..", Color.Red);
+
+            // Un delay a la tarea
+            await Task.Delay(1500);
+
             // Verificar permisos
-            this.VerificarPermisosUsuario(this.usuario);
-            this.LeerBaseDeDatos();
+            Task permisos = Task.Run(() => this.VerificarPermisosUsuario(this.usuario));
+            //Task baseDeDatos = Task.Run( () => this.LeerBaseDeDatos() );
 
-            //Tarea
-            Task t = Task.Run(() =>  this.VerificarPermisosUsuario(this.usuario) );
-
-
-
+            await this.LeerBaseDeDatos();
         }
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace WinFormsAppLoginUser
         /// <param name="e">El evento EventArgs.</param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-             
+
 
 
             if (this.cmbTipoVehiculo.SelectedItem != null)
@@ -112,7 +114,7 @@ namespace WinFormsAppLoginUser
                 switch (tipo)
                 {
                     case "Auto":
-                        
+
                         FormAuto fromA = new FormAuto();
                         fromA.ShowDialog();
 
@@ -129,7 +131,7 @@ namespace WinFormsAppLoginUser
                                 this.impresor.ImprimirMjsAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                                 //this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                             }
-                            
+
                             this.ActualizarVisor();
                         }
                         break;
@@ -138,7 +140,7 @@ namespace WinFormsAppLoginUser
                         FormMoto fromM = new FormMoto();
                         fromM.ShowDialog();
 
-                        AccesoMotocicleta accesoM =  new AccesoMotocicleta();
+                        AccesoMotocicleta accesoM = new AccesoMotocicleta();
 
                         if (fromM.DialogResult == DialogResult.OK)
                         {
@@ -164,7 +166,7 @@ namespace WinFormsAppLoginUser
 
                         if (fromC.DialogResult == DialogResult.OK)
                         {
-                            if(this.estacionamiento + fromC.Colctivo)
+                            if (this.estacionamiento + fromC.Colctivo)
                             {
                                 if (accesoC.PruebaConexion()) { accesoC.AgregarDato(fromC.Colctivo); }
                             }
@@ -191,7 +193,7 @@ namespace WinFormsAppLoginUser
             this.estacionamiento.listVehiculos.RemoveAt(indice);
             this.ActualizarVisor();
         }
-          
+
         /// <summary>
         /// btnEliminar_Click() Maneja el evento de clic en el botón "Eliminar".
         /// </summary>
@@ -207,8 +209,8 @@ namespace WinFormsAppLoginUser
             string? tipo = v.GetType().Name;
 
             if (MessageBox.Show("¿Está seguro de que deseas eliminarlo?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    this.Remover(indice);
+            {
+                this.Remover(indice);
 
                 switch (tipo)
                 {
@@ -239,7 +241,7 @@ namespace WinFormsAppLoginUser
 
             }
 
-            
+
         }
 
         /// <summary>
@@ -267,10 +269,10 @@ namespace WinFormsAppLoginUser
 
                     if (fromA.DialogResult == DialogResult.OK)
                     {
-                        if (this.ExisteVehiculoEnOtraPosicion(fromA.Auto,indice) == false)
+                        if (this.ExisteVehiculoEnOtraPosicion(fromA.Auto, indice) == false)
                         {
                             this.estacionamiento.listVehiculos[indice] = fromA.Auto;
-                            if (accesoA.PruebaConexion()) { accesoA.ModificarDato(fromA.Auto); }  
+                            if (accesoA.PruebaConexion()) { accesoA.ModificarDato(fromA.Auto); }
                         }
                         else
                         {
@@ -423,18 +425,18 @@ namespace WinFormsAppLoginUser
         {
             try
             {
-            string? path = @"..\..\..\Usuario.log";
-            using (StreamWriter sw = File.AppendText(path))
-            {
-                string usuarioLog = $"Fecha: {this.fechaHora.ToString("dd/MM/yyyy HH:mm:ss")} \n " +
-                    $"Usuario: {usuario.nombre} \n " +
-                    $"Apellido: {usuario.apellido} \n " +
-                    $"Correo: {usuario.correo} \n " +
-                    $"Legajo: {usuario.legajo} \n" +
-                    $"Perfil: {usuario.perfil} \n";
+                string? path = @"..\..\..\Usuario.log";
+                using (StreamWriter sw = File.AppendText(path))
+                {
+                    string usuarioLog = $"Fecha: {this.fechaHora.ToString("dd/MM/yyyy HH:mm:ss")} \n " +
+                        $"Usuario: {usuario.nombre} \n " +
+                        $"Apellido: {usuario.apellido} \n " +
+                        $"Correo: {usuario.correo} \n " +
+                        $"Legajo: {usuario.legajo} \n" +
+                        $"Perfil: {usuario.perfil} \n";
 
-                sw.Write(usuarioLog);
-            }
+                    sw.Write(usuarioLog);
+                }
 
             }
             catch (Exception)
@@ -516,7 +518,7 @@ namespace WinFormsAppLoginUser
                 _ = MessageBox.Show($"No se encuentra el archivo Usuario.log", "Error en logueos", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK;
 
             }
-            
+
         }
 
         /// <summary>
@@ -722,61 +724,66 @@ namespace WinFormsAppLoginUser
         /// <param name="u">Usuario del cual se verifican los permisos.</param>
         private void VerificarPermisosUsuario(Usuario u)
         {
-
-            if (this.btnAgregar.InvokeRequired)
+            this.Invoke((MethodInvoker)delegate
             {
-                DelegadoPermisoUsuario permisos = new DelegadoPermisoUsuario(this.VerificarPermisosUsuario);
-                object[] parametros = { u };
-
-                this.btnAgregar.Invoke(permisos,parametros);
-            }
-            else
-            {
-
-                // Mejorar mesajes
                 switch (u.perfil)
                 {
                     case "administrador":
-                        MessageBox.Show("administrador"); // Usa todos los botones
+                        //MessageBox.Show("administrador"); // Usa todos los botones
                         break;
 
                     case "supervisor":
-                        MessageBox.Show("supervisor"); // Puede usar boton agregar y modificar y no puede usar eliminar
-                        this.btnAgregar.Enabled = false;
-                        this.btnModificar.Enabled = false;
+                        //MessageBox.Show("supervisor"); // Puede usar boton agregar y modificar y no puede usar eliminar
+                        this.btnEliminar.Enabled = false;
                         break;
 
                     case "vendedor":
-                        MessageBox.Show("vendedor"); // No puede usar agregar,modificar ni eliminar
+                        //MessageBox.Show("vendedor"); // No puede usar agregar,modificar ni eliminar
                         this.btnAgregar.Enabled = false;
                         this.btnGuardar.Enabled = false;
                         this.btnModificar.Enabled = false;
                         this.btnEliminar.Enabled = false;
                         break;
                 }
-            }
-
+            });
         }
 
-            /// <summary>
-            /// Lee datos de las bases de datos de automóviles, motocicletas y colectivos, y carga las listas respectivas.
-            /// </summary>
-            private void LeerBaseDeDatos()
+        /// <summary>
+        /// Modifica el texto y color del estado en una etiqueta.
+        /// </summary>
+        /// <param name="estado">Texto que se mostrará como estado.</param>
+        /// <param name="color">Color del texto del estado.</param>
+        private void ModifadorDeLblEstado(string estado, Color color)
         {
-            AccesoAutomovil accesoA = new AccesoAutomovil();
-            List<Automovil> listaAutomovil = accesoA.ObtenerListaDatos();
+            this.lblEstado.Text = estado;
+            this.lblEstado.ForeColor = color;
+        }
 
-            AccesoMotocicleta accesoM = new AccesoMotocicleta();
-            List<Motocicleta> listaMotocicleta = accesoM.ObtenerListaDatos();
+        /// <summary>
+        /// Lee datos de las bases de datos de automóviles, motocicletas y colectivos, y carga las listas respectivas.
+        /// </summary>
+        private async Task LeerBaseDeDatos()
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                AccesoAutomovil accesoA = new AccesoAutomovil();
+                List<Automovil> listaAutomovil = accesoA.ObtenerListaDatos();
 
-            AccesoColectivo accesoC = new AccesoColectivo();
-            List<Colectivo> listaColectivo = accesoC.ObtenerListaDatos();
+                AccesoMotocicleta accesoM = new AccesoMotocicleta();
+                List<Motocicleta> listaMotocicleta = accesoM.ObtenerListaDatos();
 
-            this.CargarListaPrincipal(listaAutomovil);
-            this.CargarListaPrincipal(listaMotocicleta);
-            this.CargarListaPrincipal(listaColectivo);
+                AccesoColectivo accesoC = new AccesoColectivo();
+                List<Colectivo> listaColectivo = accesoC.ObtenerListaDatos();
 
-            this.ActualizarVisor();
+                this.CargarListaPrincipal(listaAutomovil);
+                this.CargarListaPrincipal(listaMotocicleta);
+                this.CargarListaPrincipal(listaColectivo);
+
+                this.ActualizarVisor();
+
+                this.ModifadorDeLblEstado("Conectado", Color.Green);
+            });
+
         }
 
         /// <summary>

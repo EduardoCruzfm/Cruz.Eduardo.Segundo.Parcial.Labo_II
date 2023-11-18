@@ -111,7 +111,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             sb.AppendLine(base.ToString());
             //sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
             sb.AppendLine($"Es automatico: {this.esAutomatico} -");
-            sb.AppendLine($"Cantidad de pasajeros: {this.cantidadDePasajeros} -");
+            sb.AppendLine($"Cantidad de pasajeros: {this.cantidadDePasajeros}");
 
             return sb.ToString();
         }

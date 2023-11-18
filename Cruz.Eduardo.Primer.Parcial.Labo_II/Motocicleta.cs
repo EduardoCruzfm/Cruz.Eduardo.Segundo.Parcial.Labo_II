@@ -108,7 +108,7 @@ namespace Cruz.Eduardo.Primer.Parcial.Labo_II
             sb.AppendLine(base.ToString());
             //sb.AppendLine($"Tipo de Vehiculo: {this.TipoDeVeihculo()}");
             sb.AppendLine($"Cilindrada: {this.cilindrada} -");
-            sb.AppendLine($"De uso urbano: {this.usoUrbano} -");
+            sb.AppendLine($"De uso urbano: {this.usoUrbano}");
 
             return sb.ToString();
         }

@@ -8,9 +8,5 @@ namespace WinFormsAppLoginUser
 {
 
     public delegate void DelegadoPermisoUsuario(Usuario u);
-    //public class DelegadoPermisoUsuario
-    //{
-
-    //}
-
+    
 }
