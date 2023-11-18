@@ -1,4 +1,5 @@
 using Biblioteca_de_Accesos;
+using Biblioteca_de_Interfaces;
 using Cruz.Eduardo.Primer.Parcial.Labo_II;
 using Microsoft.Win32;
 using System.Collections;
@@ -13,7 +14,7 @@ namespace WinFormsAppLoginUser
     /// <summary>
     /// Representa la ventana principal de la aplicación.
     /// </summary>
-    public partial class FrnPrincipal : Form
+    public partial class FrnPrincipal : Form ,ISerializacion
     {
         protected Usuario usuario;
         protected Estacionamiento<Vehiculo> estacionamiento;
@@ -107,9 +108,6 @@ namespace WinFormsAppLoginUser
         /// <param name="e">El evento EventArgs.</param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-
-
-
             if (this.cmbTipoVehiculo.SelectedItem != null)
             {
                 string? tipo = cmbTipoVehiculo.SelectedItem.ToString();
@@ -361,54 +359,6 @@ namespace WinFormsAppLoginUser
 
 
         /// <summary>
-        /// Deserializar() Determina el tipo de vehículo y deserializa según ese tipo. 
-        /// </summary>
-        /// <param name="path">Ruta del archivo a deserealizar</param>
-        private void Deserializar(string path)
-        {
-
-            if (File.Exists(path))
-            {
-
-                using (StreamReader sr = new StreamReader(path))
-                {
-                    JsonSerializerOptions opciones = new JsonSerializerOptions();
-                    string json_str = sr.ReadToEnd();
-
-                    var vehiculosAnonimos = JsonSerializer.Deserialize<List<object>>(json_str);
-
-
-                    foreach (var vehiculoAnonimo in vehiculosAnonimos)
-                    {
-                        if (vehiculoAnonimo is JsonElement elemento)
-                        {
-
-                            if (elemento.TryGetProperty("Cilindrada", out _))
-                            {
-                                Motocicleta? moto = JsonSerializer.Deserialize<Motocicleta>(elemento.GetRawText());
-                                _ = this.estacionamiento + moto;
-                            }
-
-                            if (elemento.TryGetProperty("TipoDeCombustible", out _))
-                            {
-                                Automovil? auto = JsonSerializer.Deserialize<Automovil>(elemento.GetRawText());
-                                _ = this.estacionamiento + auto;
-                            }
-
-                            if (elemento.TryGetProperty("EsAutomatico", out _))
-                            {
-                                Colectivo? colec = JsonSerializer.Deserialize<Colectivo>(elemento.GetRawText());
-                                _ = this.estacionamiento + colec;
-                            }
-                        }
-                    }
-                }
-
-                this.ActualizarVisor();
-            }
-        }
-
-        /// <summary>
         /// Maneja el evento de cierre del formulario principal.
         /// </summary>
         /// <param name="sender">El objeto que generó el evento.</param>
@@ -524,12 +474,13 @@ namespace WinFormsAppLoginUser
 
         }
 
+
         /// <summary>
         /// Serealizar() Serealiza un archivo en formato JSON, pero antes verifica
         /// de que tipo clase derivada del padre es.
         /// </summary>
         /// <param name="path">Ruta donde se guardara el archivo</param>
-        private void Serealizar(string path)
+        public void Serializar(string path)
         {
 
             string objJson;
@@ -574,6 +525,54 @@ namespace WinFormsAppLoginUser
                 sw.WriteLine(jsonArray);
             }
 
+        }
+       
+        /// <summary>
+        /// Deserializar() Determina el tipo de vehículo y deserializa según ese tipo. 
+        /// </summary>
+        /// <param name="path">Ruta del archivo a deserealizar</param>
+        public void Deserializar(string path)
+        {
+
+            if (File.Exists(path))
+            {
+
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    JsonSerializerOptions opciones = new JsonSerializerOptions();
+                    string json_str = sr.ReadToEnd();
+
+                    var vehiculosAnonimos = JsonSerializer.Deserialize<List<object>>(json_str);
+
+
+                    foreach (var vehiculoAnonimo in vehiculosAnonimos)
+                    {
+                        if (vehiculoAnonimo is JsonElement elemento)
+                        {
+
+                            if (elemento.TryGetProperty("Cilindrada", out _))
+                            {
+                                Motocicleta? moto = JsonSerializer.Deserialize<Motocicleta>(elemento.GetRawText());
+                                _ = this.estacionamiento + moto;
+                            }
+
+                            if (elemento.TryGetProperty("TipoDeCombustible", out _))
+                            {
+                                Automovil? auto = JsonSerializer.Deserialize<Automovil>(elemento.GetRawText());
+                                _ = this.estacionamiento + auto;
+                            }
+
+                            if (elemento.TryGetProperty("EsAutomatico", out _))
+                            {
+                                Colectivo? colec = JsonSerializer.Deserialize<Colectivo>(elemento.GetRawText());
+                                _ = this.estacionamiento + colec;
+                            }
+                        }
+                    }
+                }
+
+                this.ActualizarVisor();
+            }
         }
 
         /// <summary>
@@ -699,7 +698,7 @@ namespace WinFormsAppLoginUser
                 if (this.saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string ruta = this.saveFileDialog1.FileName;
-                    this.Serealizar(ruta);
+                    this.Serializar(ruta);
                     this.txtDirecion.Text = ruta;
                 }
 
