@@ -71,19 +71,19 @@ namespace WinFormsAppLoginUser
             this.cmbTipoVehiculo.Items.Add("Auto");
             this.cmbTipoVehiculo.Items.Add("Colectivo");
             this.cmbTipoVehiculo.Items.Add("Moto");
-
-            // Establecer la selección predeterminada 
-            this.SerealizarUsuario();
             this.cmbTipoVehiculo.SelectedIndex = 0;
-            this.DeserializarUsuarioLog();
 
+            Task SerializarUsuarios = Task.Run(() => this.SerializarUsuario());
+            await SerializarUsuarios;
+
+            Task DeserializarUsuarios = Task.Run(() => this.DeserializarUsuarioLog());
+            
             // Delegado y evento
-            this.estadoLbl.CambiaTextoYColorLbl("Cargando..", Color.Red);
-            // Un delay a la tarea
-            await Task.Delay(1200);
+            this.estadoLbl.CambiaTextoYColorLbl("Cargando..", Color.Red);  
+            
+            await Task.Delay(500);
 
-            // Verificar permisos
-            Task permisos = Task.Run(() => this.VerificarPermisosUsuario(this.usuario));
+            Task verificarPermisos = Task.Run(() => this.VerificarPermisosUsuario(this.usuario));
 
             await this.LeerBaseDeDatos();
         }
@@ -374,7 +374,7 @@ namespace WinFormsAppLoginUser
         /// <summary>
         /// SerealizarUsuario() Serealiza los logueos de los usuarios ingresados
         /// </summary>
-        private void SerealizarUsuario()
+        private void SerializarUsuario()
         {
             try
             {
@@ -784,7 +784,6 @@ namespace WinFormsAppLoginUser
                 this.ActualizarVisor();
 
                 this.estadoLbl.CambiaTextoYColorLbl("Conectado", Color.Green);
-                //this.ModifadorDeLblEstado("Conectado", Color.Green);
             });
 
         }
