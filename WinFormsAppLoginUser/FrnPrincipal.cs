@@ -20,7 +20,7 @@ namespace WinFormsAppLoginUser
         protected Estacionamiento<Vehiculo> estacionamiento;
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
-        protected DelegadoImprimirMensaje impresor;
+        protected DelegadoImprimirMensajeAtencion impresor;
         protected DelegadoCambiaEstadoLbl estadoLbl;
 
         /// <summary>
@@ -44,10 +44,10 @@ namespace WinFormsAppLoginUser
             this.usuario = usuario;
 
             //Delegado + Evento
-            this.impresor = new DelegadoImprimirMensaje();
+            this.impresor = new DelegadoImprimirMensajeAtencion();
             this.estadoLbl = new DelegadoCambiaEstadoLbl();
 
-            this.impresor.MensajeImpreso += MensajeDeAtencion;
+            this.impresor.MensajeImpresoDeAtencion += MensajeDeAtencion;
             this.estadoLbl.MoficarLbl += ModifadorDeLblEstado;
 
         }

@@ -17,12 +17,12 @@ namespace WinFormsAppLoginUser
     /// <summary>
     /// Clase que gestiona un evento para imprimir mensajes de atención.
     /// </summary>
-    public class DelegadoImprimirMensaje
+    public class DelegadoImprimirMensajeAtencion
     {
         /// <summary>
         /// Evento para imprimir mensajes de atención, utilizando el delegado ImprimirMensajeAtencion.
         /// </summary>
-        public event ImprimirMensajeAtencion MensajeImpreso;
+        public event ImprimirMensajeAtencion MensajeImpresoDeAtencion;
 
         /// <summary>
         /// Método para imprimir un mensaje de atención utilizando el evento MensajeImpreso.
@@ -30,6 +30,6 @@ namespace WinFormsAppLoginUser
         /// <param name="marca">Marca del vehículo o elemento a destacar.</param>
         /// <param name="nChasis">Número de chasis o identificación del elemento.</param>
         public void ImprimirMjsAtencion(string marca, string nChasis) => 
-            MensajeImpreso?.Invoke(marca, nChasis);      
+            MensajeImpresoDeAtencion?.Invoke(marca, nChasis);      
     }
 }
