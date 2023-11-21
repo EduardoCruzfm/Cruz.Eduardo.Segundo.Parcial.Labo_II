@@ -15,8 +15,8 @@
   con los radioButton y el boton ordenar.
   La aplicacion se conecta directamente a la base de datos. Agrega, modifica y elimina los elementos cargados.
   Los ordena en la aplicacion, no desde BD.
-  Mantiene la opcion de cargar cargas elementos JSON y en caso que ya exista en la app no lo carga, tambiem
-  mantiene la opcion de poder guardar en le escritorio o donde se quiera.
+  Mantiene la opcion de cargar cargas archivos JSON y en caso que ya exista en la app no lo carga, tambiem
+  mantiene la opcion de poder guardar el archivo en donde desee.
   
 
 # Diagrama de Libreria de Clases
