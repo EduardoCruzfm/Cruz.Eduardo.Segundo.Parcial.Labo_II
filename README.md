@@ -3,10 +3,7 @@
 # Carga de vehiculos para un estacionamiento de un taller
 
 ![Log](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/538b3059-31bb-4b0e-9a80-86f5deb7913b)
-
-
-![Principal](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/921e51df-910e-4196-9664-7214867c8bbf)
-
+![Principal](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/34e4476a-f6a9-457a-a92b-ef0f56a538f5)
 ![Logueo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/17019b9f-44af-4a4c-9de2-e5013258c0de)
 
 # Presentacion
