@@ -42,14 +42,13 @@ namespace WinFormsAppLoginUser
         public FrnPrincipal(Usuario usuario) : this()
         {
             this.usuario = usuario;
-            //MessageBox.Show($"Bienvenido {usuario.nombre}");
 
             //Delegado + Evento
-            impresor = new DelegadoImprimirMensaje();
-            estadoLbl = new DelegadoCambiaEstadoLbl();
+            this.impresor = new DelegadoImprimirMensaje();
+            this.estadoLbl = new DelegadoCambiaEstadoLbl();
 
-            impresor.MensajeImpreso += MensajeDeAtencion;
-            estadoLbl.MoficarLbl += ModifadorDeLblEstado;
+            this.impresor.MensajeImpreso += MensajeDeAtencion;
+            this.estadoLbl.MoficarLbl += ModifadorDeLblEstado;
 
         }
 
@@ -73,6 +72,7 @@ namespace WinFormsAppLoginUser
             this.cmbTipoVehiculo.Items.Add("Moto");
             this.cmbTipoVehiculo.SelectedIndex = 0;
 
+            // Tareas
             Task SerializarUsuarios = Task.Run(() => this.SerializarUsuario());
             await SerializarUsuarios;
 

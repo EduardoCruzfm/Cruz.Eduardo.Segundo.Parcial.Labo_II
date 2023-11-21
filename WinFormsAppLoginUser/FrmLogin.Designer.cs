@@ -50,7 +50,6 @@
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += btnAceptar_Click;
-            btnAceptar.KeyPress += btnAceptar_KeyPress;
             // 
             // btnCancelar
             // 

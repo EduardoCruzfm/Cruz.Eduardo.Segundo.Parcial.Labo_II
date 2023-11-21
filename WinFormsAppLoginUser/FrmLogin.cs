@@ -57,7 +57,6 @@ namespace WinFormsAppLoginUser
             }
             catch (Exception e)
             {
-
                 MessageBox.Show(e.Message);
                 return new List<Usuario>();
             }
@@ -125,12 +124,6 @@ namespace WinFormsAppLoginUser
                 this.DialogResult = DialogResult.Cancel;
 
             }
-        }
-
-
-        private void btnAceptar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
         }
 
         /// <summary>
