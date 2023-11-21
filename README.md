@@ -13,6 +13,11 @@
   La aplicacion agrega vehiculos de distintos tipos (Que se seleciona por el comboBox) para un estacionamiento de un service,
   contiene botones tanto para agregar, modificar y eliminar. Se ordenan asendentemente y desendentemente (Por N° Chaisis / Cant. de ruedas)
   con los radioButton y el boton ordenar.
+  La aplicacion se conecta directamente a la base de datos. Agrega, modifica y elimina los elementos cargados.
+  Los ordena en la aplicacion, no desde BD.
+  Mantiene la opcion de cargar cargas elementos JSON y en caso que ya exista en la app no lo carga, tambiem
+  mantiene la opcion de poder guardar en le escritorio o donde se quiera.
+  
 
 # Diagrama de Libreria de Clases
 ![Vehiculo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/792b8e76-4b75-4f79-8e0c-72daa4872055)
