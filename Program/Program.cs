@@ -55,7 +55,7 @@ namespace Program
 
             Colectivo automovil = new Colectivo("Volvo", 6, 6, Colores.Rojo, "54545643", "si", 40);
 
-            //if (accesoAutomovil.AgregarDato(automovil))
+            
                 if (accesoMotocicleta.ModificarDato(automovil))
                 {
                     Console.WriteLine("Se agredo");
