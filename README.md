@@ -15,7 +15,7 @@
   con los radioButton y el boton ordenar.
 
 # Diagrama de Libreria de Clases
-![vehiculo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/7162e65c-33cf-4f7c-bc0c-7acba3f63d99)
+![Vehiculo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/792b8e76-4b75-4f79-8e0c-72daa4872055)
 ![Moto](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/b39c168d-c5e8-440b-b27b-bcbf4c1c934f)
 ![Auto (2)](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/4a3c347b-ddfb-4613-a92c-3627ce784805)
 ![colec](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/187bf892-c060-4924-8eb4-df365fbb97b9)
