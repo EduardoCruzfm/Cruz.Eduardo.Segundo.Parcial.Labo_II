@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Biblioteca_de_Interfaces\Biblioteca_de_Interfaces.csproj" />
+    <ProjectReference Include="..\Biblioteca_Exepciones\Biblioteca_Exepciones.csproj" />
   </ItemGroup>
 
   <ItemGroup>

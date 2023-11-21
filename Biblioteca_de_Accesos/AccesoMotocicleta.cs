@@ -1,4 +1,5 @@
 ﻿using Biblioteca_de_Interfaces;
+using Biblioteca_Exepciones;
 using Cruz.Eduardo.Primer.Parcial.Labo_II;
 using Microsoft.Data.SqlClient;
 using System;
@@ -57,7 +58,7 @@ namespace Biblioteca_de_Accesos
             }
             catch (Exception ex)
             {
-
+                throw new ConexionFallidaBDException(ex.Message);
             }
             finally
             {
@@ -110,7 +111,7 @@ namespace Biblioteca_de_Accesos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ConexionFallidaBDException(ex.Message);
             }
             finally
             {
@@ -160,7 +161,7 @@ namespace Biblioteca_de_Accesos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ConexionFallidaBDException(ex.Message);
             }
             finally
             {
@@ -203,7 +204,7 @@ namespace Biblioteca_de_Accesos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ConexionFallidaBDException(ex.Message);
             }
             finally
             {

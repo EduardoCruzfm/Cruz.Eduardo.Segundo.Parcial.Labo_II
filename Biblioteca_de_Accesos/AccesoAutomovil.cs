@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Biblioteca_Exepciones;
 
 namespace Biblioteca_de_Accesos
 {
@@ -59,7 +60,7 @@ namespace Biblioteca_de_Accesos
             }
             catch (Exception ex)
             {
-
+                throw new ConexionFallidaBDException(ex.Message);
             }
             finally
             {
@@ -112,7 +113,7 @@ namespace Biblioteca_de_Accesos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ConexionFallidaBDException(ex.Message);
             }
             finally
             {
@@ -162,7 +163,7 @@ namespace Biblioteca_de_Accesos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ConexionFallidaBDException(ex.Message);
             }
             finally
             {
@@ -205,7 +206,7 @@ namespace Biblioteca_de_Accesos
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                throw new ConexionFallidaBDException(ex.Message);
             }
             finally
             {
