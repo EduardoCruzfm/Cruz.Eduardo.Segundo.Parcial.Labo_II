@@ -25,6 +25,10 @@
 
 ![colec](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/187bf892-c060-4924-8eb4-df365fbb97b9)
 
+![Exepciones](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/bd28bce3-ca16-467f-b6c7-d6227d053265)
+![Interfas](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/e617ae32-fea9-4c50-a3c1-d0dad992116b)
+![AccesoAdo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/9ba7e3fe-e131-4822-b116-c158d1b2fea2)
+![Delegados](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/1f4d4501-94d9-43bc-88f9-635a196f00d6)
 
 # Diagrama de WinForms:
 ![DiagramaWinForms](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/a0056cbe-b13e-4e5d-aa7a-53ec1121f658)
