@@ -20,7 +20,7 @@ namespace WinFormsAppLoginUser
         protected Estacionamiento<Vehiculo> estacionamiento;
         protected List<UsuarioLog> listaDeLogeo;
         protected DateTime fechaHora;
-        protected DelegadoImprimirMensajeAtencion impresor;
+        protected DelegadoImprimirMensajeAtencion impresorAtencion;
         protected DelegadoCambiaEstadoLbl estadoLbl;
 
         /// <summary>
@@ -44,11 +44,11 @@ namespace WinFormsAppLoginUser
             this.usuario = usuario;
 
             //Delegado + Evento
-            this.impresor = new DelegadoImprimirMensajeAtencion();
+            this.impresorAtencion = new DelegadoImprimirMensajeAtencion();
             this.estadoLbl = new DelegadoCambiaEstadoLbl();
 
-            this.impresor.MensajeImpresoDeAtencion += MensajeDeAtencion;
-            this.estadoLbl.MoficarLbl += ModifadorDeLblEstado;
+            this.impresorAtencion.MensajeImpresoDeAtencion += this.MensajeDeAtencion;
+            this.estadoLbl.MoficarLbl += this.ModifadorDeLblEstado;
 
         }
 
@@ -129,7 +129,7 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.impresor.ImprimirMjsAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
+                                this.impresorAtencion.ImprimirMjsAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                                 //this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                             }
 
@@ -151,7 +151,7 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.impresor.ImprimirMjsAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
+                                this.impresorAtencion.ImprimirMjsAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                                 //this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                             }
                             this.ActualizarVisor();
@@ -173,7 +173,7 @@ namespace WinFormsAppLoginUser
                             }
                             else
                             {
-                                this.impresor.ImprimirMjsAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
+                                this.impresorAtencion.ImprimirMjsAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                                 //this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                             }
 
@@ -277,7 +277,7 @@ namespace WinFormsAppLoginUser
                         }
                         else
                         {
-                            this.impresor.ImprimirMjsAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
+                            this.impresorAtencion.ImprimirMjsAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                             //this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                         }
 
@@ -301,7 +301,7 @@ namespace WinFormsAppLoginUser
                         }
                         else
                         {
-                            this.impresor.ImprimirMjsAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
+                            this.impresorAtencion.ImprimirMjsAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                             //this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                         }
 
@@ -326,7 +326,7 @@ namespace WinFormsAppLoginUser
                         }
                         else
                         {
-                            this.impresor.ImprimirMjsAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
+                            this.impresorAtencion.ImprimirMjsAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                             //this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                         }
 

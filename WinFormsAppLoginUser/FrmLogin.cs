@@ -19,6 +19,7 @@ namespace WinFormsAppLoginUser
     {
         private List<Usuario> usuarios;
         private int cantidadIntentos = 0;
+        public DelegadoImprimirMensajeError impresorError;
 
         /// <summary>
         /// Obtiene el usuario validado por el formulario de inicio de sesión.
@@ -35,6 +36,9 @@ namespace WinFormsAppLoginUser
             this.StartPosition = FormStartPosition.CenterScreen;
             this.txtUsuario.Focus();
             this.usuarios = this.Deserializar();
+            this.impresorError = new DelegadoImprimirMensajeError();
+
+            this.impresorError.MensajeImpresoDeError += this.MensajeDeError;
         }
 
         /// <summary>
@@ -80,7 +84,7 @@ namespace WinFormsAppLoginUser
             else
             {
                 this.cantidadIntentos++;
-                MessageBox.Show("Usuario no encontrado verifique sus datos", "Datos invalidos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.impresorError.ImprimirMjsError("Usuario no encontrado verifique sus datos", "Datos invalidos");
             }
 
             if (this.cantidadIntentos == 3)
@@ -141,5 +145,14 @@ namespace WinFormsAppLoginUser
             }
         }
 
+        /// <summary>
+        /// Muestra un mensaje de error en un cuadro de diálogo.
+        /// </summary>
+        /// <param name="mensaje">Mensaje de error a mostrar.</param>
+        /// <param name="tituloForm">Título del formulario o contexto asociado al error.</param>
+        private void MensajeDeError(string mensaje, string tituloForm)
+        {
+            MessageBox.Show(mensaje,tituloForm, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
 }
