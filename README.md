@@ -20,15 +20,18 @@
 # Diagrama de Libreria de Clases
 ![vehiculo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/7162e65c-33cf-4f7c-bc0c-7acba3f63d99)
 ![Moto](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/b39c168d-c5e8-440b-b27b-bcbf4c1c934f)
-
 ![Auto (2)](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/4a3c347b-ddfb-4613-a92c-3627ce784805)
-
 ![colec](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/187bf892-c060-4924-8eb4-df365fbb97b9)
 
-![Exepciones](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/bd28bce3-ca16-467f-b6c7-d6227d053265)
-![Interfas](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/e617ae32-fea9-4c50-a3c1-d0dad992116b)
-![AccesoAdo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/9ba7e3fe-e131-4822-b116-c158d1b2fea2)
-![Delegados](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/1f4d4501-94d9-43bc-88f9-635a196f00d6)
+
+![Exepciones](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/af790ba6-ccbe-4542-a17e-9580b9a7888c)
+![Interfas](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/76049d77-6681-40a3-a09b-8bd1d07c9df5)
+![AccesoAdo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/eaacb7ae-2a36-4368-8b74-7a0aaaeea2de)
+![Delegados](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/def325e7-fda9-4540-8b14-3ac6b7c3fbea)
+![Test](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/cb1a3a91-6650-4829-b9b6-0045489da14b)
+
 
 # Diagrama de WinForms:
-![DiagramaWinForms](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/a0056cbe-b13e-4e5d-aa7a-53ec1121f658)
+![frmPrincipal](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/4f38042d-d395-4d99-8dc4-d6d6a951f645)
+![frmVehiculo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/620ac924-007f-467a-b0d1-be4e41a649d7)
+
