@@ -462,9 +462,9 @@ namespace WinFormsAppLoginUser
                     this.listaDeLogeo.Add(u);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new DeserializacionErroneaException($"No se encuentra el archivo Usuario.log -> {ex}");
+                _ = MessageBox.Show($"No se encuentra el archivo Usuario.log", "Error en logueos", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK;
             }
 
         }
@@ -672,9 +672,9 @@ namespace WinFormsAppLoginUser
 
                 this.txtDirecion.Text = ruta;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw new DeserializacionErroneaException($"Error al abrir archivo -> {ex.Message}");
+                _ = MessageBox.Show($"Se a producido un error, archivo no compatible", "Error al abrir archivo", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK;
             }
 
         }

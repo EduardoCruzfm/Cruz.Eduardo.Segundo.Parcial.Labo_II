@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Biblioteca_Exepciones;
+using Azure.Messaging;
 
 namespace Biblioteca_de_Accesos
 {
@@ -58,9 +59,13 @@ namespace Biblioteca_de_Accesos
 
 
             }
+            catch (ConexionFallidaBDException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new ConexionFallidaBDException(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -111,9 +116,13 @@ namespace Biblioteca_de_Accesos
                 }
 
             }
+            catch (ConexionFallidaBDException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new ConexionFallidaBDException(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -161,9 +170,13 @@ namespace Biblioteca_de_Accesos
                 }
 
             }
+            catch (ConexionFallidaBDException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new ConexionFallidaBDException(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -204,9 +217,13 @@ namespace Biblioteca_de_Accesos
                     retorno = true;
                 }
             }
+            catch (ConexionFallidaBDException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new ConexionFallidaBDException(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             finally
             {

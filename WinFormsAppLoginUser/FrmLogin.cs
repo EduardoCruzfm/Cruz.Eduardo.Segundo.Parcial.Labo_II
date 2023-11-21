@@ -58,10 +58,16 @@ namespace WinFormsAppLoginUser
                     return users;
                 }
             }
+            catch(DeserializacionErroneaException ex)
+            {
+                MessageBox.Show(ex.Message);
+                return new List<Usuario>();
+            }
+
             catch (Exception ex)
             {
-                throw new DeserializacionErroneaException(ex.Message);
-                //return new List<Usuario>();
+                MessageBox.Show(ex.Message);
+                return new List<Usuario>();
             }
         }
 

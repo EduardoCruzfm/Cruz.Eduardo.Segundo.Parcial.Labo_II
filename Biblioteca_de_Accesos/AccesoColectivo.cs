@@ -56,9 +56,13 @@ namespace Biblioteca_de_Accesos
 
 
             }
+            catch (ConexionFallidaBDException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new ConexionFallidaBDException(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -109,9 +113,13 @@ namespace Biblioteca_de_Accesos
                 }
 
             }
+            catch (ConexionFallidaBDException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new ConexionFallidaBDException(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             finally
             {
@@ -202,9 +210,13 @@ namespace Biblioteca_de_Accesos
                     retorno = true;
                 }
             }
+            catch (ConexionFallidaBDException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             catch (Exception ex)
             {
-                throw new ConexionFallidaBDException(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             finally
             {
