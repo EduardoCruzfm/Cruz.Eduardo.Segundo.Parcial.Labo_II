@@ -3,9 +3,15 @@ using Biblioteca_de_Accesos;
 
 namespace TestUnitarios
 {
+    /// <summary>
+    /// Clase que contiene métodos para realizar pruebas unitarias.
+    /// </summary>
     [TestClass]
     public class TestDeMetodos
     {
+        /// <summary>
+        /// Prueba que verifica si se establece correctamente la conexión a la base de datos.
+        /// </summary>
         [TestMethod]
         public void PruebaDeRetornoDeConexionBasaDeDatos()
         {
@@ -17,6 +23,9 @@ namespace TestUnitarios
             Assert.IsTrue(resultadoActual);
         }
 
+        /// <summary>
+        /// Prueba que verifica si dos motocicletas son iguales.
+        /// </summary>
         [TestMethod]
         public void CompararSiDosMotocicletassSonIguales()
         {
@@ -28,6 +37,9 @@ namespace TestUnitarios
             Assert.IsTrue(resultadoActual);
         }
 
+        /// <summary>
+        /// Prueba que verifica si dos colectivos son distintos.
+        /// </summary>
         [TestMethod]
         public void CompararSiDosColectivosSonDistintos()
         {

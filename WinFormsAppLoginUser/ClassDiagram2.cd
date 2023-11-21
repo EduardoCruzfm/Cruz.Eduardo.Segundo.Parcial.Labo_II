@@ -1,67 +1,110 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1">
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="WinFormsAppLoginUser.FrnPrincipal">
-    <Position X="0.5" Y="0.5" Width="2.5" />
+    <Position X="0.5" Y="0.5" Width="5" />
     <TypeIdentifier>
-      <HashCode>AQSAACCAAOSAAQoQQAGAAAACCCJAAAQAwJAAKABAGAg=</HashCode>
+      <HashCode>BQQgAiAAAOSICSgQQCmAQAEGiCJQABRAyNAAKAhASAk=</HashCode>
       <FileName>FrnPrincipal.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="WinFormsAppLoginUser.FormVehiculo">
-    <Position X="3.5" Y="0.5" Width="2.5" />
+    <Position X="0.5" Y="14.75" Width="5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAyAAAIAAAgCAAAACQwRAAAhIQAAAAYAAAAQ=</HashCode>
       <FileName>FormVehiculo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WinFormsAppLoginUser.FrmLogin">
-    <Position X="6.5" Y="0.5" Width="2" />
+    <Position X="5.75" Y="0.5" Width="4.5" />
     <TypeIdentifier>
-      <HashCode>gAAAAAACACAAAYgAhACAAAACAQBAAEAAQAACEAAgAAA=</HashCode>
+      <HashCode>AAAAAAAiACAAIZgAhACAAAACAQBAQEAAQAACEAAgAAA=</HashCode>
       <FileName>FrmLogin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WinFormsAppLoginUser.FormMostrarLogeos">
-    <Position X="9" Y="0.5" Width="2.25" />
+    <Position X="10.5" Y="0.5" Width="4.75" />
     <TypeIdentifier>
-      <HashCode>AACAQAAAQKAAAAhAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AACAQAAAQKAAAAhAAACAAAACAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>FormMostrarLogeos.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WinFormsAppLoginUser.FormAuto">
-    <Position X="5.75" Y="8.5" Width="2.25" />
+    <Position X="11" Y="14.75" Width="5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAQABACAIAACAIAAAAAAIAiAACACAAA=</HashCode>
       <FileName>FormAuto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WinFormsAppLoginUser.FormMoto">
-    <Position X="3.25" Y="8.5" Width="2.25" />
+    <Position X="7.5" Y="20.25" Width="5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACIACAASAAyBAAECAAAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>FormMoto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WinFormsAppLoginUser.FormColectivo">
-    <Position X="8.5" Y="8.5" Width="2.25" />
+    <Position X="5.75" Y="14.75" Width="5" />
     <TypeIdentifier>
       <HashCode>AAEAQAgAACAACBAAAACAAAECAAAAAAgAAAEAAAABEAA=</HashCode>
       <FileName>FormColectivo.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WinFormsAppLoginUser.Usuario">
-    <Position X="12" Y="0.5" Width="2" />
+    <Position X="6" Y="6.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAQBAACEAAAAAAAAAAQAAACAAAAQAAAAAAA=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WinFormsAppLoginUser.UsuarioLog">
-    <Position X="12.25" Y="4.75" Width="1.5" />
+    <Position X="9.75" Y="7.25" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>UsuarioLog.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="WinFormsAppLoginUser.DelegadoCambiaEstadoLbl">
+    <Position X="0.5" Y="27.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>DelegadoCambiaEstadoLbl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.DelegadoImprimirMensajeAtencion">
+    <Position X="6.75" Y="27.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>DelegadoImprimirMensajeAtencion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinFormsAppLoginUser.DelegadoImprimirMensajeError">
+    <Position X="13" Y="27.5" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>DelegadoImprimirMensajeError.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Delegate Name="WinFormsAppLoginUser.CambiaEstadoLbl">
+    <Position X="0.5" Y="29.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DelegadoCambiaEstadoLbl.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="WinFormsAppLoginUser.ImprimirMensajeAtencion">
+    <Position X="7.25" Y="29.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DelegadoImprimirMensajeAtencion.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="WinFormsAppLoginUser.ImprimirMensajeError">
+    <Position X="13.25" Y="29.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DelegadoImprimirMensajeError.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
   <Font Name="Segoe UI" Size="10" />
 </ClassDiagram>

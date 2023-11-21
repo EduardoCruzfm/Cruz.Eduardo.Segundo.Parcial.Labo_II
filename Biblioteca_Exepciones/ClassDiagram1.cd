@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Biblioteca_Exepciones.ConexionFallidaBDException">
+    <Position X="1.5" Y="1" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ConexionFallidaBDException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca_Exepciones.DeserializacionErroneaException">
+    <Position X="6.75" Y="1" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DeserializacionErroneaException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Biblioteca_Exepciones.IntereaccionesSuperadasException">
+    <Position X="4" Y="4" Width="4.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IntereaccionesSuperadasException.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="10" />
+</ClassDiagram>

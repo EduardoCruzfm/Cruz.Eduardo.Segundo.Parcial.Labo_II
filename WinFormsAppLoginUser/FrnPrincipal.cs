@@ -1,5 +1,6 @@
 using Biblioteca_de_Accesos;
 using Biblioteca_de_Interfaces;
+using Biblioteca_Exepciones;
 using Cruz.Eduardo.Primer.Parcial.Labo_II;
 using Microsoft.Win32;
 using System.Collections;
@@ -220,7 +221,6 @@ namespace WinFormsAppLoginUser
 
                         if (accesoA.PruebaConexion())
                             accesoA.EliminarDato((Automovil)v);
-                        //Mensaje de error
                         break;
 
                     case nameof(Motocicleta):
@@ -278,7 +278,6 @@ namespace WinFormsAppLoginUser
                         else
                         {
                             this.impresorAtencion.ImprimirMjsAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
-                            //this.MensajeDeAtencion(fromA.Auto.Marca, fromA.Auto.NChasis);
                         }
 
                         this.ActualizarVisor();
@@ -302,7 +301,6 @@ namespace WinFormsAppLoginUser
                         else
                         {
                             this.impresorAtencion.ImprimirMjsAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
-                            //this.MensajeDeAtencion(fromM.Moto.Marca, fromM.Moto.NChasis);
                         }
 
                         this.ActualizarVisor();
@@ -327,7 +325,6 @@ namespace WinFormsAppLoginUser
                         else
                         {
                             this.impresorAtencion.ImprimirMjsAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
-                            //this.MensajeDeAtencion(fromC.Colctivo.Marca, fromC.Colctivo.NChasis);
                         }
 
                         this.ActualizarVisor();
@@ -465,11 +462,9 @@ namespace WinFormsAppLoginUser
                     this.listaDeLogeo.Add(u);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                _ = MessageBox.Show($"No se encuentra el archivo Usuario.log", "Error en logueos", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK;
-
+                throw new DeserializacionErroneaException($"No se encuentra el archivo Usuario.log -> {ex}");
             }
 
         }
@@ -677,10 +672,9 @@ namespace WinFormsAppLoginUser
 
                 this.txtDirecion.Text = ruta;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _ = MessageBox.Show($"Se a producido un error, archivo no compatible", "Error al abrir archivo", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK;
-
+                throw new DeserializacionErroneaException($"Error al abrir archivo -> {ex.Message}");
             }
 
         }
@@ -703,9 +697,9 @@ namespace WinFormsAppLoginUser
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                _ = MessageBox.Show($"Se a producido un error al guardar el archivo", "Error al guardar archivo", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK;
+                _ = MessageBox.Show($"Se a producido un error al guardar el archivo -> {ex}", "Error al guardar archivo", MessageBoxButtons.OK, MessageBoxIcon.Question) == DialogResult.OK;
             }
         }
 

@@ -47,7 +47,6 @@ namespace WinFormsAppLoginUser
         /// <returns>Una lista de usuarios deserializados.</returns>
         private List<Usuario> Deserializar()
         {
-
             try
             {
                 using (StreamReader sr = new StreamReader(@"..\..\..\MOCK_DATA.json"))
@@ -59,10 +58,10 @@ namespace WinFormsAppLoginUser
                     return users;
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                MessageBox.Show(e.Message);
-                return new List<Usuario>();
+                throw new DeserializacionErroneaException(ex.Message);
+                //return new List<Usuario>();
             }
         }
 
@@ -76,7 +75,6 @@ namespace WinFormsAppLoginUser
         private void btnAceptar_Click(object sender, EventArgs e)
         {
             
-
             if (Verificar() != null)
             {
                 this.DialogResult = DialogResult.OK;
