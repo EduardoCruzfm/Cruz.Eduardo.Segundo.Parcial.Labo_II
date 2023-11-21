@@ -25,7 +25,7 @@
 
 # Exepciones
 ![Exepciones](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/af790ba6-ccbe-4542-a17e-9580b9a7888c)
-#Interfaz
+# Interfaz
 ![Interfas](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/76049d77-6681-40a3-a09b-8bd1d07c9df5)
 # Acceso SQL
 ![AccesoAdo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Segundo.Parcial.Labo_II/assets/114032061/eaacb7ae-2a36-4368-8b74-7a0aaaeea2de)
