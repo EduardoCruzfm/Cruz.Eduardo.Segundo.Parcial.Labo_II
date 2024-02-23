@@ -7,7 +7,7 @@
 ![Logueo](https://github.com/EduardoCruzfm/Cruz.Eduardo.Primer.Parcial.Labo_II/assets/114032061/17019b9f-44af-4a4c-9de2-e5013258c0de)
 
 # Presentacion
-  Me llamo Eduardo Cruz soy cursante de Loboratorio II
+  Me llamo Eduardo Cruz soy cursante de Laboratorio II
 
 # Resumen
   La aplicacion agrega vehiculos de distintos tipos (Que se seleciona por el comboBox) para un estacionamiento de un service,
